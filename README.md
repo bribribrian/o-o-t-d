@@ -14,3 +14,7 @@ The user will login to their account at which point they will then have access t
 - Clothing items will keep record of how well they match other items based on users feedback
 - Search feature for user to find what items they have in their wardrobe
 ## Technologies
+#### Backend: Node, Express, MongoDB
+#### Frontend: React and React Native with Redux
+## Team Members & Work Breakdown
+David Campuzano, Peter Kim, Brian Klein, Will Marino
