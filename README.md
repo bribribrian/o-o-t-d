@@ -1,2 +1,2 @@
 # Stylidex
-A MERN stack syle generator
+A MERN stack style generator
