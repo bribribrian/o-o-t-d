@@ -20,17 +20,17 @@ const CollectionSchema = new Schema({
   },
   occasion: {
     type: String,
-    default: 'Casual',
+    default: 'casual',
     required: true
   },
   precipitation: {
     type: String,
-    default: 'Sunny',
+    default: 'sunny',
     required: true
   },
   temperature: {
     type: String,
-    default: 'All',
+    default: 'all',
     required: true
   },
   image_url: {
