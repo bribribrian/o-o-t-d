@@ -3,6 +3,8 @@ const mongoose = require('mongoose');
 const port = process.env.PORT || 5000;
 const app = express();
 const users = require("./routes/api/users");
+const items = require("./routes/api/items");
+// const collections = require('./routes/collections');
 const User = require('./models/User');
 
 const db = require('./config/keys').mongoURI;
@@ -26,7 +28,8 @@ app.get("/", (req, res) => {
   res.send("Welcome to Stylidex!");
 });
 
-
+// app.use('/api/collections', collections);
+app.use("/api/items", items);
 app.use("/api/users", users);
 app.listen(port, () => console.log(`Server is running on port ${port}`));
 
