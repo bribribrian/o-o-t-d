@@ -20,7 +20,7 @@ class SignupForm extends React.Component {
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.signedIn === true) {
-      this.props.history.push('/login');
+      this.props.history.push('/splash');
     }
 
     this.setState({ errors: nextProps.errors });
@@ -60,7 +60,7 @@ class SignupForm extends React.Component {
   render() {
     return (
       <div className="signup-form-container">
-        <Link to="/login">
+        <Link to="/splash">
           <button>Log In</button>
         </Link>
         <form onSubmit={this.handleSubmit}>
