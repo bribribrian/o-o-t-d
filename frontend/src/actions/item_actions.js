@@ -3,7 +3,7 @@ import * as APIUtil from '../util/item_util';
 export const RECEIVE_ITEM = "RECEIVE_ITEM";
 export const RECEIVE_ITEMS = "RECEIVE_ITEMS";
 export const REMOVE_ITEM = "REMOVE_ITEM";
-export const RECEIVE_ERROR = "RECEIVE_ERROR";
+export const RECEIVE_ITEM_ERROR = "RECEIVE_ITEM_ERROR";
 
 const receiveItem = (item) => ({
     type: RECEIVE_ITEM,
