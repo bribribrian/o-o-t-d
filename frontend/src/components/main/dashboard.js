@@ -1,6 +1,6 @@
 import React from 'react';
 
-class UserMain extends React.Component{
+class Dashboard extends React.Component{
   constructor(props){
     super(props);
 
@@ -23,4 +23,4 @@ class UserMain extends React.Component{
   }
 }
 
-export default UserMain;
+export default Dashboard;

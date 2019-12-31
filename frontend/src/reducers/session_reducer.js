@@ -10,6 +10,7 @@ const initialState = {
 };
 
 const SessionReducer = (state = initialState, action) => {
+  debugger;
   Object.freeze(state);
   switch(action.type){
     case RECEIVE_USER_LOGOUT:
