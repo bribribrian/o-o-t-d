@@ -16,13 +16,13 @@ module.exports = function(data) {
     errors.category = 'Category must be either a Top, Bottom, Hat, or Shoes';
   }
 
-  if (Validator.isURL(data.image_url)) {
-    errors.image_url = 'Image does not have a valid URL';
-  }
-
-  // if (Validator.isEmpty(data.label)) {
-  //   errors.label = 'Label field is required';
+  // if (Validator.isURL(data.image_url)) {
+  //   errors.image_url = 'Image does not have a valid URL';
   // }
+
+  if (Validator.isEmpty(data.label)) {
+    errors.label = 'Label field is required';
+  }
 
   // if (Validator.isEmpty(data.occasion)) {
   //   errors.occasion = 'Occasion field is required';

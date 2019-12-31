@@ -6,6 +6,7 @@ const users = require("./routes/api/users");
 const items = require("./routes/api/items");
 // const collections = require('./routes/collections');
 const User = require('./models/User');
+const fileRoutes = require("./routes/api/file-upload")
 
 const db = require('./config/keys').mongoURI;
 mongoose
@@ -29,6 +30,7 @@ app.get("/", (req, res) => {
 });
 
 // app.use('/api/collections', collections);
+app.use("/api/upload/", fileRoutes);
 app.use("/api/items", items);
 app.use("/api/users", users);
 app.listen(port, () => console.log(`Server is running on port ${port}`));
