@@ -12,7 +12,7 @@ module.exports = function(data) {
   }
 
   if (!Validator.isIn(data.temperature, ['all', 'hot', 'cold'])) {
-    errors.temperature = 'Temperature must be either Hot, Cold, or All';
+    errors.temperature = 'Temperature must be either hot, cold, or all';
   }
 
   if (Validator.isEmpty(data.label)) {
