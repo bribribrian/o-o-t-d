@@ -7,8 +7,8 @@ const ItemSchema = new Schema({
     required: true
   },
   label: {
-    type: String
-    // required: true
+    type: String,
+    required: true
   },
   // image_url: {
   //   type: String,

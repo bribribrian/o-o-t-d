@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 const passport = require('passport');
 const jwt = require('jsonwebtoken');
 const validateItemInput = require('../../validation/items');
-
+mongoose.set('useFindAndModify', false);
 
 
 router.get("/test", (req, res) => res.json({ msg: "This is the items route" }));
@@ -16,14 +16,32 @@ router.get("/test", (req, res) => res.json({ msg: "This is the items route" }));
 //     .catch(err => res.status(404).json({ noitemsfound: 'No items found'}));
 // });
 
-router.get('/user/:user_id', (req, res) => {
-  Item.find({user_id: req.params.user_id})
-    .then(items => res.json(items))
-    .catch(err => res.status(404).json({ noitemsfound: 'No items found' }));
+// router.get('/user/:user_id', (req, res) => {
+//   Item.find({user_id: req.params.user_id})
+//     .then(items => res.json(items))
+//     .catch(err => res.status(404).json({ noitemsfound: 'No items found' }));
+// });
+
+router.get('/', (req, res) => {
+  console.log(req);
+  Item.find().
+    then(items => {
+      return res.json(items);
+    })
+    .catch(err => res.status(404).json({ noitemfound: 'No item found' }));
+});
+
+router.get('/:id', (req, res) => {
+  console.log(req);
+  Item.findById(req.params.id).
+    then(items => {
+      return res.json(items);
+    })
+    .catch(err => res.status(404).json({ noitemfound: 'No item found' }));
 });
 
 
-router.post('/create',
+router.post('/',
   // passport.authenticate('jwt', { session: false }),
   (req, res) => {
     
@@ -36,12 +54,50 @@ router.post('/create',
     const newItem = new Item({
       category: req.body.category,
       label: req.body.label,
-      image_url: req.body.image_url,
+      // image_url: req.body.image_url,
       user_id: req.body.user_id
     });
   
     newItem.save().then(item => res.json(item));
   }
 );
+
+router.patch('/:id', (req, res) => {
+  console.log(req);
+  debugger;
+  let newItem = {
+    category: req.body.category,
+    label: req.body.label,
+    // image_url: req.body.image_url,
+    user_id: req.body.user_id
+  };
+  let query = req.params.id;
+  Item.findByIdAndUpdate(
+    query,
+    {
+      $set: newItem
+    },
+    { new: true },
+    (err, item) => {
+      if (err) {
+        return res.json(err);
+      }
+      return res.json(item);
+    })
+      .catch(err => res.status(404).json({ noitemfound: 'No item found' }));
+});
+
+
+router.delete('/:id', (req, res) => {
+  console.log(req);
+  debugger;
+  Item.findByIdAndDelete(req.params.id)
+    .then((result) => {
+      res.json(result);
+    })
+    .catch(err => res.status(404).json({ noitemfound: 'No item found' }));
+});
+
+
 
 module.exports = router;
