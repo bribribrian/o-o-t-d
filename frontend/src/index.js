@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(<Root store={store}/>, root);
 
   window.axios = axios;
-  window.state = store.getState();
+  window.state = store.getState;
 
 });
 
