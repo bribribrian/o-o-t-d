@@ -11,9 +11,9 @@ const ItemsReducer = (state={}, action) => {
     Object.freeze(state);
     switch(action.type){
         case RECEIVE_ITEM:
-            return Object.assign({}, state, {[action.item.id] : action.item});
+            return Object.assign({}, state, {[action.item.data.id] : action.item.data});
         case RECEIVE_ITEMS:
-            return Object.assign({}, state, action.items);
+            return Object.assign({}, state, action.items.data);
         case REMOVE_ITEM:
             let newState = Object.assign({}, state);
             delete newState[action.itemId];
