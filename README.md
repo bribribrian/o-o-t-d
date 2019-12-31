@@ -18,3 +18,23 @@ The user will login to their account at which point they will then have access t
 #### Frontend: React and React Native with Redux
 ## Team Members & Work Breakdown
 David Campuzano, Peter Kim, Brian Klein, Will Marino
+### Day 1
+- David - Begin routes/validations users/items
+- Will - Begin front-end routes users/items
+- Peter - Design UI/sample state/projected routes
+- Brian - Organize workflow/support on any issues
+### Day 2
+- David - Routes/validations for items/collections
+- Will - Front-end routes collections
+- Peter - Flex
+- Brian - Integrate AWS
+### Day 3
+- David - Finish collections backend
+- Will - Begin styling
+- Peter - Flex
+- Brian - Support on any issues/review code/Help styling
+### Day 4
+- David - Finalize all backend work
+- Will - Finalize styling
+- Peter - Flex
+- Brian - Support on any issues/review code/clean up code
