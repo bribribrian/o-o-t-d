@@ -4,7 +4,7 @@ const port = process.env.PORT || 5000;
 const app = express();
 const users = require("./routes/api/users");
 const items = require("./routes/api/items");
-// const collections = require('./routes/collections');
+const collections = require("./routes/api/collections");
 const User = require('./models/User');
 const fileRoutes = require("./routes/api/file-upload")
 
@@ -33,5 +33,6 @@ app.get("/", (req, res) => {
 app.use("/api/upload/", fileRoutes);
 app.use("/api/items", items);
 app.use("/api/users", users);
+app.use("/api/collections", collections);
 app.listen(port, () => console.log(`Server is running on port ${port}`));
 

@@ -34,8 +34,8 @@ router.get('/', (req, res) => {
 router.get('/:id', (req, res) => {
   console.log(req);
   Item.findById(req.params.id).
-    then(items => {
-      return res.json(items);
+    then(item => {
+      return res.json(item);
     })
     .catch(err => res.status(404).json({ noitemfound: 'No item found' }));
 });
@@ -50,13 +50,14 @@ router.post('/',
     if (!isValid) {
       return res.status(400).json(errors);
     }
-    
-    const newItem = new Item({
-      category: req.body.category,
-      label: req.body.label,
-      // image_url: req.body.image_url,
-      user_id: req.body.user_id
-    });
+    debugger;
+    const newItem = new Item(req.body);
+    // const newItem = new Item({
+    //   category: req.body.category,
+    //   label: req.body.label,
+    //   // image_url: req.body.image_url,
+    //   user_id: req.body.user_id
+    // });
   
     newItem.save().then(item => res.json(item));
   }
@@ -65,17 +66,17 @@ router.post('/',
 router.patch('/:id', (req, res) => {
   console.log(req);
   debugger;
-  let newItem = {
-    category: req.body.category,
-    label: req.body.label,
-    // image_url: req.body.image_url,
-    user_id: req.body.user_id
-  };
+  // let newItem = {
+  //   category: req.body.category,
+  //   label: req.body.label,
+  //   // image_url: req.body.image_url,
+  //   user_id: req.body.user_id
+  // };
   let query = req.params.id;
   Item.findByIdAndUpdate(
     query,
     {
-      $set: newItem
+      $set: req.body
     },
     { new: true },
     (err, item) => {

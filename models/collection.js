@@ -7,16 +7,20 @@ const CollectionSchema = new Schema({
     required: true
   },
   hat_id: {
-    type: Number
+    type: Schema.Types.ObjectId,
+    ref: 'items'
   },
   top_id: {
-    type: Number
+    type: Schema.Types.ObjectId,
+    ref: 'items'
   },
   bottom_id: {
-    type: Number
+    type: Schema.Types.ObjectId,
+    ref: 'items'
   },
   shoe_id: {
-    type: Number
+    type: Schema.Types.ObjectId,
+    ref: 'items'
   },
   occasion: {
     type: String,
@@ -33,9 +37,13 @@ const CollectionSchema = new Schema({
     default: 'all',
     required: true
   },
-  image_url: {
-    type: String,
-    required: true
+  // image_url: {
+  //   type: String,
+  //   required: true
+  // },
+  user_id: {
+    type: Schema.Types.ObjectId,
+    ref: 'users'
   }
 });
 
