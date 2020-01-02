@@ -1,4 +1,5 @@
-
+// **deprecated**
+// - this is no longer needed
 
 export const RECEIVE_NAV_GENERATE = "RECEIVE_NAV_GENERATE";
 export const RECEIVE_NAV_COLLECTIONS = "RECEIVE_NAV_COLLECTIONS";
