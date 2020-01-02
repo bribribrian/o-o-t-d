@@ -55,7 +55,8 @@ router.post('/',
     const newItem = new Item({
       category: req.body.category,
       label: req.body.label,
-      image_url: 'https://ootd-seeds.s3.amazonaws.com/blackhoodie_tn.jpg', //hardcode imageurl from 
+      // image_url: 'https://ootd-seeds.s3.amazonaws.com/blackhoodie_tn.jpg', //hardcode imageurl from 
+      image_url: req.body.image_url,
       user_id: req.body.user_id //possibly hardcode for itemcreation
     });
   

@@ -6,6 +6,7 @@ class CollectionsList extends React.Component{
   }
 
   render(){
+    // debugger;
     return(
       <ul>
         {this.props.collectionsArr}

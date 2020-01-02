@@ -5,14 +5,19 @@ import {
 } from '../actions/collection_actions';
 
 const CollectionsReducer = (state={}, action) => {
+  let newState;
   Object.freeze(state);
   switch(action.type){
     case RECEIVE_COLLECTION:
       return Object.assign({}, state, {[action.collection.data._id] : action.collection.data});
     case RECEIVE_COLLECTIONS:
-      return Object.assign({}, state, action.collections.data);
+      newState = {};
+      action.collections.data.forEach(collection => {
+        newState[collection._id] = collection;
+      });
+      return Object.assign({}, state, newState);
     case REMOVE_COLLECTION:
-      let newState = Object.assign({}, state);
+      newState = Object.assign({}, state);
       delete newState[action.collection.data.id];
       return newState;
     default:
