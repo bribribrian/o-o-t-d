@@ -13,6 +13,7 @@ import { logout } from './actions/session_actions';
 // Stylesheets //
 import './index.css';
 import './style/reset.css';
+import './style/main.css';
 import './style/splash.css';
 import './style/dashboard.css';
 
