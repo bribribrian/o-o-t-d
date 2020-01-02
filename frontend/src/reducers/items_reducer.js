@@ -8,10 +8,9 @@ import {
 
 const ItemsReducer = (state={}, action) => {
     Object.freeze(state);
-    // debugger;
     switch(action.type){
         case RECEIVE_ITEM:
-            return Object.assign({}, state, {[action.item.data.id] : action.item.data});
+            return Object.assign({}, state, {[action.item.data._id] : action.item.data});
         case RECEIVE_ITEMS:
             return Object.assign({}, state, action.items.data);
         case REMOVE_ITEM:

@@ -20,11 +20,13 @@ class ItemCreation extends React.Component{
       path: ''
     };
     this.handleUpload = this.handleUpload.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
     this.handleImageInput = this.handleImageInput.bind(this);
   }
 
 
   handleUpload(e){
+    e.preventDefault();
     const formData = new FormData();
     if(this.state.imageFile){
       formData.append('image', this.state.imageFile);
@@ -35,11 +37,24 @@ class ItemCreation extends React.Component{
     // itemImageToAWS({image: this.state.imageFile})
     itemImageToAWS(formData)
       .then(({data}) => {
-          debugger;
+          // debugger;
           this.setState({ image_url: data['imageUrl']});
         }
       );
     // debugger;
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+
+    const formData = {
+      label: this.state.label,
+      category: this.state.category,
+      image_url: this.state.image_url,
+      user_id: this.state.user_id
+    };
+
+    this.props.createItem(formData);
   }
 
   handleImageInput(e){
@@ -79,8 +94,16 @@ class ItemCreation extends React.Component{
           <input type='submit'></input>
         </form>
         <div>
-          <form>
-
+          <form onSubmit={this.handleSubmit}>
+            <div>
+              <p>Category</p>
+              <input type='text' onChange={this.update('category')} value={this.state.category}></input>
+            </div>
+            <div>
+              <p>Label</p>
+              <input type='text' onChange={this.update('label')} value={this.state.label}></input>
+            </div>
+            <input type='submit'></input>
           </form>
         </div>
 

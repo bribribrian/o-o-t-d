@@ -7,7 +7,11 @@ class CollectionShow extends React.Component{
 
   componentDidMount(){
     this.props.itemsIds.forEach((id) => {
-      this.props.fetchItem(id);
+      // debugger;
+      if(id !== undefined){
+        // debugger;
+        this.props.fetchItem(id);
+      }
     });
   }
 
@@ -20,8 +24,10 @@ class CollectionShow extends React.Component{
 
     let collectionItems = [];
     itemsArr.forEach((item) => {
-      if(this.props.itemsIds.includes(item._id)){
-        collectionItems.push(item);
+      if(item !== null){
+        if(this.props.itemsIds.includes(item._id)){
+          collectionItems.push(item);
+        }
       }
     })
 
