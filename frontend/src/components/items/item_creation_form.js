@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { itemImageToAWS } from '../util/aws_util';
+import { itemImageToAWS } from '../../util/aws_util';
 
 // in the constructor, generate a new formdata object - this.formData = FormData.new()
 // for each input field, call a function which sets or edits a formdata key to match that input
