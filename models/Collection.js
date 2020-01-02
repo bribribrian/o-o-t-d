@@ -37,10 +37,10 @@ const CollectionSchema = new Schema({
     default: 'all',
     required: true
   },
-  // image_url: {
-  //   type: String,
-  //   required: true
-  // },
+  image_url: {
+    type: String,
+    required: true
+  },
   user_id: {
     type: Schema.Types.ObjectId,
     ref: 'users'
