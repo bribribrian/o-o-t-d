@@ -8,7 +8,7 @@ import SplashContainer from './session/splash_container';
 
 // import SimpleItemFormContainer from './items/simple_item_form_container';
 import SimpleItemFormContainer from './items/item_creation_form_container';
-
+import CollectionCreateFormContainer from '../components/collections/collection_create_form_container';
 import CollectionShowContainer from './collections/collection_show_container';
 
 let showPath = '/collections/:_id';
@@ -20,6 +20,8 @@ const App = (props) => (
     <AuthRoute path="/splash" component={SplashContainer} loggedIn={props.state().session.isAuthenticated}/>
 
     <Route exact path="/item-creation" component={SimpleItemFormContainer}/>
+    <Route exact path="/collection-creation" component={CollectionCreateFormContainer} />
+
 
     {/* <Route exact path={showPath} component={CollectionShowContainer}></Route> */}
   </div>
