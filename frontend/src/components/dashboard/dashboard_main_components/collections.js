@@ -7,7 +7,9 @@ class Collections extends React.Component{
   }
 
   componentDidMount(){
-    this.props.fetchCollections();
+
+    // debugger;
+    this.props.fetchCollections(this.props.currentUser.id);
   }
 
   render(){

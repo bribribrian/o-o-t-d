@@ -32,8 +32,8 @@ export const fetchCollection = (collectionId) => dispatch => (
         .catch(error => dispatch(receiveCollectionError(error.response.data)))
 );
 
-export const fetchCollections = () => dispatch => (
-    APIUtil.fetchCollections()
+export const fetchCollections = (userId) => dispatch => (
+    APIUtil.fetchCollections(userId)
         .then(collections => dispatch(receiveCollections(collections)))
         .catch(error => dispatch(receiveCollectionError(error.response.data)))
 );
