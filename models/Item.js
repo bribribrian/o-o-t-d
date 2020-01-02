@@ -10,12 +10,12 @@ const ItemSchema = new Schema({
     type: String,
     required: true
   },
-  // image_url: {
-  //   type: String,
-  //   // required: true
-  // },
+  image_url: {
+    type: String,
+    required: true
+  },
   user_id: {
-    type: Number,
+    type: String,
     required: true
   }
 });
