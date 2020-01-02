@@ -25,7 +25,8 @@ router.post('/register', (req, res) => {
       const newUser = new User({
         username: req.body.username,
         email: req.body.email,
-        password: req.body.password
+        password: req.body.password,
+        zipcode: req.body.zipcode
       });
       
       bcrypt.genSalt(10, (err, salt) => {
@@ -62,7 +63,8 @@ router.post('/login', (req, res) => {
             const payload = {
               id: user.id,
               username: user.username,
-              email: user.email
+              email: user.email,
+              zipcode: user.zipcode
             };
             jwt.sign(
               payload,
