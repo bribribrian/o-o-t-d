@@ -19,6 +19,10 @@ module.exports = function(data) {
     errors.label = 'Label field is required';
   }
 
+  if (Validator.isEmpty(data.image_url)) {
+    errors.image_url = 'Image URL is required';
+  }
+
   return {
     errors,
     isValid: Object.keys(errors).length === 0
