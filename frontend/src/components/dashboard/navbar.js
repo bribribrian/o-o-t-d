@@ -1,53 +1,48 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 class Navbar extends React.Component {
   constructor(props) {
     super(props);
 
+    this.state = {
+      activeNav: this.props.navSlice
+    };
+
     this.handleClick = this.handleClick.bind(this);
-    this.sendGenerated = this.sendGenerated.bind(this);
-    this.sendGenerate = this.sendGenerate.bind(this);
-    this.sendItems = this.sendItems.bind(this);
-    this.sendCollections = this.sendCollections.bind(this);
   }
-
-  sendGenerate(e) {
-    e.preventDefault();
-    this.props.generate();
-  }
-
-  sendGenerated(e) {
-    e.preventDefault();
-    this.props.generated();
-  }
-
-  sendItems(e) {
-    e.preventDefault();
-    this.props.items();
-  }
-
-  sendCollections(e) {
-    e.preventDefault();
-    this.props.collections();
+  
+  componentDidUpdate(prevProps) {
+    if (prevProps.navSlice !== this.props.navSlice) {
+      this.setState({activeNav: this.props.navSlice});
+    }
   }
 
   handleClick(e) {
     e.preventDefault();
-    this.props.generate();
     this.props.logout();
   }
 
+  getActiveNav(target) {
+    return this.state.activeNav === target ? "active" : "";
+  }
 
   render() {
     return (
       <div className="navbar-container">
+        <div className="navbar-logo">
+          <h1>OOTD</h1>
+        </div>
         <div className="navbar-weather">
           <p>Weather goes here</p>
         </div>
         <div>
-          <button onClick={this.sendGenerate}>Generate</button>
-          <button onClick={this.sendCollections}>Collections</button>
-          <button onClick={this.sendItems}>Items</button>
+          <h2>Nav</h2>
+          <ul>
+            <li><Link to="/" className={this.getActiveNav("")}>Generate</Link></li>
+            <li><Link to="/collections" className={this.getActiveNav("collections")}>Collections</Link></li>
+            <li><Link to="/items" className={this.getActiveNav("items")}>Items</Link></li>
+          </ul>
         </div>
         <div>
           <p>Hello, {this.props.currentUser.username}</p>
