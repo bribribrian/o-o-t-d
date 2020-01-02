@@ -50,7 +50,7 @@ router.post('/',
     if (!isValid) {
       return res.status(400).json(errors);
     }
-    debugger;
+    // debugger;
     const newItem = new Item(req.body);
     // const newItem = new Item({
     //   category: req.body.category,
@@ -65,7 +65,7 @@ router.post('/',
 
 router.patch('/:id', (req, res) => {
   console.log(req);
-  debugger;
+  // debugger;
   // let newItem = {
   //   category: req.body.category,
   //   label: req.body.label,
@@ -91,7 +91,7 @@ router.patch('/:id', (req, res) => {
 
 router.delete('/:id', (req, res) => {
   console.log(req);
-  debugger;
+  // debugger;
   Item.findByIdAndDelete(req.params.id)
     .then((result) => {
       res.json(result);

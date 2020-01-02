@@ -8,6 +8,7 @@ const Collection = require('../../models/Collection');
 
 router.get('/', (req, res) => {
   console.log(req);
+  debugger;
   const { filter } = req.body;
   if (filter) {
     Collection.find(filter)
@@ -59,7 +60,7 @@ router.patch('/:id', (req, res) => {
 
 router.delete('/:id', (req, res) => {
   console.log(req);
-  debugger;
+  // debugger;
   Collection.findByIdAndDelete(req.params.id)
     .then((result) => {
       res.json(result);
