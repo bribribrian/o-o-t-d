@@ -8,27 +8,28 @@ const Collection = require('../../models/Collection');
 
 router.get('/', (req, res) => {
   console.log(req);
-  // const { filter } = req.body;
-  // if (filter) {
-  //   Collection.find(filter)
-  //     .then(collections => {
-  //       return res.json(collections);
-  //     })
-  //     .catch(err => res.status(404).json({ nocollections: 'No collections found' }));
-  // } else if (req.body.user_id) {
-  //   Collection.find({ user_id: req.body.user_id }).
-  //     then(collections => {
-  //       return res.json(collections);
-  //     })
-  //     .catch(err => res.status(404).json({ nocollectionsfound: 'No collections found' }));
-  // } else {
-  //   res.json({ errortest: "error test"})
-  // }
-  Collection.find().
-    then(collections => {
-      return res.json(collections);
-    })
-    .catch(err => res.status(404).json({ nocollectionsfound: 'No collections found' }));
+  const { filter } = req.body;
+  // debugger;
+  if (filter) {
+    Collection.find(filter)
+      .then(collections => {
+        return res.json(collections);
+      })
+      .catch(err => res.status(404).json({ nocollections: 'No collections found' }));
+  } else if (req.query.user_id) {
+    Collection.find({ user_id: req.query.user_id }).
+      then(collections => {
+        return res.json(collections);
+      })
+      .catch(err => res.status(404).json({ nocollectionsfound: 'No collections found' }));
+  } else {
+    res.json({ errortest: "error test"});
+  }
+  // Collection.find().
+  //   then(collections => {
+  //     return res.json(collections);
+  //   })
+  //   .catch(err => res.status(404).json({ nocollectionsfound: 'No collections found' }));
 });
 
 router.post('/', (req, res) => {

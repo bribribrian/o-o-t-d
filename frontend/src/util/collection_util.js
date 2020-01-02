@@ -1,7 +1,8 @@
 import axios from 'axios';
 
-export const fetchCollections = () => {
-    return axios.get('/api/collections');
+export const fetchCollections = (userId) => {
+    // debugger;
+    return axios.get(`/api/collections?user_id=${userId}`);
 };
 
 export const fetchCollection = (collectionId) => {
