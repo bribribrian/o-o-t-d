@@ -22,16 +22,18 @@ class Collections extends React.Component{
     if(Object.keys(this.props.collections).length === 0){
       return <p>loading</p>
     }
+    // debugger;
     let collectionsArr = Object.values(this.props.collections);
+    // debugger;
     let showPath;
     collectionsArr = collectionsArr.map((collection) => {
       showPath = `/collections/${collection._id}`
-      return <Link to={showPath}><li key={collection._id}>
+      return <li key={collection._id}><Link to={showPath}>
           <p>{collection.label}</p>
           <img src={collection.image_url}></img>
-      </li></Link>;
+      </Link></li>;
     })
-
+    // debugger;
     // const CollectionsList = (
     //   <ul>
     //     {collectionsArr}
@@ -40,7 +42,7 @@ class Collections extends React.Component{
 
     return(
       <>
-        <Route exact path="/collections" component={CollectionsList} collectionsArr={collectionsArr}/>
+        <Route exact path="/collections" component={() => <CollectionsList collectionsArr={collectionsArr}/> }></Route>
         <Route exact path="/collections/:collection_id" component={CollectionShowContainer} />
       </>
     )

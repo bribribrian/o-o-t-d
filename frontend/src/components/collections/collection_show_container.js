@@ -6,13 +6,14 @@ import { fetchItem } from '../../actions/item_actions';
 
 const msp = (state, ownProps) => {
   let collectionId = ownProps.match.params.collection_id;
-  let collectionsArr = Object.values(state.entities.collections);
-  let collection;
-  collectionsArr.forEach((c) => {
-    if(c._id === collectionId){
-      collection = c;
-    }
-  });
+  let collection = state.entities.collections[collectionId];
+  // let collectionsArr = Object.values(state.entities.collections);
+  // let collection;
+  // collectionsArr.forEach((c) => {
+  //   if(c._id === collectionId){
+  //     collection = c;
+  //   }
+  // });
   // each item id from the collection we just found from the state,
   // we need to fetch each of these items in order to be able
   // to display the corresponding images
@@ -23,7 +24,7 @@ const msp = (state, ownProps) => {
   itemsIds.push(collection.shoe_id);
 
   return({
-    collection: collection,
+    collection,
     items: state.entities.items,
     itemsIds: itemsIds
   });

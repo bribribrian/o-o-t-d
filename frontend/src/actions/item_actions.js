@@ -27,12 +27,18 @@ const removeItem = (itemId) => ({
     itemId
 });
 
-export const fetchItem = (itemId) => dispatch => (
-    APIUtil.fetchItem(itemId)
-        .then(item => dispatch(receiveItem(item)))
-        .catch(error => dispatch(receiveItemsError(error)))
+export const fetchItem = (itemId) => dispatch => {
+    // debugger;
+    return(
+        APIUtil.fetchItem(itemId)
+            .then(item => {
+                debugger;
+                dispatch(receiveItem(item));
+            })
+            .catch(error => dispatch(receiveItemsError(error)))
+    );
             
-);
+};
 
 export const fetchItems = () => dispatch => (
     APIUtil.fetchItems()
