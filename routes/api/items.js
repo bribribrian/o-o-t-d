@@ -51,13 +51,13 @@ router.post('/',
       return res.status(400).json(errors);
     }
     // debugger;
-    const newItem = new Item(req.body);
-    // const newItem = new Item({
-    //   category: req.body.category,
-    //   label: req.body.label,
-    //   // image_url: req.body.image_url,
-    //   user_id: req.body.user_id
-    // });
+    // const newItem = new Item(req.body);
+    const newItem = new Item({
+      category: req.body.category,
+      label: req.body.label,
+      image_url: req.body.image_url,
+      user_id: req.body.user_id
+    });
   
     newItem.save().then(item => res.json(item));
   }
