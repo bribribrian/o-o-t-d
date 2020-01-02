@@ -1,0 +1,20 @@
+.splash-logo h1 {
+  margin: 25px 0;
+  font-size: 70px;
+  text-align: center;
+}
+
+.splash-form-container {
+  width: 400px;
+  margin: 0 auto;
+}
+
+.splash-login-container h2 {
+  margin: 15px 0;
+  font-size: 20px;
+  text-align: center;
+}
+
+.splash-login-container input {
+  width: 100%;
+}
