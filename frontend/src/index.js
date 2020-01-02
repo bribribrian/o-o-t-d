@@ -16,6 +16,7 @@ import './style/reset.css';
 import './style/main.css';
 import './style/splash.css';
 import './style/dashboard.css';
+import './style/navbar.css';
 
 document.addEventListener('DOMContentLoaded', () => {
   let store;
