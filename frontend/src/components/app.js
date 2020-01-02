@@ -10,6 +10,10 @@ import SplashContainer from './session/splash_container';
 // import SimpleItemFormContainer from './items/simple_item_form_container';
 import SimpleItemFormContainer from './items/item_creation_form_container';
 
+import CollectionShowContainer from './collections/collection_show_container';
+
+let showPath = '/collections/:_id';
+
 const App = (props) => (
 
   <div>
@@ -19,6 +23,8 @@ const App = (props) => (
     <Route exact path="/splash/signup" component={SignupFormContainer} />
 
     <Route exact path="/item-creation" component={SimpleItemFormContainer}/>
+
+    {/* <Route exact path={showPath} component={CollectionShowContainer}></Route> */}
   </div>
 
 );
