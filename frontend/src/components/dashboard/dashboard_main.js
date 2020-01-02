@@ -23,7 +23,7 @@ class DashboardMain extends React.Component{
       component = <GenerateContainer/>;
     }
     return(
-      <div>
+      <div className="main-container">
         {component}
       </div>
     );

@@ -1,7 +1,7 @@
 import React from 'react';
 // import ItemCreationContainer from '../item_creation_form_container';
-import NavbarContainer from '../dashboard/navbar_container';
-import DashboardMainContainer from '../dashboard/dashboard_main_container';
+import Navbar from '../dashboard/navbar';
+import DashboardMain from '../dashboard/dashboard_main';
 
 class Dashboard extends React.Component {
   constructor(props) {
@@ -17,11 +17,13 @@ class Dashboard extends React.Component {
   }
 
   render() {
+    const { navSlice, currentUser, logout } = this.props;
+
     return (
       <>
         {/* <ItemCreationContainer/> */}
-        <NavbarContainer />
-        <DashboardMainContainer />
+        <Navbar navSlice={navSlice} currentUser={currentUser} logout={logout} />
+        <DashboardMain navSlice={navSlice} />
       </>
     );
   }
