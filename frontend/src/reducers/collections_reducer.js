@@ -8,7 +8,7 @@ const CollectionsReducer = (state={}, action) => {
   Object.freeze(state);
   switch(action.type){
     case RECEIVE_COLLECTION:
-      return Object.assign({}, state, {[action.collection.data.id] : action.collection.data});
+      return Object.assign({}, state, {[action.collection.data._id] : action.collection.data});
     case RECEIVE_COLLECTIONS:
       return Object.assign({}, state, action.collections.data);
     case REMOVE_COLLECTION:

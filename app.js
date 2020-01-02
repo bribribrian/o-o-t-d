@@ -18,16 +18,25 @@ const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-app.get("/", (req, res) => {
-  // console.log(res);
-  // const user = new User({
-  //   username: 'test1',
-  //   email: 'test1@test1.test1',
-  //   password: 'test1password'
-  // });
-  // user.save();
-  res.send("Welcome to Stylidex!");
-});
+// app.get("/", (req, res) => {
+//   // console.log(res);
+//   // const user = new User({
+//   //   username: 'test1',
+//   //   email: 'test1@test1.test1',
+//   //   password: 'test1password'
+//   // });
+//   // user.save();
+//   res.send("Welcome to Stylidex!");
+// });
+
+const path = require('path');
+if (process.env.NODE_ENV === 'production') {
+    app.use(express.static('frontend/build'));
+    app.get('/', (req, res) => {
+      res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'));
+    })
+  }
+
 
 // app.use('/api/collections', collections);
 app.use("/api/upload/", fileRoutes);

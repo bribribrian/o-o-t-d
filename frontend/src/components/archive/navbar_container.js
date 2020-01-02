@@ -1,6 +1,8 @@
+// **deprecated**
+
 import { connect } from 'react-redux';
 
-import Navbar from './navbar';
+import Navbar from '../dashboard/navbar';
 
 import { logout } from '../../actions/session_actions';
 

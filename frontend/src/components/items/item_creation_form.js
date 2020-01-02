@@ -14,8 +14,8 @@ class ItemCreation extends React.Component{
     this.state = {
       category: '',
       label: '',
-      image_url: '',
       user_id: this.props.currentUserId,
+      image_url: '',
       imageFile: '',
       path: ''
     };
@@ -27,45 +27,55 @@ class ItemCreation extends React.Component{
   handleUpload(e){
     const formData = new FormData();
     if(this.state.imageFile){
-      formData.append('post[image]', this.state.imageFile);
-
+      formData.append('image', this.state.imageFile);
     }
     // send ajax request, when we get json back, we save item (state) to the database
-    debugger;
-    // itemImageToAWS(formData)
-    itemImageToAWS(formData.get("post[image]"))
-      .then(imageObj => this.setState({image_url: imageObj['imageUrl']}));
-    debugger;
+    // debugger;
+    // itemImageToAWS(formData.get("post[image]"))
+    // itemImageToAWS({image: this.state.imageFile})
+    itemImageToAWS(formData)
+      .then(({data}) => {
+          debugger;
+          this.setState({ image_url: data['imageUrl']});
+        }
+      );
+    // debugger;
   }
 
   handleImageInput(e){
     const reader = new FileReader();
     const file = e.currentTarget.files[0];
     reader.onloadend = () =>
-      this.setState({  path: reader.result, imageFile: file });
+      this.setState({ image_url: reader.result, imageFile: file });
     // reader.onloadend();
     if (file) {
       reader.readAsDataURL(file);
     } else {
-      debugger;
-      this.setState({ imageUrl: "", imageFile: null });
+      // debugger;
+      this.setState({ image_url: "", imageFile: null });
     }
 
-    debugger;
+    // debugger;
   }
 
   update(field) {
-    debugger;
+    // debugger;
     return e => this.setState({ [field]: e.currentTarget.value });
   }
 
 
   render(){
-    debugger;
+    const imgTag = this.state.image_url ? (
+      <>
+        <img src={this.state.image_url} />
+      </>
+    ) : null;
+    
     return(
       <div className="item-creation-container">
         <form onSubmit={this.handleUpload}>
           <input type='file' onChange={this.handleImageInput}></input>
+          {imgTag}
           <input type='submit'></input>
         </form>
         <div>
