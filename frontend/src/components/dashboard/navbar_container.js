@@ -2,6 +2,8 @@ import { connect } from 'react-redux';
 
 import Navbar from './navbar';
 
+import { logout } from '../../actions/session_actions';
+
 import {
   receiveGenerate,
   receiveGenerated,
@@ -15,11 +17,12 @@ const msp = (state) => ({
   currentUser: state.session.user
 });
 
-const msd = (dispatch) => ({
-  generate: () => receiveGenerate,
-  generated: () => receiveGenerated,
-  items: () => receiveItems,
-  collections: () => receiveCollections
+const mdp = (dispatch) => ({
+  generate: () => dispatch(receiveGenerate()),
+  generated: () => dispatch(receiveGenerated()),
+  items: () => dispatch(receiveItems()),
+  collections: () => dispatch(receiveCollections()),
+  logout: () => dispatch(logout())
 });
 
 export default connect(msp, mdp)(Navbar);

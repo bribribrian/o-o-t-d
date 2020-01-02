@@ -11,8 +11,8 @@ import SplashContainer from './session/splash_container';
 const App = (props) => (
 
   <div>
-    <ProtectedRoute exact path="/" component={DashboardContainer} loggedIn={props.state.session.isAuthenticated}/>
-    <AuthRoute path="/splash" component={SplashContainer} loggedIn={props.state.session.isAuthenticated}/>
+    <ProtectedRoute exact path="/" component={DashboardContainer} loggedIn={props.state().session.isAuthenticated}/>
+    <AuthRoute path="/splash" component={SplashContainer} loggedIn={props.state().session.isAuthenticated}/>
     <Route exact path="/splash" component={LoginFormContainer} />
     <Route exact path="/splash/signup" component={SignupFormContainer} />
   </div>
