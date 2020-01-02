@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
 
-import './index.css';
 
 import Root from './components/root.js';
 
@@ -10,6 +9,13 @@ import configureStore from './store/store';
 import jwt_decode from 'jwt-decode';
 import { setAuthToken } from './util/session_api_util';
 import { logout } from './actions/session_actions';
+
+// Stylesheets //
+import './index.css';
+import './style/reset.css';
+import './style/main.css';
+import './style/splash.css';
+import './style/dashboard.css';
 
 document.addEventListener('DOMContentLoaded', () => {
   let store;

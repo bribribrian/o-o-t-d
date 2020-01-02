@@ -51,7 +51,8 @@ class LoginForm extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="splash-login-container">
+        <h2>Sign In</h2>
         <Link to="/splash/signup">
           <button>Signup</button>
         </Link>
