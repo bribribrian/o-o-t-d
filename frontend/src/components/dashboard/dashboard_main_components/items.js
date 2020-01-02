@@ -1,5 +1,8 @@
 import React from 'react';
 
+import ItemCreationForm from '../../items/item_creation_form_container';
+import { Link } from 'react-router-dom';
+
 class Items extends React.Component {
   constructor(props) {
     super(props);
@@ -51,6 +54,7 @@ class Items extends React.Component {
 
     return (
       <div className="items-container">
+        <Link to="/item-creation">Add Item</Link>
         <div className="item-filters">
           <button value="hat" onClick={this.update('hat')}>Hat</button>
           <button value="top" onClick={this.update('top')}>Top</button>
