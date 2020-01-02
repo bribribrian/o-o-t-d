@@ -51,11 +51,11 @@ class LoginForm extends React.Component {
 
   render() {
     return (
-      <div className="splash-login-container">
+      <div className="splash-form-container">
         <h2>Sign In</h2>
-        <Link to="/splash/signup">
+        {/* <Link to="/splash/signup">
           <button>Signup</button>
-        </Link>
+        </Link> */}
         <form onSubmit={this.handleSubmit}>
           <div>
             <input type="text"
@@ -74,6 +74,7 @@ class LoginForm extends React.Component {
             {this.renderErrors()}
           </div>
         </form>
+        <p>Don't have an account? <Link to="/splash/signup">Sign up</Link></p>
       </div>
     );
   }

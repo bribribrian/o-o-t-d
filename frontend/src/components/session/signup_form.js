@@ -59,10 +59,11 @@ class SignupForm extends React.Component {
 
   render() {
     return (
-      <div className="signup-form-container">
-        <Link to="/splash">
+      <div className="splash-form-container">
+        <h2>Sign Up</h2>
+        {/* <Link to="/splash">
           <button>Log In</button>
-        </Link>
+        </Link> */}
         <form onSubmit={this.handleSubmit}>
           <div className="signup-form">
             <br />
@@ -75,7 +76,7 @@ class SignupForm extends React.Component {
             <input type="text"
               value={this.state.username}
               onChange={this.update('username')}
-              placeholder="username"
+              placeholder="Username"
             />
             <br />
             <input type="password"
@@ -100,6 +101,7 @@ class SignupForm extends React.Component {
             {this.renderErrors()}
           </div>
         </form>
+        <p>Already have an account? <Link to="/splash">Sign in</Link></p>
       </div>
     );
   }
