@@ -7,7 +7,8 @@ import LoginFormContainer from './session/login_form_container';
 import SignupFormContainer from './session/signup_form_container';
 import SplashContainer from './session/splash_container';
 
-import SimpleItemFormContainer from './items/simple_item_form_container';
+// import SimpleItemFormContainer from './items/simple_item_form_container';
+import SimpleItemFormContainer from './items/item_creation_form_container';
 
 const App = (props) => (
 

@@ -4,7 +4,6 @@ import Dashboard from './dashboard';
 import { logout } from '../../actions/session_actions';
 
 const msp = (state, ownProps) => {
-  // debugger;
   return {
     navSlice: ownProps.location.pathname.split("/")[1],
     currentUser: state.session.user
