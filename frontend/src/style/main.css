@@ -17,11 +17,18 @@ h1 {
 
 input {
   box-sizing: border-box;
+  background-color: transparent;
+  border: none;
   outline: none;
   font-family: 'Raleway', sans-serif;
   font-size: 24px;
 }
 
+input[type="submit"] {
+  border: 1px solid black;
+}
+
 input[type="text"], input[type="password"] {
   padding: 8px;
+  border-bottom: 1px solid #adadad;
 }

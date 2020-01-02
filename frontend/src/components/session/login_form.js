@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { WorkMail } from 'aws-sdk';
 
 
 class LoginForm extends React.Component {
@@ -14,6 +15,7 @@ class LoginForm extends React.Component {
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.renderErrors = this.renderErrors.bind(this);
+    this.handleDemoLogin = this.handleDemoLogin.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -48,14 +50,24 @@ class LoginForm extends React.Component {
     };
     this.props.login(user);
   }
+  
+  handleDemoLogin(e) {
+    e.preventDefault();
+
+    let user = {
+      email: 'user14@mail.com',
+      password: 'password'
+    };
+    this.props.login(user);
+  }
 
   render() {
     return (
-      <div className="splash-login-container">
+      <div className="splash-form-container">
         <h2>Sign In</h2>
-        <Link to="/splash/signup">
+        {/* <Link to="/splash/signup">
           <button>Signup</button>
-        </Link>
+        </Link> */}
         <form onSubmit={this.handleSubmit}>
           <div>
             <input type="text"
@@ -74,6 +86,10 @@ class LoginForm extends React.Component {
             {this.renderErrors()}
           </div>
         </form>
+        <form onSubmit={this.handleDemoLogin}>
+          <input type ="submit" value="Demo User" />
+        </form>
+        <p>Don't have an account? <Link to="/splash/signup">Sign up</Link></p>
       </div>
     );
   }
