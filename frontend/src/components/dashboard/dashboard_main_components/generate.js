@@ -5,16 +5,16 @@ class Generate extends React.Component{
     super(props);
 
     this.state = {
-      occasion: '',
-      temperature: '',
-      precipitation: ''
+      occasion: 'casual',
+      temperature: 'all',
+      precipitation: 'sunny'
     };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleSubmit(e){
     e.preventDefault();
-    this.props.fetchCollections(this.props.currentUser.id, this.state);
+    this.props.fetchCollectionsWithFilters(this.props.currentUser.id, this.state);
   }
 
   update(field){
@@ -27,25 +27,25 @@ class Generate extends React.Component{
         <div className="generate-filters-container">
           <div className="generate-filter">
             <p>Occasion</p>
-            <button className="dropdown">
-              
-            </button>
+            <input type='text' onChange={this.update("occasion")} value={this.state.occasion}></input>
+            {/* <button className="dropdown">
+            </button> */}
           </div>
           <div className="generate-filter">
             <p>Temperature</p>
             <div className="dropdown">
-              <input type='text'></input>
+              <input type='text' onChange={this.update("temperature")} value={this.state.temperature}></input>
             </div>
           </div>
           <div className="generate-filter">
             <p>Precipitation</p>
             <div className="dropdown">
-              <input type='text'></input>
+              <input type='text' onChange={this.update("precipitation")} value={this.state.precipitation}></input>
             </div>
           </div>
         </div>
         <div className="generate-button">
-          <input type="submit"></input>
+          <input type="submit" onClick={this.handleSubmit} value="Generate"/>
         </div>
       </div>
     );

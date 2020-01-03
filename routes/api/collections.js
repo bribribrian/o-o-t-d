@@ -7,6 +7,7 @@ const jwt = require('jsonwebtoken');
 const Collection = require('../../models/Collection');
 
 router.get('/', (req, res) => {
+  debugger;
   if (req.body.occasion) {
     Collection.find(req.body)
       .then(collections => {
