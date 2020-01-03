@@ -8,13 +8,18 @@ import {
 
 const ItemsReducer = (state={}, action) => {
     Object.freeze(state);
+    let newState;
     switch(action.type){
         case RECEIVE_ITEM:
             return Object.assign({}, state, {[action.item.data._id] : action.item.data});
         case RECEIVE_ITEMS:
-            return Object.assign({}, state, action.items.data);
+            newState = {};
+            action.items.data.forEach((item) => {
+                newState[item._id] = item;
+            });
+            return Object.assign({}, state, newState);
         case REMOVE_ITEM:
-            let newState = Object.assign({}, state);
+            newState = Object.assign({}, state);
             delete newState[action.itemId];
             return newState;
         default:
