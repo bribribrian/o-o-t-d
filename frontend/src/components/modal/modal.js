@@ -36,7 +36,7 @@ class Modal extends React.Component{
     filteredItems = filteredItems.map((item) => {
       // debugger;
       return (
-        <li key={item._id} onClick={this.handleClick} data-value={item._id} data-img={item.image_url}>
+        <li key={item._id} onClick={this.handleClick} data-id={item._id} data-img={item.image_url}>
           <div className="modal-item-container list-item-container">
             <div className="modal-item-img-wrapper list-item-img-wrapper" style={{ backgroundImage: 'url(' + item.image_url + ')' }}></div>
             <div className="modal-item-hover-info list-item-hover-info">
