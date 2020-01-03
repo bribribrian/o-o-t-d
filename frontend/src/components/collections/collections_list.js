@@ -8,7 +8,6 @@ class CollectionsList extends React.Component{
 
   }
   render(){
-    // debugger;
     return(
       <ul>
         <Link to='/collection-creation'>Add Collection</Link>

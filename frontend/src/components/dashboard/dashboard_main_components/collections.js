@@ -12,8 +12,6 @@ class Collections extends React.Component{
   }
 
   componentDidMount(){
-
-    // debugger;
     this.props.fetchCollections(this.props.currentUser.id);
   }
 
@@ -22,9 +20,7 @@ class Collections extends React.Component{
     if(Object.keys(this.props.collections).length === 0){
       return <p>loading</p>
     }
-    // debugger;
     let collectionsArr = Object.values(this.props.collections);
-    // debugger;
     let showPath;
     collectionsArr = collectionsArr.map((collection) => {
       showPath = `/collections/${collection._id}`
@@ -33,7 +29,6 @@ class Collections extends React.Component{
           <img src={collection.image_url}></img>
       </Link></li>;
     })
-    // debugger;
     // const CollectionsList = (
     //   <ul>
     //     {collectionsArr}

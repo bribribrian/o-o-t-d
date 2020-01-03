@@ -7,9 +7,7 @@ class CollectionShow extends React.Component{
 
   componentDidMount(){
     this.props.itemsIds.forEach((id) => {
-      // debugger;
       if(id !== undefined){
-        // debugger;
         this.props.fetchItem(id);
       }
     });

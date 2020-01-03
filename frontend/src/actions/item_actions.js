@@ -28,7 +28,6 @@ const removeItem = (itemId) => ({
 });
 
 export const fetchItem = (itemId) => dispatch => {
-    // debugger;
     return(
         APIUtil.fetchItem(itemId)
             .then(item => {
