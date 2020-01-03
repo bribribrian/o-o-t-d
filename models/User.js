@@ -17,6 +17,10 @@ const UserSchema = new Schema({
   date: {
     type: Date,
     default: Date.now
+  },
+  zipcode: {
+    type: Number,
+    default: 10018
   }
 });
 

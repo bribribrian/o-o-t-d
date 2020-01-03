@@ -29,6 +29,10 @@ module.exports = function validateRegisterInput(data) {
     errors.password = 'Password is required';
   }
 
+  if (Validator.isEmpty(data.zipcode)) {
+    errors.zipcode = 'Zipcode is required';
+  }
+
   if (!Validator.isLength(data.password, { min: 6, max: 30 })) {
     errors.password = 'Password must be 6 to 30 characters';
   }

@@ -30,7 +30,6 @@ class CollectionShow extends React.Component{
         }
       }
     })
-
     collectionItems = collectionItems.map((item) => {
       return <li>
         <p>{item.label}</p>
