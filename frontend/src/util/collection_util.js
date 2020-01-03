@@ -5,7 +5,8 @@ export const fetchCollections = (userId) => {
 };
 
 export const fetchCollectionsWithFilters = (userId, bodyFilters) => {
-    return axios.get(`/api/collections?user_id=${userId}`, bodyFilters);
+    const { occasion, temperature, precipitation } = bodyFilters;
+    return axios.get(`/api/collections?user_id=${userId}&occasion=${occasion}&temperature=${temperature}&precipitation=${precipitation}`);
 };
 
 export const fetchCollection = (collectionId) => {
