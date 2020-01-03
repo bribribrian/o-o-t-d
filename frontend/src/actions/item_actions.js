@@ -32,10 +32,6 @@ export const fetchItem = (itemId) => dispatch => {
     return(
         APIUtil.fetchItem(itemId)
             .then(item => {
-<<<<<<< HEAD
-                // debugger;
-=======
->>>>>>> master
                 dispatch(receiveItem(item));
             })
             .catch(error => dispatch(receiveItemsError(error)))
