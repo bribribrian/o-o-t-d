@@ -1,8 +1,11 @@
 import axios from 'axios';
 
 export const fetchCollections = (userId) => {
-    // debugger;
     return axios.get(`/api/collections?user_id=${userId}`);
+};
+
+export const fetchCollectionsWithFilters = (userId, bodyFilters) => {
+    return axios.get(`/api/collections?user_id=${userId}`, bodyFilters);
 };
 
 export const fetchCollection = (collectionId) => {

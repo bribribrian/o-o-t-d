@@ -38,6 +38,12 @@ export const fetchCollections = (userId) => dispatch => (
         .catch(error => dispatch(receiveCollectionError(error.response.data)))
 );
 
+export const fetchCollectionsWithFilters = (userId, body) => dispatch => (
+    APIUtil.fetchCollectionsWithFilters(userId, body)
+        .then(collections => dispatch(receiveCollections(collections)))
+        .catch(error => dispatch(receiveCollectionError(error.response.data)))
+);
+
 export const createCollection = (collection) => dispatch => (
     APIUtil.createCollection(collection)
         .then(collection => dispatch(receiveCollection(collection)))
