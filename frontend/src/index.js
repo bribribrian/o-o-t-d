@@ -19,6 +19,8 @@ import './style/dashboard.css';
 import './style/navbar.css';
 import './style/items.css';
 import './style/collections.css';
+import './style/list.css';
+import './style/dropdown.css';
 
 document.addEventListener('DOMContentLoaded', () => {
   let store;

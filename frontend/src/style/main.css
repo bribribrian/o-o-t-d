@@ -38,7 +38,3 @@ input[type="text"], input[type="password"] {
   padding: 8px;
   border-bottom: 1px solid #adadad;
 }
-
-.item-creation-container, .collection-creation-container {
-  margin-left: 250px;
-}

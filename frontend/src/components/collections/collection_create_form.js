@@ -104,16 +104,10 @@ class CollectionCreateForm extends React.Component{
       formData.append('image', this.state.imageFile);
     }
     // send ajax request, when we get json back, we save item (state) to the database
-    // debugger;
-    // itemImageToAWS(formData.get("post[image]"))
-    // itemImageToAWS({image: this.state.imageFile})
     itemImageToAWS(formData)
       .then(({ data }) => {
-        // debugger;
         this.setState({ image_url: data['imageUrl'] });
-      }
-      );
-    // debugger;
+      });
   }
 
   // ----------------------------------------------------------------------------------

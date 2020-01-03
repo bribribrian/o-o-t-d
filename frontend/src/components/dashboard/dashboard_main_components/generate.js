@@ -27,9 +27,9 @@ class Generate extends React.Component{
         <div className="generate-filters-container">
           <div className="generate-filter">
             <p>Occasion</p>
-            <div className="dropdown">
-              <input type='text'></input>
-            </div>
+            <button className="dropdown">
+              
+            </button>
           </div>
           <div className="generate-filter">
             <p>Temperature</p>

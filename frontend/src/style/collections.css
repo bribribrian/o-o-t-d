@@ -1,0 +1,22 @@
+.collections li {
+  /* width: 400px;
+  height: 400px; */
+  width: 366px;
+  height: 366px;
+}
+
+.collection-container .collection-img-wrapper {
+  width: 362px;
+  height: 362px;
+}
+
+.collection-hover-info a {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.collection-hover-info p {
+  font-size: 24px;
+}
