@@ -26,9 +26,19 @@ input {
 
 input[type="submit"] {
   border: 1px solid black;
+  cursor: pointer;
+}
+
+input[type="submit"]:hover {
+  background-color: #ffc552;
+  font-weight: bold;
 }
 
 input[type="text"], input[type="password"] {
   padding: 8px;
   border-bottom: 1px solid #adadad;
+}
+
+.item-creation-container, .collection-creation-container {
+  margin-left: 250px;
 }

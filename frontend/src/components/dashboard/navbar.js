@@ -45,7 +45,7 @@ class Navbar extends React.Component {
   }
 
   componentDidMount() {
-    this.fetchWeather(10018);
+    this.fetchWeather(this.props.currentUser.zipcode);
   }
   
   componentDidUpdate(prevProps) {
@@ -85,8 +85,8 @@ class Navbar extends React.Component {
           </div>
         </div>
         <div className="navbar-foot">
-          <p>Signed in as, {this.props.currentUser.username}</p>
-          <a href="#" onClick={this.handleClick}>Sign Out</a>
+          <p>Signed in as, <b>{this.props.currentUser.username}</b></p>
+          <input type="submit" onClick={this.handleClick} value="Sign Out" />
           {/* <button onClick={this.handleClick}>Log Out</button> */}
           <span className="copyright">OOTD 2020 ©</span>
         </div>
