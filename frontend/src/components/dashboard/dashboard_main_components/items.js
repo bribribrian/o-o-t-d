@@ -30,7 +30,6 @@ class Items extends React.Component {
     let itemsArr = Object.values(this.props.items);
     let filteredItemsArr;
 
-    // debugger;
     // map to filter
     if(this.state.filter){
       filteredItemsArr = [];

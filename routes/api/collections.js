@@ -9,7 +9,6 @@ const Collection = require('../../models/Collection');
 router.get('/', (req, res) => {
   console.log(req);
   const { filter } = req.body;
-  // debugger;
   if (filter) {
     Collection.find(filter)
       .then(collections => {
@@ -34,7 +33,6 @@ router.get('/', (req, res) => {
 
 router.post('/', (req, res) => {
   const newCollection = new Collection(req.body);
-  debugger;
   newCollection.save()
     .then(collection => res.json(collection))
     .catch(err => res.status(404).json({ collectionerror: 'could not save'}));
@@ -67,7 +65,6 @@ router.patch('/:id', (req, res) => {
 
 router.delete('/:id', (req, res) => {
   console.log(req);
-  // debugger;
   Collection.findByIdAndDelete(req.params.id)
     .then((result) => {
       res.json(result);

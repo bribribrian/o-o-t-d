@@ -7,9 +7,7 @@ class CollectionShow extends React.Component{
 
   componentDidMount(){
     this.props.itemsIds.forEach((id) => {
-      // debugger;
       if(id !== undefined){
-        // debugger;
         this.props.fetchItem(id);
       }
     });
@@ -30,7 +28,6 @@ class CollectionShow extends React.Component{
         }
       }
     })
-    debugger;
     collectionItems = collectionItems.map((item) => {
       return <li>
         <p>{item.label}</p>

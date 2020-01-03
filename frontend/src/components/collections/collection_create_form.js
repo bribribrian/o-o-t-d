@@ -1,6 +1,7 @@
 import React from 'react';
 
 import ModalContainer from '../modal/modal_container';
+import CollectionPreview from './collection_create_form_preview';
 
 import { itemImageToAWS } from '../../util/aws_util';
 
@@ -23,6 +24,8 @@ class CollectionCreateForm extends React.Component{
       user_id: this.props.currentUser.id
     };
 
+    this.previewImages = [];
+
     this.pickHat = this.pickHat.bind(this);
     this.pickTop = this.pickTop.bind(this);
     this.pickBottom = this.pickBottom.bind(this);
@@ -43,17 +46,37 @@ class CollectionCreateForm extends React.Component{
     this.props.createCollection(this.state);
   }
 
-  pickHat(hatId){
+  pickHat(hatId, imgUrl){
     this.setState({hat_id: hatId});
+    this.previewImages.push(
+      <li key={hatId}>
+        <img src={imgUrl}></img>
+      </li>
+    )
   }
-  pickTop(topId) {
+  pickTop(topId, imgUrl) {
     this.setState({ top_id: topId });
+    this.previewImages.push(
+      <li key={topId}>
+        <img src={imgUrl}></img>
+      </li>
+    )
   }
-  pickBottom(bottomId) {
+  pickBottom(bottomId, imgUrl) {
     this.setState({ bottom_id: bottomId });
+    this.previewImages.push(
+      <li key={bottomId}>
+        <img src={imgUrl}></img>
+      </li>
+    )
   }
-  pickShoe(shoeId) {
+  pickShoe(shoeId, imgUrl) {
     this.setState({ shoe_id: shoeId });
+    this.previewImages.push(
+      <li key={shoeId}>
+        <img src={imgUrl}></img>
+      </li>
+    )
   }
 
   // ----------------------------------------------------------------------------------
@@ -111,6 +134,7 @@ class CollectionCreateForm extends React.Component{
     return(
       <div>
         <p>CollectionCreateForm</p>
+        <CollectionPreview previewImages={this.previewImages}/>
         <ModalContainer pickHat={this.pickHat} pickTop={this.pickTop} pickBottom={this.pickBottom} pickShoe={this.pickShoe}/>
         <button onClick={this.props.receivePickHat}>Hat</button>
         <button onClick={this.props.receivePickTop}>Top</button>
