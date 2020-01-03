@@ -1,0 +1,75 @@
+.list-container h2 {
+  font-size: 40px;
+  font-family: 'Unica One', cursive;
+  text-decoration: underline;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.list li {
+  position: relative;
+  margin-right: 20px;
+  margin-bottom: 20px;
+  border: 2px solid black;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+.list li:hover .list-item-hover-info {
+  display: flex;
+}
+
+.list-container .list-item-img-wrapper {
+  background-size: cover;
+  background-position: center;
+}
+
+.list-container .list-item-hover-info {
+  position:absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: none;
+  align-items: center;
+}
+
+.list-item-hover-info p {
+  width: 100%;
+  text-align: center;
+  color: white;
+  font-weight: bold;
+  text-transform: capitalize;
+}
+
+.list-item-add-wrapper {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.list-item-add-inner {
+  width: 100%;
+}
+
+.list-item-add-inner p {
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+}
+
+.plus {
+  font-size: 160px;
+}
+
+.add-text {
+  font-size: 35px;
+}

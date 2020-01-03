@@ -1,9 +1,10 @@
 import React from 'react';
 
-import { Route, Link } from 'react-router-dom';
+import { Switch, Route, Link } from 'react-router-dom';
 
 import CollectionShowContainer from '../../collections/collection_show_container';
 import CollectionsList from '../../collections/collections_list';
+import CollectionCreateFormContainer from '../../collections/collection_create_form_container';
 
 class Collections extends React.Component{
   constructor(props){
@@ -16,31 +17,21 @@ class Collections extends React.Component{
   }
 
   render(){
+    const { collections } = this.props;
 
-    if(Object.keys(this.props.collections).length === 0){
-      return <p>loading</p>
+    if(Object.keys(collections).length === 0){
+      return <p>loading</p>;
     }
-    let collectionsArr = Object.values(this.props.collections);
-    let showPath;
-    collectionsArr = collectionsArr.map((collection) => {
-      showPath = `/collections/${collection._id}`
-      return <li key={collection._id}><Link to={showPath}>
-          <p>{collection.label}</p>
-          <img src={collection.image_url}></img>
-      </Link></li>;
-    })
-    // const CollectionsList = (
-    //   <ul>
-    //     {collectionsArr}
-    //   </ul>
-    // );
 
     return(
       <>
-        <Route exact path="/collections" component={() => <CollectionsList collectionsArr={collectionsArr}/> }></Route>
-        <Route exact path="/collections/:collection_id" component={CollectionShowContainer} />
+        <Switch>
+          <Route exact path="/collections" component={() => <CollectionsList collections={collections} /> }></Route>
+          <Route exact path="/collections/new" component={CollectionCreateFormContainer} />
+          <Route exact path="/collections/:collection_id" component={CollectionShowContainer} />
+        </Switch>
       </>
-    )
+    );
   }
 }
 
