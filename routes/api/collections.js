@@ -7,9 +7,8 @@ const jwt = require('jsonwebtoken');
 const Collection = require('../../models/Collection');
 
 router.get('/', (req, res) => {
-  debugger;
-  if (req.body.occasion) {
-    Collection.find(req.body)
+  if (req.query.occasion) {
+    Collection.find(req.query)
       .then(collections => {
         return res.json(collections);
       })
@@ -27,6 +26,7 @@ router.get('/', (req, res) => {
 
 router.post('/', (req, res) => {
   const newCollection = new Collection(req.body);
+
   newCollection.save()
     .then(collection => res.json(collection))
     .catch(err => res.status(404).json({ collectionerror: 'could not save'}));
