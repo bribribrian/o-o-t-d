@@ -38,7 +38,9 @@
 
 .nav-container li a {
   display: inline-block;
+  width: 100%;
   padding: 10px 20px;
+  box-sizing: border-box;
   text-transform: uppercase;
   color: black;
 }
@@ -53,11 +55,17 @@
   text-align: center;
 }
 
-.navbar-foot a {
+.navbar-foot p b{
+  font-weight: bold;
+  font-size: 13px;
+}
+
+.navbar-foot input[type="submit"] {
   display: block;
-  padding: 8px 0;
-  text-align: center;
-  color: black;
+  width: 110px;
+  padding: 8px;
+  margin: 8px auto;
+  font-size: 15px;
 }
 
 .navbar-foot span {

@@ -7,10 +7,15 @@ const jwt = require('jsonwebtoken');
 const Collection = require('../../models/Collection');
 
 router.get('/', (req, res) => {
+<<<<<<< HEAD
   console.log(req);
   const { filter } = req.body;
   if (filter) {
     Collection.find(filter)
+=======
+  if (req.body.occasion) {
+    Collection.find(req.body)
+>>>>>>> master
       .then(collections => {
         return res.json(collections);
       })
@@ -24,15 +29,14 @@ router.get('/', (req, res) => {
   } else {
     res.json({ errortest: "error test"});
   }
-  // Collection.find().
-  //   then(collections => {
-  //     return res.json(collections);
-  //   })
-  //   .catch(err => res.status(404).json({ nocollectionsfound: 'No collections found' }));
 });
 
 router.post('/', (req, res) => {
   const newCollection = new Collection(req.body);
+<<<<<<< HEAD
+=======
+
+>>>>>>> master
   newCollection.save()
     .then(collection => res.json(collection))
     .catch(err => res.status(404).json({ collectionerror: 'could not save'}));
@@ -64,7 +68,6 @@ router.patch('/:id', (req, res) => {
 });
 
 router.delete('/:id', (req, res) => {
-  console.log(req);
   Collection.findByIdAndDelete(req.params.id)
     .then((result) => {
       res.json(result);

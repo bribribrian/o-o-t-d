@@ -132,7 +132,7 @@ class CollectionCreateForm extends React.Component{
 
     // debugger;
     return(
-      <div>
+      <div className="collection-creation-container">
         <p>CollectionCreateForm</p>
         <CollectionPreview previewImages={this.previewImages}/>
         <ModalContainer pickHat={this.pickHat} pickTop={this.pickTop} pickBottom={this.pickBottom} pickShoe={this.pickShoe}/>
@@ -140,7 +140,7 @@ class CollectionCreateForm extends React.Component{
         <button onClick={this.props.receivePickTop}>Top</button>
         <button onClick={this.props.receivePickBottom}>Bottom</button>
         <button onClick={this.props.receivePickShoes}>Shoes</button>
-        <div className="collection-creation-container">
+        <div>
           <form onSubmit={this.handleUpload}>
             <input type='file' onChange={this.handleImageInput}></input>
               {imgTag}
@@ -163,7 +163,7 @@ class CollectionCreateForm extends React.Component{
           <p>Label</p>
           <input type='text' value={this.state.label} onChange={this.update('label')}></input>
         </div>
-        <button onClick={this.handleSubmit}></button>
+        <button onClick={this.handleSubmit}>Submit</button>
       </div>
 
     );
