@@ -21,6 +21,7 @@ import './style/items.css';
 import './style/collections.css';
 import './style/list.css';
 import './style/dropdown.css';
+import './style/modal.css';
 
 document.addEventListener('DOMContentLoaded', () => {
   let store;

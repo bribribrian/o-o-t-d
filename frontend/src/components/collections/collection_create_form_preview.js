@@ -6,6 +6,7 @@ class CollectionPreview extends React.Component{
   }
 
   render(){
+    // debugger;
     return(
       <ul>
         {this.props.previewImages}
