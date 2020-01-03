@@ -23,7 +23,7 @@ class Items extends React.Component {
 
   render() {
     if(Object.keys(this.props.items).length === 0){
-      return <p>loading</p>;
+      return <p>loading...</p>;
     }
 
 
@@ -44,16 +44,23 @@ class Items extends React.Component {
 
     // map to get image and label only
     filteredItemsArr = filteredItemsArr.map((item) => {
-      return <li key={item._id}>
-        <p>{item.label}</p>
-        <img src={item.image_url}></img>
-        </li>;
+      return (
+        <li key={item._id}>
+          <div className="item-container">
+            {/* <img src={item.image_url}></img> */}
+            <div className="item-img-wrapper" style={{backgroundImage: 'url(' + item.image_url + ')'}}></div>
+            <div className="item-hover-info">
+              <p>{item.label}</p>
+            </div>
+          </div>
+        </li>
+      );
     })
 
 
     return (
       <div className="items-container">
-        <Link to="/item-creation">Add Item</Link>
+        <h2><Link to="/items">Items</Link></h2>
         <div className="item-filters">
           <button value="hat" onClick={this.update('hat')}>Hat</button>
           <button value="top" onClick={this.update('top')}>Top</button>
@@ -61,6 +68,14 @@ class Items extends React.Component {
           <button value="shoes" onClick={this.update('shoes')}>Shoes</button>
         </div>
         <ul className="items">
+          <li>
+            <Link className="item-add-wrapper" to="/item-creation">
+              <div className="item-add-inner">
+                <p className="plus">+</p>
+                <p className="add-text">Add New</p>
+              </div>
+            </Link>
+          </li>
           {filteredItemsArr}
         </ul>
       </div>
