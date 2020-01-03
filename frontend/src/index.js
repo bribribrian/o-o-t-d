@@ -17,6 +17,8 @@ import './style/main.css';
 import './style/splash.css';
 import './style/dashboard.css';
 import './style/navbar.css';
+import './style/items.css';
+import './style/collections.css';
 
 document.addEventListener('DOMContentLoaded', () => {
   let store;
