@@ -24,7 +24,7 @@ class Navbar extends React.Component {
 
     request.open(
       "GET",
-      `http://api.openweathermap.org/data/2.5/weather?zip=${zipcode}&appid=237a55ff816b3b94c79c1feeb38db97d`,
+      `https://api.openweathermap.org/data/2.5/weather?zip=${zipcode}&appid=237a55ff816b3b94c79c1feeb38db97d`,
       true
     );
 
