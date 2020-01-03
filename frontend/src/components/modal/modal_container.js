@@ -11,10 +11,7 @@ const msp = state => ({
 
 const mdp = (dispatch, ownProps) => ({
   receivePickNone: () => dispatch(receivePickNone()),
-  pickHat: (hatId) => ownProps.pickHat(hatId),
-  pickTop: (top_id) => ownProps.pickTop(top_id),
-  pickBottom: (bottom_id) => ownProps.pickBottom(bottom_id),
-  pickShoes: (shoe_id) => ownProps.pickShoes(shoe_id)
+  pickItem: (type, id, imgUrl) => ownProps.pickItem(type, id, imgUrl)
 });
 
 export default connect(msp, mdp)(Modal);

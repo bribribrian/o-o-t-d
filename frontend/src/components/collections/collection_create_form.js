@@ -26,10 +26,8 @@ class CollectionCreateForm extends React.Component{
 
     this.previewImages = [];
 
-    this.pickHat = this.pickHat.bind(this);
-    this.pickTop = this.pickTop.bind(this);
-    this.pickBottom = this.pickBottom.bind(this);
-    this.pickShoe = this.pickShoe.bind(this);
+    this.pickItem = this.pickItem.bind(this);
+
     this.handleSubmit = this.handleSubmit.bind(this);
 
     this.handleUpload = this.handleUpload.bind(this);
@@ -46,34 +44,10 @@ class CollectionCreateForm extends React.Component{
     this.props.createCollection(this.state);
   }
 
-  pickHat(hatId, imgUrl){
-    this.setState({hat_id: hatId});
+  pickItem(type, id, imgUrl) {
+    this.setState({[type + "_id"]: id});
     this.previewImages.push(
-      <li key={hatId}>
-        <img src={imgUrl}></img>
-      </li>
-    )
-  }
-  pickTop(topId, imgUrl) {
-    this.setState({ top_id: topId });
-    this.previewImages.push(
-      <li key={topId}>
-        <img src={imgUrl}></img>
-      </li>
-    )
-  }
-  pickBottom(bottomId, imgUrl) {
-    this.setState({ bottom_id: bottomId });
-    this.previewImages.push(
-      <li key={bottomId}>
-        <img src={imgUrl}></img>
-      </li>
-    )
-  }
-  pickShoe(shoeId, imgUrl) {
-    this.setState({ shoe_id: shoeId });
-    this.previewImages.push(
-      <li key={shoeId}>
+      <li key={id}>
         <img src={imgUrl}></img>
       </li>
     )
@@ -84,17 +58,15 @@ class CollectionCreateForm extends React.Component{
   handleImageInput(e) {
     const reader = new FileReader();
     const file = e.currentTarget.files[0];
+
     reader.onloadend = () =>
       this.setState({ image_url: reader.result, imageFile: file });
-    // reader.onloadend();
+
     if (file) {
       reader.readAsDataURL(file);
     } else {
-      // debugger;
       this.setState({ image_url: "", imageFile: null });
     }
-
-    // debugger;
   }
 
   handleUpload(e) {
@@ -129,7 +101,7 @@ class CollectionCreateForm extends React.Component{
       <div className="collection-creation-container">
         <p>CollectionCreateForm</p>
         <CollectionPreview previewImages={this.previewImages}/>
-        <ModalContainer pickHat={this.pickHat} pickTop={this.pickTop} pickBottom={this.pickBottom} pickShoe={this.pickShoe}/>
+        <ModalContainer pickItem={this.pickItem} />
         <button onClick={this.props.receivePickHat}>Hat</button>
         <button onClick={this.props.receivePickTop}>Top</button>
         <button onClick={this.props.receivePickBottom}>Bottom</button>

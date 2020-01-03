@@ -11,7 +11,7 @@ const ModalReducer = (state='none', action) => {
     case modalActions.RECEIVE_PICK_BOTTOM:
       return 'bottom';
     case modalActions.RECEIVE_PICK_SHOES:
-      return 'shoes';
+      return 'shoe';
     case modalActions.RECEIVE_PICK_NONE:
       return 'none';
     default:

@@ -1,6 +1,5 @@
 import React from 'react';
 
-
 class Modal extends React.Component{
   constructor(props){
     super(props);
@@ -10,51 +9,55 @@ class Modal extends React.Component{
 
   handleClick(e){
     e.preventDefault();
-    // debugger;
-    if(this.props.modalSlice === 'hat'){
-      this.props.pickHat(e.currentTarget.dataset.value, e.currentTarget.dataset.image_url);
-    }else if(this.props.modalSlice === 'top'){
-      this.props.pickTop(e.currentTarget.dataset.value, e.currentTarget.dataset.image_url);
-    }else if(this.props.modalSlice === 'bottom'){
-      this.props.pickBottom(e.currentTarget.dataset.value, e.currentTarget.dataset.image_url);
-    }else if(this.props.modalSlice === 'shoes'){
-      this.props.pickShoe(e.currentTarget.dataset.value, e.currentTarget.dataset.image_url);
-    }
 
-    this.props.receivePickNone();
+    const { modalSlice, pickItem, receivePickNone } = this.props;
+    const { id, img } = e.currentTarget.dataset;
+
+    pickItem(modalSlice, id, img);
+    receivePickNone();
   }
 
 
   render(){
     // debugger;
-    if(this.props.modalSlice === 'none'){
+    let { modalSlice: currentCategory, items } = this.props;
+
+    if (currentCategory === 'none'){
       return <p></p>
+    } else if (currentCategory === "shoe") {
+      currentCategory += "s";
     }
 
-    let currentCategory = this.props.modalSlice;
-    let itemsArr = Object.values(this.props.items);
-
     let filteredItems = [];
-
-    itemsArr.forEach((item) => {
-      if(item.category === currentCategory){
-        filteredItems.push(item);
-      }
+    Object.values(items).forEach((item) => {
+      if(item.category === currentCategory) filteredItems.push(item);
     });
 
     filteredItems = filteredItems.map((item) => {
       // debugger;
-      return <li key={item._id}>
-        <div onClick={this.handleClick} data-value={item._id} data-img={item.image_url}>
-          <img src={item.image_url}></img>
-        </div>
-      </li>
-    })
+      return (
+        <li key={item._id} onClick={this.handleClick} data-value={item._id} data-img={item.image_url}>
+          <div className="modal-item-container list-item-container">
+            <div className="modal-item-img-wrapper list-item-img-wrapper" style={{ backgroundImage: 'url(' + item.image_url + ')' }}></div>
+            <div className="modal-item-hover-info list-item-hover-info">
+              <p>{item.label}</p>
+            </div>
+          </div>
+        </li>
+      );
+    });
 
     return(
-      <ul>
-        {filteredItems}
-      </ul>
+      <div className="modal-wrapper" onClick={this.props.receivePickNone}>
+        <div className="modal-inner">
+          <div className="items-container modal-container list-container">
+            <h2>Select an item</h2>
+            <ul className="modal-items list">
+              {filteredItems}
+            </ul>
+          </div>
+        </div>
+      </div>
     );
   }
 }
