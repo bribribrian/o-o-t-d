@@ -1,10 +1,10 @@
 import React from 'react';
 
 const Dropdown = ({
-  label, value, list,
+  label, value, list, hideLabel,
   getActiveDD, setActiveDD, updateDD, removeActiveDD, getActiveDDIcon
 }) => {
-  
+
   const lis = list.map((item, idx) => {
     return (
       <li key={idx} onClick={updateDD([label, item])}><span>{item}</span></li>
@@ -13,7 +13,7 @@ const Dropdown = ({
 
   return (
     <div className="dd-outer">
-      <label>{label}</label>
+      {hideLabel ? null : (<label>{label}</label>)}
       <div className="dd-wrapper">
         <button className={"dd" + getActiveDD(label)}
           onClick={setActiveDD(label)}
@@ -21,7 +21,7 @@ const Dropdown = ({
         >
           <p className="dd-value">
             <span>{value}</span>
-            <i class="material-icons">{"arrow_drop_" + getActiveDDIcon(label)}</i>
+            <i className="material-icons">{"arrow_drop_" + getActiveDDIcon(label)}</i>
           </p>
           <div className="dd-inner">
             <ul className="dd-list">

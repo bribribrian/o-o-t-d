@@ -51,7 +51,9 @@ class Modal extends React.Component{
       <div className="modal-wrapper" onClick={this.props.receivePickNone}>
         <div className="modal-inner">
           <div className="items-container modal-container list-container">
-            <h2>Select an item</h2>
+            <div className="list-header">
+              <h2>Select an item</h2>
+            </div>
             <ul className="modal-items list">
               {filteredItems}
             </ul>
