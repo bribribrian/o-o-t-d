@@ -1,0 +1,81 @@
+.dd-outer {
+
+}
+
+.dd-outer label {
+  display: block;
+  margin: 10px 0;
+  text-transform: capitalize;
+}
+
+.dd-wrapper {
+  position: relative;
+  width: 200px;
+  height: 34px;
+}
+
+.dd {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200px;
+  font-family: 'Raleway', sans-serif;
+  font-size: 13px;
+  text-transform: uppercase;
+  border: 1px solid black;
+  background-color: #fcf9ee;
+  box-sizing: border-box;
+}
+
+.dd:hover {
+  background-color: #ffc552;
+}
+
+.dd.active .dd-value span {
+  color: #525252;
+}
+
+.dd.active .dd-inner {
+  display: block;
+}
+
+.dd-value {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1px 5px 1px 20px;
+  font-weight: bold;
+}
+
+.dd-value i {
+  font-size: 30px;
+}
+
+.dd-inner {
+  display: none;
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  background-color: #fcf9ee;
+  border-top: 1px solid black;
+  box-sizing: border-box;
+}
+
+.dd-list li {
+  padding: 0 12px;
+}
+
+.dd-list li:hover {
+  background-color: #ffc552;
+}
+
+.dd-list span {
+  display: block;
+  padding: 10px 8px;
+  border-bottom: 1px solid black;
+}
+
+.dd-list li:last-child span {
+  border: none;
+}

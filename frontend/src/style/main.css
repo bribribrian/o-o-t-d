@@ -38,3 +38,12 @@ input[type="text"], input[type="password"] {
   padding: 8px;
   border-bottom: 1px solid #adadad;
 }
+
+button {
+  display: block;
+  padding: 0;
+  outline: none;
+  background-color: transparent;
+  text-align: left;
+  cursor: pointer;
+}
