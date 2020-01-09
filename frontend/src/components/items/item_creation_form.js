@@ -1,6 +1,6 @@
 import React from 'react';
-
 import { itemImageToAWS } from '../../util/aws_util';
+import Dropdown from '../dropdown/dropdown';
 
 // in the constructor, generate a new formdata object - this.formData = FormData.new()
 // for each input field, call a function which sets or edits a formdata key to match that input
@@ -12,16 +12,23 @@ class ItemCreation extends React.Component{
     super(props);
 
     this.state = {
-      category: '',
+      category: 'hat',
       label: '',
       user_id: this.props.currentUserId,
       image_url: '',
       imageFile: '',
-      path: ''
+      path: '',
+      activeDD: false
     };
     this.handleUpload = this.handleUpload.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleImageInput = this.handleImageInput.bind(this);
+
+    this.getActiveDD = this.getActiveDD.bind(this);
+    this.setActiveDD = this.setActiveDD.bind(this);
+    this.updateDD = this.updateDD.bind(this);
+    this.removeActiveDD = this.removeActiveDD.bind(this);
+    this.getActiveDDIcon = this.getActiveDDIcon.bind(this);
   }
 
 
@@ -71,6 +78,35 @@ class ItemCreation extends React.Component{
     return e => this.setState({ [field]: e.currentTarget.value });
   }
 
+  setActiveDD(type) {
+    return e => {
+      this.state.activeDD = !this.state.activeDD;
+      this.setState(this.state);
+    };
+  }
+
+  removeActiveDD(type) {
+    return e => {
+      this.state.activeDD = false;
+      this.setState(this.state);
+    }
+  }
+
+  getActiveDD(type) {
+    return this.state.activeDD ? " active" : "";
+  }
+
+  updateDD([type, value]) {
+    return e => {
+      this.removeActiveDD(type);
+      this.state.category = value;
+    }
+  }
+
+  getActiveDDIcon(type) {
+    return this.state.activeDD ? "up" : "down";
+  }
+
 
   render(){
     const imgTag = this.state.image_url ? (
@@ -84,19 +120,26 @@ class ItemCreation extends React.Component{
         <form onSubmit={this.handleUpload}>
           <input type='file' onChange={this.handleImageInput}></input>
           {imgTag}
-          <input type='submit'></input>
+          <input type='submit' value="Upload"></input>
         </form>
         <div>
           <form onSubmit={this.handleSubmit}>
             <div>
-              <p>Category</p>
-              <input type='text' onChange={this.update('category')} value={this.state.category}></input>
-            </div>
-            <div>
               <p>Label</p>
               <input type='text' onChange={this.update('label')} value={this.state.label}></input>
             </div>
-            <input type='submit'></input>
+            <div className="dd-bm">
+              <Dropdown label="category"
+                value={this.state.category}
+                list={["hat", "top", "bottom", "shoes"]}
+                getActiveDD={this.getActiveDD}
+                setActiveDD={this.setActiveDD}
+                updateDD={this.updateDD}
+                removeActiveDD={this.removeActiveDD}
+                getActiveDDIcon={this.getActiveDDIcon}
+              />
+            </div>
+            <input type='submit' value="Submit"></input>
           </form>
         </div>
 

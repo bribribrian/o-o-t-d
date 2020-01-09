@@ -1,9 +1,10 @@
 import React from 'react';
+import { itemImageToAWS } from '../../util/aws_util';
 
 import ModalContainer from '../modal/modal_container';
 import CollectionPreview from './collection_create_form_preview';
+import Dropdown from '../dropdown/dropdown';
 
-import { itemImageToAWS } from '../../util/aws_util';
 
 
 class CollectionCreateForm extends React.Component{
@@ -11,9 +12,6 @@ class CollectionCreateForm extends React.Component{
     super(props);
 
     this.state = {
-      occasion: null,
-      precipitation: null,
-      temperature: null,
       label: null,
       hat_id: null,
       top_id: null,
@@ -21,7 +19,17 @@ class CollectionCreateForm extends React.Component{
       shoe_id: null,
       image_url: null,
       imageFile: null,
-      user_id: this.props.currentUser.id
+      user_id: this.props.currentUser.id,
+      data: {
+        occasion: 'casual',
+        temperature: 'all',
+        precipitation: 'sunny'
+      },
+      activeDD: {
+        occasion: false,
+        temperature: false,
+        precipitation: false
+      }
     };
 
     this.previewImages = [];
@@ -32,6 +40,12 @@ class CollectionCreateForm extends React.Component{
 
     this.handleUpload = this.handleUpload.bind(this);
     this.handleImageInput = this.handleImageInput.bind(this);
+
+    this.getActiveDD = this.getActiveDD.bind(this);
+    this.setActiveDD = this.setActiveDD.bind(this);
+    this.updateDD = this.updateDD.bind(this);
+    this.removeActiveDD = this.removeActiveDD.bind(this);
+    this.getActiveDDIcon = this.getActiveDDIcon.bind(this);
   }
 
   componentDidMount(){
@@ -87,6 +101,35 @@ class CollectionCreateForm extends React.Component{
   update(field){
     return e => this.setState({[field] : e.currentTarget.value});
   }
+
+  setActiveDD(type) {
+    return e => {
+      this.state.activeDD[type] = !this.state.activeDD[type];
+      this.setState(this.state);
+    };
+  }
+
+  removeActiveDD(type) {
+    return e => {
+      this.state.activeDD[type] = false;
+      this.setState(this.state);
+    }
+  }
+
+  getActiveDD(type) {
+    return this.state.activeDD[type] ? " active" : "";
+  }
+
+  updateDD([type, value]) {
+    return e => {
+      this.removeActiveDD(type);
+      this.state.data[type] = value;
+    }
+  }
+
+  getActiveDDIcon(type) {
+    return this.state.activeDD[type] ? "up" : "down";
+  }
   
   render(){
     const imgTag = this.state.image_url ? (
@@ -114,20 +157,43 @@ class CollectionCreateForm extends React.Component{
           </form>
         </div>
         <div>
-          <p>Occasion</p>
-          <input type='text' value={this.state.occasion} onChange={this.update('occasion')}></input>
-        </div>
-        <div>
-          <p>Precipitation</p>
-          <input type='text' value={this.state.precipitation} onChange={this.update('precipitation')}></input>
-        </div>
-        <div>
-          <p>Temperature</p>
-          <input type='text' value={this.state.temperature} onChange={this.update('temperature')}></input>
-        </div>
-        <div>
           <p>Label</p>
           <input type='text' value={this.state.label} onChange={this.update('label')}></input>
+        </div>
+        <div className="dd-container">
+          <div className="dd-bm">
+            <Dropdown label="occasion"
+              value={this.state.data.occasion}
+              list={["casual", "formal", "semi-formal"]}
+              getActiveDD={this.getActiveDD}
+              setActiveDD={this.setActiveDD}
+              updateDD={this.updateDD}
+              removeActiveDD={this.removeActiveDD}
+              getActiveDDIcon={this.getActiveDDIcon}
+            />
+          </div>
+          <div className="dd-bm">
+            <Dropdown label="temperature"
+              value={this.state.data.temperature}
+              list={["all", "hot", "warm", "chill", "cold"]}
+              getActiveDD={this.getActiveDD}
+              setActiveDD={this.setActiveDD}
+              updateDD={this.updateDD}
+              removeActiveDD={this.removeActiveDD}
+              getActiveDDIcon={this.getActiveDDIcon}
+            />
+          </div>
+          <div className="dd-bm">
+            <Dropdown label="precipitation"
+              value={this.state.data.precipitation}
+              list={["sunny", "rainy", "snowy"]}
+              getActiveDD={this.getActiveDD}
+              setActiveDD={this.setActiveDD}
+              updateDD={this.updateDD}
+              removeActiveDD={this.removeActiveDD}
+              getActiveDDIcon={this.getActiveDDIcon}
+            />
+          </div>
         </div>
         <button onClick={this.handleSubmit}>Submit</button>
       </div>

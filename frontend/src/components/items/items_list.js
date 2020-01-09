@@ -44,7 +44,7 @@ class ItemsList extends React.Component {
   }
 
   getActiveDDIcon(type) {
-    return this.state.activeDD[type] ? "up" : "down";
+    return this.state.activeDD ? "up" : "down";
   }
 
   render() {
@@ -87,7 +87,7 @@ class ItemsList extends React.Component {
           <Dropdown label="category"
             hideLabel={true}
             value={this.state.filter}
-            list={["all", "hat", "top", "shoes"]}
+            list={["all", "hat", "top", "bottom", "shoes"]}
             getActiveDD={this.getActiveDD}
             setActiveDD={this.setActiveDD}
             updateDD={this.updateDD}

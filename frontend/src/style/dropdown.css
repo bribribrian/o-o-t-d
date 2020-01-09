@@ -1,5 +1,8 @@
 .dd-outer {
+}
 
+.dd-bm {
+  margin-bottom: 20px;
 }
 
 .dd-outer label {
@@ -31,6 +34,10 @@
 
 .dd:hover {
   background-color: #ffc552;
+}
+
+.dd.active {
+  z-index: 2;
 }
 
 .dd.active .dd-value span {
