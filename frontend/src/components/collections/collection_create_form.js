@@ -12,7 +12,7 @@ class CollectionCreateForm extends React.Component{
     super(props);
 
     this.state = {
-      label: null,
+      label: '',
       hat_id: null,
       top_id: null,
       bottom_id: null,
@@ -104,6 +104,7 @@ class CollectionCreateForm extends React.Component{
 
   setActiveDD(type) {
     return e => {
+      e.preventDefault();
       this.state.activeDD[type] = !this.state.activeDD[type];
       this.setState(this.state);
     };

@@ -39,13 +39,10 @@ class ItemCreation extends React.Component{
       formData.append('image', this.state.imageFile);
     }
     // send ajax request, when we get json back, we save item (state) to the databas
-    // itemImageToAWS(formData.get("post[image]"))
-    // itemImageToAWS({image: this.state.imageFile})
     itemImageToAWS(formData)
-      .then(({data}) => {
-          this.setState({ image_url: data['imageUrl']});
-        }
-      );
+      .then(({ data }) => {
+        this.setState({ image_url: data['imageUrl']});
+      });
   }
 
   handleSubmit(e) {
@@ -80,6 +77,7 @@ class ItemCreation extends React.Component{
 
   setActiveDD(type) {
     return e => {
+      e.preventDefault();
       this.state.activeDD = !this.state.activeDD;
       this.setState(this.state);
     };
@@ -108,7 +106,7 @@ class ItemCreation extends React.Component{
   }
 
 
-  render(){
+  render() {
     const imgTag = this.state.image_url ? (
       <>
         <img src={this.state.image_url} />
@@ -144,10 +142,8 @@ class ItemCreation extends React.Component{
         </div>
 
       </div>
-    )
+    );
   }
-
-
 }
 
 export default ItemCreation; 

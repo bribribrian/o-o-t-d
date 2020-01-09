@@ -17,7 +17,7 @@ class Generate extends React.Component{
         precipitation: false
       }
     };
-    
+
     this.handleSubmit = this.handleSubmit.bind(this);
     this.getActiveDD = this.getActiveDD.bind(this);
     this.setActiveDD = this.setActiveDD.bind(this);
@@ -37,6 +37,7 @@ class Generate extends React.Component{
 
   setActiveDD(type) {
     return e => {
+      e.preventDefault();
       this.state.activeDD[type] = !this.state.activeDD[type];
       this.setState(this.state);
     };

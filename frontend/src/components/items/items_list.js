@@ -20,6 +20,7 @@ class ItemsList extends React.Component {
 
   setActiveDD(type) {
     return e => {
+      e.preventDefault();
       this.state.activeDD = !this.state.activeDD;
       this.setState(this.state);
     };
