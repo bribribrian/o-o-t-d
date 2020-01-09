@@ -18,6 +18,11 @@ class Generate extends React.Component{
       }
     };
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.getActiveDD = this.getActiveDD.bind(this);
+    this.setActiveDD = this.setActiveDD.bind(this);
+    this.updateDD = this.updateDD.bind(this);
+    this.removeActiveDD = this.removeActiveDD.bind(this);
+    this.getActiveDDIcon = this.getActiveDDIcon.bind(this);
   }
 
   handleSubmit(e){
@@ -58,76 +63,37 @@ class Generate extends React.Component{
     return this.state.activeDD[type] ? "up" : "down";
   }
 
-
   render(){
     return(
       <div className="generate-container">
         <div className="generate-filters-container">
-          <div className="dd-outer">
-            <label>occasion</label>
-            <div className="dd-wrapper">
-              <button className={"dd" + this.getActiveDD("occasion")} 
-                onClick={this.setActiveDD("occasion")}
-                onBlur={this.removeActiveDD("occasion")}
-              >
-                <p className="dd-value">
-                  <span>{this.state.data.occasion}</span>
-                  <i class="material-icons">{"arrow_drop_" + this.getActiveDDIcon("occasion")}</i>
-                </p>
-                <div className="dd-inner">
-                  <ul className="dd-list">
-                    <li onClick={this.updateDD(["occasion", "casual"])}><span>casual</span></li>
-                    <li onClick={this.updateDD(["occasion", "formal"])}><span>formal</span></li>
-                    <li onClick={this.updateDD(["occasion", "semi-formal"])}><span>semi-formal</span></li>
-                  </ul>
-                </div>
-              </button>
-            </div>
-          </div>
-          <div className="dd-outer">
-            <label>temperature</label>
-            <div className="dd-wrapper">
-              <button className={"dd" + this.getActiveDD("temperature")}
-                onClick={this.setActiveDD("temperature")}
-                onBlur={this.removeActiveDD("temperature")}
-              >
-                <p className="dd-value">
-                  <span>{this.state.data.temperature}</span>
-                  <i class="material-icons">{"arrow_drop_" + this.getActiveDDIcon("temperature")}</i>
-                </p>
-                <div className="dd-inner">
-                  <ul className="dd-list">
-                    <li onClick={this.updateDD(["temperature", "all"])}><span>all</span></li>
-                    <li onClick={this.updateDD(["temperature", "hot"])}><span>hot</span></li>
-                    <li onClick={this.updateDD(["temperature", "warm"])}><span>warm</span></li>
-                    <li onClick={this.updateDD(["temperature", "chill"])}><span>chill</span></li>
-                    <li onClick={this.updateDD(["temperature", "cold"])}><span>cold</span></li>
-                  </ul>
-                </div>
-              </button>
-            </div>
-          </div>
-          <div className="dd-outer">
-            <label>precipitation</label>
-            <div className="dd-wrapper">
-              <button className={"dd" + this.getActiveDD("precipitation")}
-                onClick={this.setActiveDD("precipitation")}
-                onBlur={this.removeActiveDD("precipitation")}
-              >
-                <p className="dd-value">
-                  <span>{this.state.data.precipitation}</span>
-                  <i class="material-icons">{"arrow_drop_" + this.getActiveDDIcon("precipitation")}</i>
-                </p>
-                <div className="dd-inner">
-                  <ul className="dd-list">
-                    <li onClick={this.updateDD(["precipitation", "sunny"])}><span>sunny</span></li>
-                    <li onClick={this.updateDD(["precipitation", "rainy"])}><span>rainy</span></li>
-                    <li onClick={this.updateDD(["precipitation", "snowy"])}><span>snowy</span></li>
-                  </ul>
-                </div>
-              </button>
-            </div>
-          </div>
+          <Dropdown label="occasion" 
+            value={this.state.data.occasion} 
+            list={["casual", "formal", "semi-formal"]}
+            getActiveDD={this.getActiveDD} 
+            setActiveDD={this.setActiveDD} 
+            updateDD={this.updateDD}
+            removeActiveDD={this.removeActiveDD}
+            getActiveDDIcon={this.getActiveDDIcon}
+          />
+          <Dropdown label="temperature"
+            value={this.state.data.temperature}
+            list={["all", "hot", "warm", "chill", "cold"]}
+            getActiveDD={this.getActiveDD}
+            setActiveDD={this.setActiveDD}
+            updateDD={this.updateDD}
+            removeActiveDD={this.removeActiveDD}
+            getActiveDDIcon={this.getActiveDDIcon}
+          />
+          <Dropdown label="precipitation"
+            value={this.state.data.precipitation}
+            list={["sunny", "rainy", "snowy"]}
+            getActiveDD={this.getActiveDD}
+            setActiveDD={this.setActiveDD}
+            updateDD={this.updateDD}
+            removeActiveDD={this.removeActiveDD}
+            getActiveDDIcon={this.getActiveDDIcon}
+          />
         </div>
         <div className="generate-button">
           <input type="submit" onClick={this.handleSubmit} value="Generate"/>

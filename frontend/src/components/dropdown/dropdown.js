@@ -2,8 +2,9 @@ import React from 'react';
 
 const Dropdown = ({
   label, value, list,
-  getActiveDD, setActiveDD, removeActiveDD, getActiveDDIcon
+  getActiveDD, setActiveDD, updateDD, removeActiveDD, getActiveDDIcon
 }) => {
+  
   const lis = list.map((item, idx) => {
     return (
       <li key={idx} onClick={updateDD([label, item])}><span>{item}</span></li>
