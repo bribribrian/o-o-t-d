@@ -18,10 +18,6 @@ class ItemsList extends React.Component {
     this.getActiveDDIcon = this.getActiveDDIcon.bind(this);
   }
 
-  update(field) {
-    return e => this.setState({ filter: field });
-  }
-
   setActiveDD(type) {
     return e => {
       this.state.activeDD = !this.state.activeDD;
@@ -99,12 +95,6 @@ class ItemsList extends React.Component {
             getActiveDDIcon={this.getActiveDDIcon}
           />
         </div>
-        {/* <div className="item-filters">
-          <button value="hat" onClick={this.update('hat')}>Hat</button>
-          <button value="top" onClick={this.update('top')}>Top</button>
-          <button value="bottom" onClick={this.update('bottom')}>Bottom</button>
-          <button value="shoes" onClick={this.update('shoes')}>Shoes</button>
-        </div> */}
         <ul className="items list">
           <li>
             <Link className="list-item-add-wrapper" to="/items/new">

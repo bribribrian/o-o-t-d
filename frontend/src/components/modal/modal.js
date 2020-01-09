@@ -34,7 +34,6 @@ class Modal extends React.Component{
     });
 
     filteredItems = filteredItems.map((item) => {
-      // debugger;
       return (
         <li key={item._id} onClick={this.handleClick} data-id={item._id} data-img={item.image_url}>
           <div className="modal-item-container list-item-container">
