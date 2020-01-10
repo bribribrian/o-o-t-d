@@ -34,7 +34,6 @@ class Modal extends React.Component{
     });
 
     filteredItems = filteredItems.map((item) => {
-      // debugger;
       return (
         <li key={item._id} onClick={this.handleClick} data-id={item._id} data-img={item.image_url}>
           <div className="modal-item-container list-item-container">
@@ -51,7 +50,9 @@ class Modal extends React.Component{
       <div className="modal-wrapper" onClick={this.props.receivePickNone}>
         <div className="modal-inner">
           <div className="items-container modal-container list-container">
-            <h2>Select an item</h2>
+            <div className="list-header">
+              <h2>Select an item</h2>
+            </div>
             <ul className="modal-items list">
               {filteredItems}
             </ul>

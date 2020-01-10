@@ -28,7 +28,9 @@ class CollectionsList extends React.Component{
 
     return(
       <div className="collections-container list-container">
-        <h2><Link to="/collections">Collections</Link></h2>
+        <div className="list-header">
+          <h2><Link to="/collections">Collections</Link></h2>
+        </div>
         <ul className="collections list">
           {/* <Link to='/collection-creation'>Add Collection</Link> */}
           <li>

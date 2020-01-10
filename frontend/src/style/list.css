@@ -1,9 +1,15 @@
+.list-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
 .list-container h2 {
+  margin-right: 40px;
   font-size: 40px;
   font-family: 'Unica One', cursive;
   text-decoration: underline;
   text-transform: uppercase;
-  margin-bottom: 20px;
 }
 
 .list {

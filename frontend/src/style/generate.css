@@ -1,0 +1,17 @@
+.generate-container {
+  padding: 0 150px;
+}
+
+.generate-filters-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 150px;
+}
+
+.generate-button input {
+  display: block;
+  width: 200px;
+  padding: 11px;
+  margin: 50px auto;
+  font-size: 22px;
+}

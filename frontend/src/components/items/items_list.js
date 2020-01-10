@@ -1,17 +1,51 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Dropdown from '../dropdown/dropdown';
 
 class ItemsList extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      filter: null
+      filter: "all",
+      activeDD: false
+    };
+
+    this.getActiveDD = this.getActiveDD.bind(this);
+    this.setActiveDD = this.setActiveDD.bind(this);
+    this.updateDD = this.updateDD.bind(this);
+    this.removeActiveDD = this.removeActiveDD.bind(this);
+    this.getActiveDDIcon = this.getActiveDDIcon.bind(this);
+  }
+
+  setActiveDD(type) {
+    return e => {
+      e.preventDefault();
+      this.state.activeDD = !this.state.activeDD;
+      this.setState(this.state);
     };
   }
 
-  update(field) {
-    return e => this.setState({ filter: field });
+  removeActiveDD(type) {
+    return e => {
+      this.state.activeDD = false;
+      this.setState(this.state);
+    }
+  }
+
+  getActiveDD(type) {
+    return this.state.activeDD ? " active" : "";
+  }
+
+  updateDD([type, value]) {
+    return e => {
+      this.removeActiveDD(type);
+      this.state.filter = value;
+    }
+  }
+
+  getActiveDDIcon(type) {
+    return this.state.activeDD ? "up" : "down";
   }
 
   render() {
@@ -20,7 +54,9 @@ class ItemsList extends React.Component {
     let filteredItemsArr;
 
     // map to filter
-    if (this.state.filter) {
+    if (this.state.filter === "all"){
+      filteredItemsArr = itemsArr;
+    } else if (this.state.filter) {
       filteredItemsArr = [];
       itemsArr.forEach((item) => {
         if (item.category === this.state.filter) {
@@ -47,12 +83,18 @@ class ItemsList extends React.Component {
 
     return (
       <div className="items-container list-container">
-        <h2><Link to="/items">Items</Link></h2>
-        <div className="item-filters">
-          <button value="hat" onClick={this.update('hat')}>Hat</button>
-          <button value="top" onClick={this.update('top')}>Top</button>
-          <button value="bottom" onClick={this.update('bottom')}>Bottom</button>
-          <button value="shoes" onClick={this.update('shoes')}>Shoes</button>
+        <div className="list-header">
+          <h2><Link to="/items">Items</Link></h2>
+          <Dropdown label="category"
+            hideLabel={true}
+            value={this.state.filter}
+            list={["all", "hat", "top", "bottom", "shoes"]}
+            getActiveDD={this.getActiveDD}
+            setActiveDD={this.setActiveDD}
+            updateDD={this.updateDD}
+            removeActiveDD={this.removeActiveDD}
+            getActiveDDIcon={this.getActiveDDIcon}
+          />
         </div>
         <ul className="items list">
           <li>
