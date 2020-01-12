@@ -1,4 +1,4 @@
-# Stylidex
+# Outfit of the Day
 a MERN stack style generator
 ## Overview
 Stylidex is a outfit generator that produces possible outfits for the user to choose from which are assembled based on clothing items withing the users own personal wardrobe. These outfits can be compiled using a number of factors including, but not limited to:
