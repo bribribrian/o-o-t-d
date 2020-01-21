@@ -38,15 +38,19 @@ class Generate extends React.Component{
   setActiveDD(type) {
     return e => {
       e.preventDefault();
-      this.state.activeDD[type] = !this.state.activeDD[type];
-      this.setState(this.state);
+      // this.state.activeDD[type] = !this.state.activeDD[type];
+      let activeDD = this.state.activeDD;
+      activeDD[type] = !this.state.activeDD[type];
+      this.setState(Object.assign({}, this.state, activeDD));
     };
   }
 
   removeActiveDD(type) {
     return e => {
-      this.state.activeDD[type] = false;
-      this.setState(this.state);
+      // this.state.activeDD[type] = false;
+      let activeDD = this.state.activeDD;
+      activeDD[type] = false;
+      this.setState(Object.assign({}, this.state, activeDD));
     }
   }
 
@@ -57,7 +61,10 @@ class Generate extends React.Component{
   updateDD([type, value]) {
     return e => {
       this.removeActiveDD(type);
-      this.state.data[type] = value;
+      // this.state.data[type] = value;
+      let data = this.state.data;
+      data[type] = value;
+      this.setState(Object.assign({}, this.state, data))
     }
   }
 

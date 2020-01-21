@@ -1,12 +1,12 @@
 import React from 'react';
 import { AuthRoute, ProtectedRoute} from '../util/route_util';
-import { Route } from 'react-router-dom';
+// import { Route } from 'react-router-dom';
 
 import DashboardContainer from './main/dashboard_container';
 
 import SplashContainer from './session/splash_container';
 
-let showPath = '/collections/:_id';
+// let showPath = '/collections/:_id';
 
 const App = (props) => (
 

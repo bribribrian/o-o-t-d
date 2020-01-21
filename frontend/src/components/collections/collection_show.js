@@ -15,7 +15,7 @@ class CollectionShow extends React.Component{
 
   render(){
 
-    if(Object.keys(this.props.items).length == 0){
+    if(Object.keys(this.props.items).length === 0){
       return <p>loading</p>
     };
 
@@ -32,7 +32,7 @@ class CollectionShow extends React.Component{
     collectionItems = collectionItems.map((item) => {
       return <li key={item._id}>
         <p>{item.label}</p>
-        <img src={item.image_url}></img>
+        <img src={item.image_url} alt='description goes here'></img>
       </li>
     })
 
