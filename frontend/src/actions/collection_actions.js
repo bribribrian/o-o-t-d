@@ -17,9 +17,9 @@ const receiveCollections = (collections) => ({
     collections
 });
 
-const removeCollection = (collectionId) => ({
+const removeCollection = (collection) => ({
     type: REMOVE_COLLECTION,
-    collectionId
+    collection
 });
 
 const receiveCollectionError = (error) => ({
@@ -58,7 +58,11 @@ export const updateCollection = (collection) => dispatch => (
 );
 
 export const deleteCollection = (collectionId) => dispatch => (
-    APIUtil.deleteCollection(collectionId)
-        .then(collection => dispatch(removeCollection(collection)))
-        .catch(error => dispatch(receiveCollectionError(error.response.data)))
+    APIUtil.deleteCollection(collectionId) 
+        .then((collection) => {
+            dispatch(removeCollection(collection))  
+        }) 
+        .catch((error) => {
+            dispatch(receiveCollectionError(error.response.data))
+        })
 );
