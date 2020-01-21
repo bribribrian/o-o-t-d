@@ -1,5 +1,6 @@
 import React from 'react';
 import Dropdown from '../../dropdown/dropdown';
+import FilteredCollectionsContainer from '../../collections/filtered_collections_container';
 
 class Generate extends React.Component{
   constructor(props){
@@ -74,39 +75,42 @@ class Generate extends React.Component{
 
   render(){
     return(
-      <div className="generate-container">
-        <div className="generate-filters-container">
-          <Dropdown label="occasion" 
-            value={this.state.data.occasion} 
-            list={["casual", "formal", "semi-formal"]}
-            getActiveDD={this.getActiveDD} 
-            setActiveDD={this.setActiveDD} 
-            updateDD={this.updateDD}
-            removeActiveDD={this.removeActiveDD}
-            getActiveDDIcon={this.getActiveDDIcon}
-          />
-          <Dropdown label="temperature"
-            value={this.state.data.temperature}
-            list={["all", "hot", "warm", "chill", "cold"]}
-            getActiveDD={this.getActiveDD}
-            setActiveDD={this.setActiveDD}
-            updateDD={this.updateDD}
-            removeActiveDD={this.removeActiveDD}
-            getActiveDDIcon={this.getActiveDDIcon}
-          />
-          <Dropdown label="precipitation"
-            value={this.state.data.precipitation}
-            list={["sunny", "rainy", "snowy"]}
-            getActiveDD={this.getActiveDD}
-            setActiveDD={this.setActiveDD}
-            updateDD={this.updateDD}
-            removeActiveDD={this.removeActiveDD}
-            getActiveDDIcon={this.getActiveDDIcon}
-          />
+      <div>
+        <div className="generate-container">
+          <div className="generate-filters-container">
+            <Dropdown label="occasion" 
+              value={this.state.data.occasion} 
+              list={["casual", "formal", "semi-formal"]}
+              getActiveDD={this.getActiveDD} 
+              setActiveDD={this.setActiveDD} 
+              updateDD={this.updateDD}
+              removeActiveDD={this.removeActiveDD}
+              getActiveDDIcon={this.getActiveDDIcon}
+            />
+            <Dropdown label="temperature"
+              value={this.state.data.temperature}
+              list={["all", "hot", "warm", "chill", "cold"]}
+              getActiveDD={this.getActiveDD}
+              setActiveDD={this.setActiveDD}
+              updateDD={this.updateDD}
+              removeActiveDD={this.removeActiveDD}
+              getActiveDDIcon={this.getActiveDDIcon}
+            />
+            <Dropdown label="precipitation"
+              value={this.state.data.precipitation}
+              list={["sunny", "rainy", "snowy"]}
+              getActiveDD={this.getActiveDD}
+              setActiveDD={this.setActiveDD}
+              updateDD={this.updateDD}
+              removeActiveDD={this.removeActiveDD}
+              getActiveDDIcon={this.getActiveDDIcon}
+            />
+          </div>
+          <div className="generate-button">
+            <input type="submit" onClick={this.handleSubmit} value="Generate"/>
+          </div>
         </div>
-        <div className="generate-button">
-          <input type="submit" onClick={this.handleSubmit} value="Generate"/>
-        </div>
+        <FilteredCollectionsContainer/>
       </div>
     );
   }

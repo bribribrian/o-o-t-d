@@ -4,6 +4,7 @@ import Items from './items';
 
 import {
   fetchItems,
+  deleteItem
 } from '../../../actions/item_actions';
 
 const msp = (state) => ({
@@ -11,7 +12,8 @@ const msp = (state) => ({
 });
 
 const mdp = dispatch => ({
-  fetchItems: () => dispatch(fetchItems())
+  fetchItems: () => dispatch(fetchItems()),
+  deleteItem: (itemId) => dispatch(deleteItem(itemId))
 });
 
 export default connect(msp, mdp)(Items);

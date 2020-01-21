@@ -22,5 +22,5 @@ export const updateCollection = (collection) => {
 };
 
 export const deleteCollection = (collectionId) => {
-    return axios.patch(`/api/collections/${collectionId}`);
+    return axios.delete(`/api/collections/${collectionId}`);
 };

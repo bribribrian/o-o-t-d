@@ -2,15 +2,16 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Dropdown from '../dropdown/dropdown';
 
+
 class ItemsList extends React.Component {
   constructor(props) {
     super(props);
-
+    console.log(props);
     this.state = {
       filter: "all",
       activeDD: false
     };
-
+    this.handleSubmit = this.handleSubmit.bind(this);
     this.getActiveDD = this.getActiveDD.bind(this);
     this.setActiveDD = this.setActiveDD.bind(this);
     this.updateDD = this.updateDD.bind(this);
@@ -52,6 +53,10 @@ class ItemsList extends React.Component {
     return this.state.activeDD ? "up" : "down";
   }
 
+  handleSubmit(e){
+    this.props.deleteItem(e.currentTarget.id)
+  }
+
   render() {
     const { items } = this.props;
     const itemsArr = Object.values(items);
@@ -79,6 +84,7 @@ class ItemsList extends React.Component {
             <div className="item-img-wrapper list-item-img-wrapper" style={{ backgroundImage: 'url(' + item.image_url + ')' }}></div>
             <div className="item-hover-info list-item-hover-info">
               <p>{item.label}</p>
+              <button id={item._id} onClick={this.handleSubmit}>Delete</button>
             </div>
           </div>
         </li>

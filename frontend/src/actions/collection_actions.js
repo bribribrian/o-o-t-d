@@ -2,6 +2,7 @@ import * as APIUtil from '../util/collection_util';
 
 export const RECEIVE_COLLECTION = "RECEIVE_COLLECTION";
 export const RECEIVE_COLLECTIONS = "RECEIVE_COLLECTIONS";
+export const RECEIVE_FILTERED_COLLECTIONS = "RECEIVE_FILTERED_COLLECTIONS";
 export const REMOVE_COLLECTION = "REMOVE_COLLECTION";
 
 export const RECEIVE_COLLECTION_ERROR = "RECEIVE_COLLECTION_ERROR";
@@ -16,9 +17,9 @@ const receiveCollections = (collections) => ({
     collections
 });
 
-const removeCollection = (collectionId) => ({
+const removeCollection = (collection) => ({
     type: REMOVE_COLLECTION,
-    collectionId
+    collection
 });
 
 const receiveCollectionError = (error) => ({
@@ -57,7 +58,11 @@ export const updateCollection = (collection) => dispatch => (
 );
 
 export const deleteCollection = (collectionId) => dispatch => (
-    APIUtil.deleteCollection(collectionId)
-        .then(collection => dispatch(removeCollection(collection)))
-        .catch(error => dispatch(receiveCollectionError(error.response.data)))
+    APIUtil.deleteCollection(collectionId) 
+        .then((collection) => {
+            dispatch(removeCollection(collection))  
+        }) 
+        .catch((error) => {
+            dispatch(receiveCollectionError(error.response.data))
+        })
 );
