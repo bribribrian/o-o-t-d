@@ -17,6 +17,7 @@ class Items extends React.Component {
 
   render() {
     const { items } = this.props;
+    const { deleteItem } = this.props;
 
     if (Object.keys(items).length === 0) {
       return <p>loading...</p>;
@@ -25,7 +26,7 @@ class Items extends React.Component {
     return (
       <>
         <Switch>
-          <Route exact path="/items" component={() => <ItemsList items={items} />}></Route>
+          <Route exact path="/items" component={() => <ItemsList items={items} deleteItem={deleteItem} />}></Route>
           <Route exact path="/items/new" component={SimpleItemFormContainer} />
         </Switch>
       </>
