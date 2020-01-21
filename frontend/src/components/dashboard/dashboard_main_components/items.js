@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Switch, Route, Link } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 
 import ItemsList from '../../items/items_list';
 import SimpleItemFormContainer from '../../items/item_creation_form_container';

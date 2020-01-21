@@ -22,15 +22,17 @@ class ItemsList extends React.Component {
   setActiveDD(type) {
     return e => {
       e.preventDefault();
-      this.state.activeDD = !this.state.activeDD;
-      this.setState(this.state);
+      // this.state.activeDD = !this.state.activeDD;
+      let activeDD = {activeDD: !this.state.activeDD};
+      this.setState(Object.assign({}, this.state, activeDD));
     };
   }
 
   removeActiveDD(type) {
     return e => {
-      this.state.activeDD = false;
-      this.setState(this.state);
+      // this.state.activeDD = false;
+      let activeDD = {activeDD: false};
+      this.setState(Object.assign({}, this.state, activeDD));
     }
   }
 
@@ -41,7 +43,9 @@ class ItemsList extends React.Component {
   updateDD([type, value]) {
     return e => {
       this.removeActiveDD(type);
-      this.state.filter = value;
+      // this.state.filter = value;
+      this.setState(Object.assign(this.state, {filter: value}));
+      console.log(this.state);
     }
   }
 

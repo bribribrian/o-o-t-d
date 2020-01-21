@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Switch, Route, Link } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 
 import CollectionShowContainer from '../../collections/collection_show_container';
 import CollectionsList from '../../collections/collections_list';

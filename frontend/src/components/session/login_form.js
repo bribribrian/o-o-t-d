@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { WorkMail } from 'aws-sdk';
+// import { WorkMail } from 'aws-sdk';
 
 
 class LoginForm extends React.Component {
