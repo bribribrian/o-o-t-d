@@ -19,8 +19,9 @@ const CollectionsReducer = (state={}, action) => {
       // return Object.assign({}, state, newState);
       return newState;
     case REMOVE_COLLECTION:
+      debugger;
       newState = Object.assign({}, state);
-      delete newState[action.collection.data.id];
+      delete newState[action.collection.data._id];
       return newState;
     default:
       return state;

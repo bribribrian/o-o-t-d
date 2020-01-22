@@ -17,5 +17,5 @@ export const updateItem = (item) => {
 };
 
 export const deleteItem = (itemId) => {
-    return axios.patch(`/api/items/${itemId}`);
+    return axios.delete(`/api/items/${itemId}`);
 };

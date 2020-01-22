@@ -55,8 +55,8 @@ export const updateItem = (item) => dispatch => (
         .catch(error => dispatch(receiveItemsError(error)))
 );
 
-export const deleteItem = (item) => dispatch => (
-    APIUtil.deleteItem(item.id)
+export const deleteItem = (itemId) => dispatch => (
+    APIUtil.deleteItem(itemId)
         .then(itemId => dispatch(removeItem(itemId)))
         .catch(error => dispatch(receiveItemsError(error)))
 );

@@ -78,15 +78,16 @@ class ItemCreation extends React.Component{
   setActiveDD(type) {
     return e => {
       e.preventDefault();
-      this.state.activeDD = !this.state.activeDD;
-      this.setState(this.state);
+      // this.state.activeDD = !this.state.activeDD;
+      let activeDD = {activeDD: !this.state.activeDD};
+      this.setState(Object.assign({}, this.state, activeDD));
     };
   }
 
   removeActiveDD(type) {
     return e => {
-      this.state.activeDD = false;
-      this.setState(this.state);
+      // this.state.activeDD = false;
+      this.setState(Object.assign({}, this.state, {activeDD: false}));
     }
   }
 
@@ -97,7 +98,8 @@ class ItemCreation extends React.Component{
   updateDD([type, value]) {
     return e => {
       this.removeActiveDD(type);
-      this.state.category = value;
+      // this.state.category = value;
+      this.setState(Object.assign(this.state, {category: value}))
     }
   }
 
@@ -109,7 +111,7 @@ class ItemCreation extends React.Component{
   render() {
     const imgTag = this.state.image_url ? (
       <>
-        <img src={this.state.image_url} />
+        <img src={this.state.image_url} alt='description goes here'/>
       </>
     ) : null;
     

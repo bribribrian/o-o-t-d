@@ -2,15 +2,16 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Dropdown from '../dropdown/dropdown';
 
+
 class ItemsList extends React.Component {
   constructor(props) {
     super(props);
-
+    console.log(props);
     this.state = {
       filter: "all",
       activeDD: false
     };
-
+    this.handleSubmit = this.handleSubmit.bind(this);
     this.getActiveDD = this.getActiveDD.bind(this);
     this.setActiveDD = this.setActiveDD.bind(this);
     this.updateDD = this.updateDD.bind(this);
@@ -21,15 +22,17 @@ class ItemsList extends React.Component {
   setActiveDD(type) {
     return e => {
       e.preventDefault();
-      this.state.activeDD = !this.state.activeDD;
-      this.setState(this.state);
+      // this.state.activeDD = !this.state.activeDD;
+      let activeDD = {activeDD: !this.state.activeDD};
+      this.setState(Object.assign({}, this.state, activeDD));
     };
   }
 
   removeActiveDD(type) {
     return e => {
-      this.state.activeDD = false;
-      this.setState(this.state);
+      // this.state.activeDD = false;
+      let activeDD = {activeDD: false};
+      this.setState(Object.assign({}, this.state, activeDD));
     }
   }
 
@@ -40,12 +43,18 @@ class ItemsList extends React.Component {
   updateDD([type, value]) {
     return e => {
       this.removeActiveDD(type);
-      this.state.filter = value;
+      // this.state.filter = value;
+      this.setState(Object.assign(this.state, {filter: value}));
+      console.log(this.state);
     }
   }
 
   getActiveDDIcon(type) {
     return this.state.activeDD ? "up" : "down";
+  }
+
+  handleSubmit(e){
+    this.props.deleteItem(e.currentTarget.id)
   }
 
   render() {
@@ -75,6 +84,7 @@ class ItemsList extends React.Component {
             <div className="item-img-wrapper list-item-img-wrapper" style={{ backgroundImage: 'url(' + item.image_url + ')' }}></div>
             <div className="item-hover-info list-item-hover-info">
               <p>{item.label}</p>
+              <button id={item._id} onClick={this.handleSubmit}>Delete</button>
             </div>
           </div>
         </li>

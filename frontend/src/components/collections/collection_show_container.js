@@ -4,10 +4,20 @@ import CollectionShow from './collection_show';
 
 import { fetchItem } from '../../actions/item_actions';
 
+import { deleteCollection } from '../../actions/collection_actions';
+
 const msp = (state, ownProps) => {
   let path = ownProps.match.url;
   let collectionId = ownProps.match.params.collection_id;
   let collection = state.entities.collections[collectionId];
+
+  // if (typeof collection === 'undefined') {
+  //   debugger;
+  //   return (
+  //     <Redirect to="/collections"></Redirect>
+  //   )
+  // }
+
   // let collectionsArr = Object.values(state.entities.collections);
   // let collection;
   // collectionsArr.forEach((c) => {
@@ -33,7 +43,8 @@ const msp = (state, ownProps) => {
 };
 
 const mdp = dispatch => ({
-  fetchItem: (itemId) => dispatch(fetchItem(itemId))
+  fetchItem: (itemId) => dispatch(fetchItem(itemId)),
+  deleteCollection: (collectionId) => dispatch(deleteCollection(collectionId))
 });
 
 export default connect(msp, mdp)(CollectionShow);
