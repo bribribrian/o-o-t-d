@@ -12,7 +12,6 @@ class DashboardMain extends React.Component{
   }
 
   render(){
-    debugger;
     let component;
     if(this.props.navSlice === 'generated'){
       component = <GeneratedOutfitContainer/>;

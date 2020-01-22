@@ -5,6 +5,7 @@ import CollectionShow from './collection_show';
 import { fetchItem } from '../../actions/item_actions';
 
 const msp = (state, ownProps) => {
+  let path = ownProps.match.url;
   let collectionId = ownProps.match.params.collection_id;
   let collection = state.entities.collections[collectionId];
   // let collectionsArr = Object.values(state.entities.collections);
@@ -26,7 +27,8 @@ const msp = (state, ownProps) => {
   return({
     collection,
     items: state.entities.items,
-    itemsIds: itemsIds
+    itemsIds: itemsIds,
+    path
   });
 };
 

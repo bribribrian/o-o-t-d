@@ -41,6 +41,7 @@ router.get('/:id', (req, res) => {
 });
 
 router.patch('/:id', (req, res) => {
+  debugger;
   let query = req.params.id;
   Collection.findByIdAndUpdate(
     query,
