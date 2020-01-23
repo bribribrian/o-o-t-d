@@ -9,8 +9,13 @@ class FilteredCollections extends React.Component{
   }
 
   render(){
-    const { collections } = this.props;
-    const collectionsLis = Object.values(collections).map((collection) => {
+    debugger;
+    if(Object.keys(this.props.filteredCollections).length === 0){
+      return <p>loading</p>;
+    }
+
+    const { filteredCollections } = this.props;
+    const collectionsLis = Object.values(filteredCollections).map((collection) => {
       let showPath = `/collections/${collection._id}`
       return (
         <li key={collection._id}>

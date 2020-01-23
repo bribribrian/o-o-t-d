@@ -16,6 +16,10 @@ const receiveCollections = (collections) => ({
     type: RECEIVE_COLLECTIONS,
     collections
 });
+const receiveFilteredCollections = (collections) => ({
+    type: RECEIVE_FILTERED_COLLECTIONS,
+    collections
+});
 
 const removeCollection = (collection) => ({
     type: REMOVE_COLLECTION,
@@ -49,7 +53,7 @@ export const fetchCollections = (userId) => dispatch => (
 
 export const fetchCollectionsWithFilters = (userId, body) => dispatch => (
     APIUtil.fetchCollectionsWithFilters(userId, body)
-        .then(collections => dispatch(receiveCollections(collections)))
+        .then(collections => dispatch(receiveFilteredCollections(collections)))
         .catch(error => dispatch(receiveCollectionError(error.response.data)))
 );
 
