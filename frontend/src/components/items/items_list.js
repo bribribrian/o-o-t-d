@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import Dropdown from '../dropdown/dropdown';
 
 
@@ -54,6 +54,9 @@ class ItemsList extends React.Component {
   }
 
   handleSubmit(e){
+    // this.setState({
+    //   this.state.entities[e.currentTarget.id]
+    // })
     this.props.deleteItem(e.currentTarget.id)
   }
 
@@ -84,7 +87,7 @@ class ItemsList extends React.Component {
             <div className="item-img-wrapper list-item-img-wrapper" style={{ backgroundImage: 'url(' + item.image_url + ')' }}></div>
             <div className="item-hover-info list-item-hover-info">
               <p>{item.label}</p>
-              <button id={item._id} onClick={this.handleSubmit}>Delete</button>
+              <Link to="/items"><button id={item._id} onClick={this.handleSubmit}>Delete</button></Link>
             </div>
           </div>
         </li>
