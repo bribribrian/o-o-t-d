@@ -1,5 +1,9 @@
 import React from 'react';
+<<<<<<< HEAD
+import {Link} from 'react-router-dom';
+=======
 import { Link, Redirect } from 'react-router-dom';
+>>>>>>> master
 
 class CollectionShow extends React.Component{
   constructor(props){
@@ -46,8 +50,11 @@ class CollectionShow extends React.Component{
       </li>
     })
 
+    let editPath = `${this.props.path}/edit`;
+
     return(
       <div>
+        <Link to={editPath}><p>Edit Collection</p></Link>
         <p>{this.props.collection.label}</p>
         <ul>
           {collectionItems}

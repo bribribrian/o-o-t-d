@@ -34,9 +34,17 @@ export const fetchCollection = (collectionId) => dispatch => (
 );
 
 export const fetchCollections = (userId) => dispatch => (
+    // return(
+    // APIUtil.fetchCollections(userId)
+    //     .then((collections) => {
+    //         dispatch(receiveCollections(collections))
+    //     })
+    //     .catch(error => dispatch(receiveCollectionError(error.response.data)))
+    // )
     APIUtil.fetchCollections(userId)
         .then(collections => dispatch(receiveCollections(collections)))
         .catch(error => dispatch(receiveCollectionError(error.response.data)))
+
 );
 
 export const fetchCollectionsWithFilters = (userId, body) => dispatch => (
@@ -51,11 +59,14 @@ export const createCollection = (collection) => dispatch => (
         .catch(error => dispatch(receiveCollectionError(error.response.data)))
 );
 
-export const updateCollection = (collection) => dispatch => (
-    APIUtil.updateCollection(collection)
+export const updateCollection = (collection, id) => dispatch => {
+    debugger;
+    return(
+    APIUtil.updateCollection(collection, id)
         .then(collection => dispatch(receiveCollection(collection)))
         .catch(error => dispatch(receiveCollectionError(error.response.data)))
-);
+    )
+};
 
 export const deleteCollection = (collectionId) => dispatch => (
     APIUtil.deleteCollection(collectionId) 

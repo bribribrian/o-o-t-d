@@ -17,8 +17,10 @@ export const createCollection = (collection) => {
     return axios.post('/api/collections', collection);
 };
 
-export const updateCollection = (collection) => {
-    return axios.patch(`/api/collections/${collection.id}`, collection);
+export const updateCollection = (collection, id) => {
+    // return axios.patch(`/api/collections/${collection._id}`, collection);
+    debugger;
+    return (axios.patch(`/api/collections/${id}`, collection))
 };
 
 export const deleteCollection = (collectionId) => {

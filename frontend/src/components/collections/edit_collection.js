@@ -7,17 +7,20 @@ import Dropdown from '../dropdown/dropdown';
 
 
 
-class CollectionCreateForm extends React.Component{
+class EditCollectionForm extends React.Component{
   constructor(props){
     super(props);
 
+    let collection = this.props.collection;
+
     this.state = {
-      label: '',
-      hat_id: null,
-      top_id: null,
-      bottom_id: null,
-      shoe_id: null,
-      image_url: null,
+      label: collection.label,
+      hat_id: collection.hat_id,
+      top_id: collection.top_id,
+      bottom_id: collection.bottom_id,
+      shoe_id: collection.shoe_id,
+      image_url: collection.image_url,
+      // imageFile: collection.imageFile,
       imageFile: null,
       user_id: this.props.currentUser.id,
       data: {
@@ -33,6 +36,8 @@ class CollectionCreateForm extends React.Component{
     };
 
     this.previewImages = [];
+    this.fillPreviewImages = this.fillPreviewImages.bind(this);
+    this.fillPreviewImages();
 
     this.pickItem = this.pickItem.bind(this);
 
@@ -54,15 +59,15 @@ class CollectionCreateForm extends React.Component{
 
   handleSubmit(e){
     e.preventDefault();
-    // debugger;
-    this.props.createCollection(this.state);
+    debugger;
+    this.props.updateCollection(this.state, this.props.collectionId);
   }
 
   pickItem(type, id, imgUrl) {
     this.setState({[type + "_id"]: id});
     this.previewImages.push(
       <li key={id}>
-        <img src={imgUrl} alt='description goes here'></img>
+        <img src={imgUrl}></img>
       </li>
     )
   }
@@ -97,6 +102,7 @@ class CollectionCreateForm extends React.Component{
   }
 
   // ----------------------------------------------------------------------------------
+
   clear(field, id){
     return e => {
       this.setState({[field] : null})
@@ -106,6 +112,7 @@ class CollectionCreateForm extends React.Component{
           this.previewImages.splice(i, 1);
         }
       }
+      debugger;
     };
   }
 
@@ -116,19 +123,15 @@ class CollectionCreateForm extends React.Component{
   setActiveDD(type) {
     return e => {
       e.preventDefault();
-      // this.state.activeDD[type] = !this.state.activeDD[type];
-      let activeDD = this.state.activeDD;
-      activeDD[type] = !this.state.activeDD[type];
-      this.setState(Object.assign({}, this.state, activeDD));
-    }
+      this.state.activeDD[type] = !this.state.activeDD[type];
+      this.setState(this.state);
+    };
   }
 
   removeActiveDD(type) {
     return e => {
-      // this.state.activeDD[type] = false;
-      let activeDD = this.state.activeDD;
-      activeDD[type] = false;
-      this.setState(Object.assign({}, this.state, activeDD));
+      this.state.activeDD[type] = false;
+      this.setState(this.state);
     }
   }
 
@@ -139,29 +142,57 @@ class CollectionCreateForm extends React.Component{
   updateDD([type, value]) {
     return e => {
       this.removeActiveDD(type);
-      
-      // this.state.data[type] = value;
-      let data = this.state.data;
-      data[type] = value;
-      this.setState(Object.assign({}, this.state, data));
+      this.state.data[type] = value;
     }
   }
 
   getActiveDDIcon(type) {
     return this.state.activeDD[type] ? "up" : "down";
   }
+
+  fillPreviewImages(){
+    let hat = this.props.items[this.state.hat_id];
+    let top = this.props.items[this.state.top_id];
+    let bottom = this.props.items[this.state.bottom_id];
+    let shoe = this.props.items[this.state.shoe_id];
+    debugger;
+    let articles = [hat, top, bottom, shoe];
+    debugger;
+    // articles.forEach((article) => {
+    //   if(article){
+    //     this.previewImages.push(
+    //       <li key={article.id}>
+    //         <img src={article.image_url} ></img>
+    //       </li>
+    //     )
+    //   }
+    // })
+
+    for(let i = 0; i < articles.length; i++){
+      let article = articles[i];
+      if(article){
+        this.previewImages.push(
+          <li key={article._id}>
+            <img src={article.image_url} ></img>
+          </li>
+        )
+      }
+    }
+    debugger;
+  }
   
   render(){
     const imgTag = this.state.image_url ? (
       <>
-        <img src={this.state.image_url} alt='description goes here' />
+        <img src={this.state.image_url} />
       </>
     ) : null;
 
 
+    debugger;
     return(
       <div className="collection-creation-container">
-        <p>CollectionCreateForm</p>
+        <p>CollectionEditForm</p>
         <CollectionPreview previewImages={this.previewImages}/>
         <ModalContainer pickItem={this.pickItem} />
         <button onClick={this.props.receivePickHat}>Hat</button>
@@ -225,4 +256,4 @@ class CollectionCreateForm extends React.Component{
   }
 }
 
-export default CollectionCreateForm;
+export default EditCollectionForm;
