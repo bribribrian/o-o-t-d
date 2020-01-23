@@ -1,5 +1,6 @@
 import React from 'react';
 import { itemImageToAWS } from '../../util/aws_util';
+import { Link } from 'react-router-dom';
 
 import ModalContainer from '../modal/modal_container';
 import CollectionPreview from './collection_create_form_preview';
@@ -24,9 +25,9 @@ class EditCollectionForm extends React.Component{
       imageFile: null,
       user_id: this.props.currentUser.id,
       data: {
-        occasion: 'casual',
-        temperature: 'all',
-        precipitation: 'sunny'
+        occasion: collection.occasion,
+        temperature: collection.temperature,
+        precipitation: collection.precipitation
       },
       activeDD: {
         occasion: false,
@@ -35,6 +36,7 @@ class EditCollectionForm extends React.Component{
       }
     };
 
+    this.showPath = `/collections/${this.props.collectionId}`;
     this.previewImages = [];
     this.fillPreviewImages = this.fillPreviewImages.bind(this);
     this.fillPreviewImages();
@@ -59,7 +61,12 @@ class EditCollectionForm extends React.Component{
 
   handleSubmit(e){
     e.preventDefault();
-    this.props.updateCollection(this.state, this.props.collectionId);
+    this.props.updateCollection(this.state, this.props.collectionId)
+      .then(res => {
+        // debugger;
+        // console.log(res);
+        window.location.hash = `#/collections/${this.props.collectionId}`
+      });
   }
 
   pickItem(type, id, imgUrl) {
@@ -122,15 +129,19 @@ class EditCollectionForm extends React.Component{
   setActiveDD(type) {
     return e => {
       e.preventDefault();
-      this.state.activeDD[type] = !this.state.activeDD[type];
-      this.setState(this.state);
-    };
+      // this.state.activeDD[type] = !this.state.activeDD[type];
+      let activeDD = this.state.activeDD;
+      activeDD[type] = !this.state.activeDD[type];
+      this.setState(Object.assign({}, this.state, {activeDD: activeDD}));
+    }
   }
 
   removeActiveDD(type) {
     return e => {
-      this.state.activeDD[type] = false;
-      this.setState(this.state);
+      // this.state.activeDD[type] = false;
+      let activeDD = this.state.activeDD;
+      activeDD[type] = false;
+      this.setState(Object.assign({}, this.state, {activeDD: activeDD}));
     }
   }
 
@@ -140,8 +151,13 @@ class EditCollectionForm extends React.Component{
 
   updateDD([type, value]) {
     return e => {
+      debugger;
       this.removeActiveDD(type);
-      this.state.data[type] = value;
+      // this.state.data[type] = value;
+      let data = this.state.data;
+      data[type] = value;
+      this.setState(Object.assign({}, this.state, {[type] : value}));
+      debugger;
     }
   }
 
@@ -183,8 +199,6 @@ class EditCollectionForm extends React.Component{
         <img src={this.state.image_url} />
       </>
     ) : null;
-
-
     return(
       <div className="collection-creation-container">
         <p>CollectionEditForm</p>

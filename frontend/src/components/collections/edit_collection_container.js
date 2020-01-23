@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import { withRouter } from "react-router";
 
 import EditCollection from './edit_collection';
 
@@ -35,5 +36,6 @@ const mdp = dispatch => ({
   receivePickHat: () => dispatch(receivePickHat()),
   receivePickShoes: () => dispatch(receivePickShoes())
 });
+
 
 export default connect(msp, mdp)(EditCollection);

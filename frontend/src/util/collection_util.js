@@ -18,6 +18,7 @@ export const createCollection = (collection) => {
 };
 
 export const updateCollection = (collection, id) => {
+    debugger;
     // return axios.patch(`/api/collections/${collection._id}`, collection);
     return (axios.patch(`/api/collections/${id}`, collection))
 };
