@@ -54,7 +54,10 @@ class CollectionCreateForm extends React.Component{
 
   handleSubmit(e){
     e.preventDefault();
-    this.props.createCollection(this.state);
+    this.props.createCollection(this.state)
+      .then(res => {
+        window.location.hash = `#/collections`
+      });
   }
 
   pickItem(type, id, imgUrl) {
@@ -137,11 +140,13 @@ class CollectionCreateForm extends React.Component{
 
   updateDD([type, value]) {
     return e => {
+      debugger;
       this.removeActiveDD(type);
       // this.state.data[type] = value;
       let data = this.state.data;
       data[type] = value;
-      this.setState(Object.assign({}, this.state, data));
+      this.setState(Object.assign({}, this.state, {[type]: value}));
+      debugger;
     }
   }
 

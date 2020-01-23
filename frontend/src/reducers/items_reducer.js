@@ -20,7 +20,7 @@ const ItemsReducer = (state={}, action) => {
             return Object.assign({}, state, newState);
         case REMOVE_ITEM:
             newState = Object.assign({}, state);
-            delete newState[action.itemId];
+            delete newState[action.item.data._id];
             return newState;
         default:
             return state;

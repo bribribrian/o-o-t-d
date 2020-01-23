@@ -55,7 +55,10 @@ class ItemCreation extends React.Component{
       user_id: this.state.user_id
     };
 
-    this.props.createItem(formData);
+    this.props.createItem(formData)
+      .then(res => {
+        window.location.hash = `#/items`
+      });
   }
 
   handleImageInput(e){
