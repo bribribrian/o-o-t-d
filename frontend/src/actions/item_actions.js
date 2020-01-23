@@ -22,9 +22,9 @@ const receiveItemsError = (error) => ({
 
 // takes in an item id, but we could change this to take in an item,
 // it depends on what the backend sends in response to the axios request
-const removeItem = (itemId) => ({
+const removeItem = (item) => ({
     type: REMOVE_ITEM,
-    itemId
+    item
 });
 
 export const fetchItem = (itemId) => dispatch => {
@@ -57,7 +57,7 @@ export const updateItem = (item) => dispatch => (
 
 export const deleteItem = (itemId) => dispatch => (
     APIUtil.deleteItem(itemId)
-        .then(itemId => dispatch(removeItem(itemId)))
+        .then(item => dispatch(removeItem(item)))
         .catch(error => dispatch(receiveItemsError(error)))
 );
 
