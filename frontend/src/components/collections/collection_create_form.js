@@ -54,7 +54,6 @@ class CollectionCreateForm extends React.Component{
 
   handleSubmit(e){
     e.preventDefault();
-    // debugger;
     this.props.createCollection(this.state);
   }
 
@@ -119,7 +118,7 @@ class CollectionCreateForm extends React.Component{
       // this.state.activeDD[type] = !this.state.activeDD[type];
       let activeDD = this.state.activeDD;
       activeDD[type] = !this.state.activeDD[type];
-      this.setState(Object.assign({}, this.state, activeDD));
+      this.setState(Object.assign({}, this.state, {activeDD: activeDD}));
     }
   }
 
@@ -128,7 +127,7 @@ class CollectionCreateForm extends React.Component{
       // this.state.activeDD[type] = false;
       let activeDD = this.state.activeDD;
       activeDD[type] = false;
-      this.setState(Object.assign({}, this.state, activeDD));
+      this.setState(Object.assign({}, this.state, {activeDD: activeDD}));
     }
   }
 
@@ -139,7 +138,6 @@ class CollectionCreateForm extends React.Component{
   updateDD([type, value]) {
     return e => {
       this.removeActiveDD(type);
-      
       // this.state.data[type] = value;
       let data = this.state.data;
       data[type] = value;

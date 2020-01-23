@@ -17,7 +17,6 @@ import {
 const msp = (state, ownProps) => {
   let collectionId = ownProps.match.params.collection_id;
   // let path = ownProps.match.
-  debugger;
   return({
     collection: state.entities.collections[collectionId],
     currentUser: state.session.user,

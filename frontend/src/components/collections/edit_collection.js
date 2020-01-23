@@ -59,7 +59,6 @@ class EditCollectionForm extends React.Component{
 
   handleSubmit(e){
     e.preventDefault();
-    debugger;
     this.props.updateCollection(this.state, this.props.collectionId);
   }
 
@@ -112,7 +111,7 @@ class EditCollectionForm extends React.Component{
           this.previewImages.splice(i, 1);
         }
       }
-      debugger;
+
     };
   }
 
@@ -155,9 +154,7 @@ class EditCollectionForm extends React.Component{
     let top = this.props.items[this.state.top_id];
     let bottom = this.props.items[this.state.bottom_id];
     let shoe = this.props.items[this.state.shoe_id];
-    debugger;
     let articles = [hat, top, bottom, shoe];
-    debugger;
     // articles.forEach((article) => {
     //   if(article){
     //     this.previewImages.push(
@@ -178,7 +175,6 @@ class EditCollectionForm extends React.Component{
         )
       }
     }
-    debugger;
   }
   
   render(){
@@ -189,7 +185,6 @@ class EditCollectionForm extends React.Component{
     ) : null;
 
 
-    debugger;
     return(
       <div className="collection-creation-container">
         <p>CollectionEditForm</p>

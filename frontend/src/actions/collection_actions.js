@@ -60,7 +60,6 @@ export const createCollection = (collection) => dispatch => (
 );
 
 export const updateCollection = (collection, id) => dispatch => {
-    debugger;
     return(
     APIUtil.updateCollection(collection, id)
         .then(collection => dispatch(receiveCollection(collection)))

@@ -1,9 +1,5 @@
 import React from 'react';
-<<<<<<< HEAD
-import {Link} from 'react-router-dom';
-=======
 import { Link, Redirect } from 'react-router-dom';
->>>>>>> master
 
 class CollectionShow extends React.Component{
   constructor(props){

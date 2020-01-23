@@ -19,7 +19,6 @@ class Modal extends React.Component{
 
 
   render(){
-    // debugger;
     let { modalSlice: currentCategory, items } = this.props;
 
     if (currentCategory === 'none'){

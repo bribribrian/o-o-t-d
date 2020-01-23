@@ -26,7 +26,6 @@ router.get('/', (req, res) => {
 
 router.post('/', (req, res) => {
   const newCollection = new Collection(req.body);
-
   newCollection.save()
     .then(collection => res.json(collection))
     .catch(err => res.status(404).json({ collectionerror: 'could not save'}));
@@ -41,7 +40,6 @@ router.get('/:id', (req, res) => {
 });
 
 router.patch('/:id', (req, res) => {
-  debugger;
   let query = req.params.id;
   Collection.findByIdAndUpdate(
     query,
@@ -61,7 +59,6 @@ router.patch('/:id', (req, res) => {
 router.delete('/:id', (req, res) => {
   Collection.findByIdAndDelete(req.params.id)
     .then((result) => {
-      debugger;
       res.json(result);
     })
     .catch(err => res.status(404).json({ nocollectionfound: 'No collection found' }));
