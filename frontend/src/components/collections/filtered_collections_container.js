@@ -2,9 +2,12 @@ import { connect } from 'react-redux'
 
 import FilteredCollections from './filtered_collections';
 
-const msp = (state) => ({
-  collections: state.entities.collections
-});
+const msp = (state) => {
+  debugger;
+  return({
+  filteredCollections: state.entities.filteredCollections
+  })
+};
 
 const mdp = (dispatch) => ({
 

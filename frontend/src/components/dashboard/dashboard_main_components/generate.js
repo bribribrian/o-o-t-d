@@ -7,10 +7,15 @@ class Generate extends React.Component{
     super(props);
 
     this.state = {
+      // data: {
+      //   occasion: 'casual',
+      //   temperature: 'all',
+      //   precipitation: 'sunny'
+      // },
       data: {
-        occasion: 'casual',
-        temperature: 'all',
-        precipitation: 'sunny'
+        occasion: this.props.currentFilters.occasion,
+        temperature: this.props.currentFilters.temperature,
+        precipitation: this.props.currentFilters.precipitation,
       },
       activeDD: {
         occasion: false,
@@ -29,6 +34,7 @@ class Generate extends React.Component{
 
   handleSubmit(e){
     e.preventDefault();
+    debugger;
     this.props.fetchCollectionsWithFilters(this.props.currentUser.id, this.state.data);
   }
 
@@ -65,7 +71,20 @@ class Generate extends React.Component{
       // this.state.data[type] = value;
       let data = this.state.data;
       data[type] = value;
+      this.dispatchChangeFilter(type, value);
+      // debugger;
       this.setState(Object.assign({}, this.state, data))
+    }
+  }
+
+  dispatchChangeFilter(filter, value){
+    if(filter === 'occasion'){
+      debugger;
+      this.props.receiveOccasion(value);
+    }else if(filter === 'temperature'){
+      this.props.receiveTemperature(value);
+    }else{
+      this.props.receivePrecipitation(value);
     }
   }
 
@@ -74,6 +93,7 @@ class Generate extends React.Component{
   }
 
   render(){
+    debugger;
     return(
       <div>
         <div className="generate-container">
