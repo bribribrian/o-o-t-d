@@ -3,10 +3,6 @@ import { itemImageToAWS } from '../../util/aws_util';
 import Dropdown from '../dropdown/dropdown';
 import ItemsErrors from '../errors/items_errors';
 
-// in the constructor, generate a new formdata object - this.formData = FormData.new()
-// for each input field, call a function which sets or edits a formdata key to match that input
-// For the file input, our handler will
-// 
 
 class ItemCreation extends React.Component{
   constructor(props){
@@ -25,7 +21,8 @@ class ItemCreation extends React.Component{
     this.errors = [];
     this.renderedErrors = <p></p>;
 
-    this.handleUpload = this.handleUpload.bind(this);
+    this.handleTotalSubmit = this.handleTotalSubmit.bind(this);
+    // this.handleUpload = this.handleUpload.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleImageInput = this.handleImageInput.bind(this);
 
@@ -35,20 +32,47 @@ class ItemCreation extends React.Component{
     this.removeActiveDD = this.removeActiveDD.bind(this);
     this.getActiveDDIcon = this.getActiveDDIcon.bind(this);
   }
-
-
-  handleUpload(e){
+  handleTotalSubmit(e){
     e.preventDefault();
     const formData = new FormData();
     if(this.state.imageFile){
       formData.append('image', this.state.imageFile);
     }
-    // send ajax request, when we get json back, we save item (state) to the databas
     itemImageToAWS(formData)
       .then(({ data }) => {
         this.setState({ image_url: data['imageUrl']});
-      });
+    });
+    if(this.validateInput.length === 0){
+      this.renderedErrors = <p></p>;
+      this.errors = [];
+      const formData = {
+        label: this.state.label,
+        category: this.state.category,
+        image_url: this.state.image_url,
+        user_id: this.state.user_id
+      };
+
+      this.props.createItem(formData)
+        .then(res => {
+          window.location.hash = `#/items`
+        });
+    }else{
+      // this.renderedErrors = <ItemsErrors errors={this.errors}/>
+    }
   }
+
+  // handleUpload(e){
+  //   e.preventDefault();
+  //   const formData = new FormData();
+  //   if(this.state.imageFile){
+  //     formData.append('image', this.state.imageFile);
+  //   }
+  //   // send ajax request, when we get json back, we save item (state) to the databas
+  //   itemImageToAWS(formData)
+  //     .then(({ data }) => {
+  //       this.setState({ image_url: data['imageUrl']});
+  //   });
+  // }
 
   handleSubmit(e) {
     e.preventDefault();
@@ -143,10 +167,10 @@ class ItemCreation extends React.Component{
     
     return(
       <div className="item-creation-container">
-        <form onSubmit={this.handleUpload}>
+        <form onSubmit={this.handleTotalSubmit}>
           <input type='file' onChange={this.handleImageInput}></input>
           {imgTag}
-          <input type='submit' value="Upload"></input>
+          {/* <input type='submit' value="Upload"></input> */}
         </form>
         <div>
           <form onSubmit={this.handleSubmit}>

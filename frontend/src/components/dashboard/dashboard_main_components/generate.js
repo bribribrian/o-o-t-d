@@ -34,7 +34,6 @@ class Generate extends React.Component{
 
   handleSubmit(e){
     e.preventDefault();
-    debugger;
     this.props.fetchCollectionsWithFilters(this.props.currentUser.id, this.state.data);
   }
 
@@ -79,7 +78,6 @@ class Generate extends React.Component{
 
   dispatchChangeFilter(filter, value){
     if(filter === 'occasion'){
-      debugger;
       this.props.receiveOccasion(value);
     }else if(filter === 'temperature'){
       this.props.receiveTemperature(value);
@@ -93,7 +91,6 @@ class Generate extends React.Component{
   }
 
   render(){
-    debugger;
     return(
       <div>
         <div className="generate-container">

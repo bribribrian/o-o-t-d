@@ -7,12 +7,10 @@ class CollectionErrors extends React.Component{
   }
 
   render(){
-    debugger;
     let errorsList = this.props.errors.map((error) => {
       return <li key={error.length}><p>{error}</p></li>;
     })
 
-    debugger;
     return(
       <ul>
         {errorsList}
