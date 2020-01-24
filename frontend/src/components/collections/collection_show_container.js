@@ -7,6 +7,7 @@ import { fetchItem } from '../../actions/item_actions';
 import { deleteCollection } from '../../actions/collection_actions';
 
 const msp = (state, ownProps) => {
+  debugger;
   let path = ownProps.match.url;
   let collectionId = ownProps.match.params.collection_id;
   let collection = state.entities.collections[collectionId];

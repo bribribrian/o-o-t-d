@@ -40,9 +40,12 @@ class CollectionShow extends React.Component{
       }
     })
     collectionItems = collectionItems.map((item) => {
+      let showPath = `/items/${item._id}`;
       return <li key={item._id}>
-        <p>{item.label}</p>
-        <img src={item.image_url} alt='description goes here'></img>
+        <Link to={showPath}>
+          <p>{item.label}</p>
+          <img src={item.image_url} alt='description goes here'></img>
+        </Link>
       </li>
     })
 

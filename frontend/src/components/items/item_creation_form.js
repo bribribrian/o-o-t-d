@@ -23,7 +23,7 @@ class ItemCreation extends React.Component{
     };
 
     this.errors = [];
-    this.renderedErrors = <p></p>;
+    // this.renderedErrors = <p></p>;
 
     this.handleUpload = this.handleUpload.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -50,10 +50,16 @@ class ItemCreation extends React.Component{
       });
   }
 
+  componentDidUpdate(prevProps, prevState){
+    if(this.errors.length > 0){
+      this.errors = [];
+    }
+  }
+
   handleSubmit(e) {
     e.preventDefault();
-    if(this.validateInput.length === 0){
-      this.renderedErrors = <p></p>;
+    if(this.validateInput() === 0){
+      debugger;
       this.errors = [];
       const formData = {
         label: this.state.label,
@@ -67,7 +73,8 @@ class ItemCreation extends React.Component{
           window.location.hash = `#/items`
         });
     }else{
-      // this.renderedErrors = <ItemsErrors errors={this.errors}/>
+      debugger;
+      this.forceUpdate();
     }
   }
 
@@ -167,7 +174,8 @@ class ItemCreation extends React.Component{
             </div>
             <input type='submit' value="Submit"></input>
           </form>
-          {this.renderedErrors}
+          {/* {this.renderedErrors} */}
+          <ItemsErrors errors={this.errors}/>
         </div>
 
       </div>

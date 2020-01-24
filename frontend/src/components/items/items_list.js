@@ -81,15 +81,18 @@ class ItemsList extends React.Component {
 
     // map to get image and label only
     filteredItemsArr = filteredItemsArr.map((item) => {
+      let showPath = `/items/${item._id}`;
       return (
         <li key={item._id}>
-          <div className="item-container list-item-container">
-            <div className="item-img-wrapper list-item-img-wrapper" style={{ backgroundImage: 'url(' + item.image_url + ')' }}></div>
-            <div className="item-hover-info list-item-hover-info">
-              <p>{item.label}</p>
-              <Link to="/items"><button id={item._id} onClick={this.handleSubmit}>Delete</button></Link>
+          <Link to={showPath}>
+            <div className="item-container list-item-container">
+              <div className="item-img-wrapper list-item-img-wrapper" style={{ backgroundImage: 'url(' + item.image_url + ')' }}></div>
+              <div className="item-hover-info list-item-hover-info">
+                <p>{item.label}</p>
+                <Link to="/items"><button id={item._id} onClick={this.handleSubmit}>Delete</button></Link>
+              </div>
             </div>
-          </div>
+            </Link>
         </li>
       );
     });
