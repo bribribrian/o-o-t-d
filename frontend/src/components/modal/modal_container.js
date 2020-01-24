@@ -14,4 +14,5 @@ const mdp = (dispatch, ownProps) => ({
   pickItem: (type, id, imgUrl) => ownProps.pickItem(type, id, imgUrl)
 });
 
-export default connect(msp, mdp)(Modal);
+export default connect(msp, mdp)(Modal)
+

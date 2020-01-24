@@ -63,8 +63,6 @@ class EditCollectionForm extends React.Component{
     e.preventDefault();
     this.props.updateCollection(this.state, this.props.collectionId)
       .then(res => {
-        // debugger;
-        // console.log(res);
         window.location.hash = `#/collections/${this.props.collectionId}`
       });
   }

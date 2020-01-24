@@ -6,7 +6,6 @@ import {filterCollectionsByItem} from '../../util/item_util';
 import { fetchCollections } from '../../actions/collection_actions';
 
 const msp = (state, ownProps) => {
-  // debugger;
   let item = state.entities.items[ownProps.match.params.item_id]
   let collections = state.entities.collections;
   let memberCollections;
