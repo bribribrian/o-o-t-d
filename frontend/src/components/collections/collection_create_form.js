@@ -4,6 +4,7 @@ import { itemImageToAWS } from '../../util/aws_util';
 import ModalContainer from '../modal/modal_container';
 import CollectionPreview from './collection_create_form_preview';
 import Dropdown from '../dropdown/dropdown';
+import CollectionErrors from '../errors/collection_errors';
 
 
 
@@ -29,8 +30,11 @@ class CollectionCreateForm extends React.Component{
         occasion: false,
         temperature: false,
         precipitation: false
-      }
+      },
+      // errors: []
     };
+    this.errors = [];
+    this.renderedErrors = <p></p>;
 
     this.previewImages = [];
 
@@ -52,12 +56,58 @@ class CollectionCreateForm extends React.Component{
     this.props.fetchItems();
   }
 
+  componentDidUpdate(prevProps, prevState){
+    debugger;
+    if(this.errors.length > 0){
+      // this.setState({errors: []});
+      this.errors = [];
+    }
+
+  }
+
   handleSubmit(e){
     e.preventDefault();
-    this.props.createCollection(this.state)
-      .then(res => {
-        window.location.hash = `#/collections`
-      });
+    if(this.validateInput() === 0){
+      // this.renderedErrors = <p></p>;
+      this.setState({errors: []});
+      this.props.createCollection(this.state)
+        .then(res => {
+          window.location.hash = `#/collections`
+        });
+    }else{
+      debugger;
+      this.forceUpdate();
+    }
+    // might need to find way to trigger rerender manually
+  }
+
+  validateInput(){
+    let errorsCount = 0;
+    let items = [
+      this.state.hat_id,
+      this.state.top_id,
+      this.state.bottom_id,
+      this.state.shoe_id
+    ];
+    let itemsCount = 0;
+    items.forEach(item => {
+      if(item){
+        itemsCount += 1;
+      }
+    })
+    if(itemsCount < 1){
+      this.errors.push('must select at least one item');
+      errorsCount += 1;
+    }
+    if(!this.state.label){
+      this.errors.push('you must give the collection a label');
+      errorsCount += 1;
+    }
+    if(!this.state.image_url || this.state.image_url === ""){
+      this.errors.push('you must submit an image for the collection');
+      errorsCount += 1;
+    }
+    return errorsCount;
   }
 
   pickItem(type, id, imgUrl) {
@@ -161,7 +211,14 @@ class CollectionCreateForm extends React.Component{
       </>
     ) : null;
 
+    // let renderedErrors = <CollectionErrors errors={this.errors}/>;
+    // let renderedErrors = <ul>
+    //   {this.state.errors.map((error) => {
+    //     return <li key={error.length}><p>{error}</p></li>
+    //   })}
+    // </ul>
 
+    debugger;
     return(
       <div className="collection-creation-container">
         <p>CollectionCreateForm</p>
@@ -222,6 +279,9 @@ class CollectionCreateForm extends React.Component{
           </div>
         </div>
         <button onClick={this.handleSubmit}>Submit</button>
+        <CollectionErrors errors={this.errors}/>
+        {/* {renderedErrors} */}
+
       </div>
 
     );
