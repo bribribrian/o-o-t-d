@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link, Redirect } from 'react-router-dom';
+import DeleteModal from '../../components/delete_modal/delete_modal_container';
 
 class CollectionShow extends React.Component{
   constructor(props){
@@ -9,8 +10,9 @@ class CollectionShow extends React.Component{
 
 
   handleSubmit(){
-    const collectionId = this.props.collection._id
-    this.props.deleteCollection(collectionId);
+    // const collectionId = this.props.collection._id
+    // this.props.deleteCollection(collectionId);
+    this.props.openWarning()
   }
 
   componentDidMount(){
@@ -57,8 +59,10 @@ class CollectionShow extends React.Component{
         <p>{this.props.collection.label}</p>
         <ul>
           {collectionItems}
-          <Link to="/collections"><button onClick={this.handleSubmit}>Delete</button></Link>
+          {/* <Link to="/collections"><button onClick={this.handleSubmit}>Delete</button></Link> */}
+          <button onClick={this.handleSubmit}>Delete</button>
         </ul>
+        <DeleteModal/>
       </div>
     );
   }
