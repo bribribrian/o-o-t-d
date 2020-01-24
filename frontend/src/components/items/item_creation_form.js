@@ -1,6 +1,7 @@
 import React from 'react';
 import { itemImageToAWS } from '../../util/aws_util';
 import Dropdown from '../dropdown/dropdown';
+import ItemsErrors from '../errors/items_errors';
 
 // in the constructor, generate a new formdata object - this.formData = FormData.new()
 // for each input field, call a function which sets or edits a formdata key to match that input
@@ -20,6 +21,10 @@ class ItemCreation extends React.Component{
       path: '',
       activeDD: false
     };
+
+    this.errors = [];
+    this.renderedErrors = <p></p>;
+
     this.handleUpload = this.handleUpload.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleImageInput = this.handleImageInput.bind(this);
@@ -47,18 +52,36 @@ class ItemCreation extends React.Component{
 
   handleSubmit(e) {
     e.preventDefault();
+    if(this.validateInput.length === 0){
+      this.renderedErrors = <p></p>;
+      this.errors = [];
+      const formData = {
+        label: this.state.label,
+        category: this.state.category,
+        image_url: this.state.image_url,
+        user_id: this.state.user_id
+      };
 
-    const formData = {
-      label: this.state.label,
-      category: this.state.category,
-      image_url: this.state.image_url,
-      user_id: this.state.user_id
-    };
+      this.props.createItem(formData)
+        .then(res => {
+          window.location.hash = `#/items`
+        });
+    }else{
+      // this.renderedErrors = <ItemsErrors errors={this.errors}/>
+    }
+  }
 
-    this.props.createItem(formData)
-      .then(res => {
-        window.location.hash = `#/items`
-      });
+  validateInput(){
+    let errorsCount = 0;
+    if(!this.state.image_url || this.state.image_url === ""){
+      this.errors.push('must give item an image');
+      errorsCount += 1;
+    }
+    if(!this.state.label){
+      this.errors.push('must give item a label')
+      errorsCount += 1;
+    }
+    return errorsCount;
   }
 
   handleImageInput(e){
@@ -144,6 +167,7 @@ class ItemCreation extends React.Component{
             </div>
             <input type='submit' value="Submit"></input>
           </form>
+          {this.renderedErrors}
         </div>
 
       </div>
