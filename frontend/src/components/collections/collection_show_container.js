@@ -5,6 +5,7 @@ import CollectionShow from './collection_show';
 import { fetchItem } from '../../actions/item_actions';
 
 import { deleteCollection } from '../../actions/collection_actions';
+import { openWarning, closeWarning } from '../../actions/delete_modal_actions'
 
 const msp = (state, ownProps) => {
   let path = ownProps.match.url;
@@ -44,7 +45,9 @@ const msp = (state, ownProps) => {
 
 const mdp = dispatch => ({
   fetchItem: (itemId) => dispatch(fetchItem(itemId)),
-  deleteCollection: (collectionId) => dispatch(deleteCollection(collectionId))
+  deleteCollection: (collectionId) => dispatch(deleteCollection(collectionId)),
+  openWarning: () => dispatch(openWarning()),
+  closeWarning: () => dispatch(closeWarning())
 });
 
 export default connect(msp, mdp)(CollectionShow);
