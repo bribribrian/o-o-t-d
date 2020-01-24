@@ -41,7 +41,8 @@ class CollectionCreateForm extends React.Component{
 
     this.handleSubmit = this.handleSubmit.bind(this);
 
-    this.handleUpload = this.handleUpload.bind(this);
+    this.handleTotalSubmit = this.handleTotalSubmit.bind(this);
+    // this.handleUpload = this.handleUpload.bind(this);
     this.handleImageInput = this.handleImageInput.bind(this);
 
     this.getActiveDD = this.getActiveDD.bind(this);
@@ -56,11 +57,33 @@ class CollectionCreateForm extends React.Component{
   }
 
   componentDidUpdate(prevProps, prevState){
-    debugger;
     if(this.errors.length > 0){
       this.errors = [];
     }
 
+  }
+
+  handleTotalSubmit(e) {
+    e.preventDefault();
+    const formData = new FormData();
+    if (this.state.imageFile) {
+      formData.append('image', this.state.imageFile);
+    }
+    itemImageToAWS(formData)
+      .then(({ data }) => {
+        this.setState({ image_url: data['imageUrl'] });
+    });
+    e.preventDefault();
+    if(this.validateInput() === 0){
+      // this.renderedErrors = <p></p>;
+      this.setState({errors: []});
+      this.props.createCollection(this.state)
+        .then(res => {
+          window.location.hash = `#/collections`
+        });
+    }else{
+      this.forceUpdate();
+    }
   }
 
   handleSubmit(e){
@@ -73,7 +96,6 @@ class CollectionCreateForm extends React.Component{
           window.location.hash = `#/collections`
         });
     }else{
-      debugger;
       this.forceUpdate();
     }
   }
@@ -124,8 +146,6 @@ class CollectionCreateForm extends React.Component{
     )
   }
 
-  // ----------------------------------------------------------------------------------
-
   handleImageInput(e) {
     const reader = new FileReader();
     const file = e.currentTarget.files[0];
@@ -140,20 +160,19 @@ class CollectionCreateForm extends React.Component{
     }
   }
 
-  handleUpload(e) {
-    e.preventDefault();
-    const formData = new FormData();
-    if (this.state.imageFile) {
-      formData.append('image', this.state.imageFile);
-    }
-    // send ajax request, when we get json back, we save item (state) to the database
-    itemImageToAWS(formData)
-      .then(({ data }) => {
-        this.setState({ image_url: data['imageUrl'] });
-      });
-  }
+  // handleUpload(e) {
+  //   e.preventDefault();
+  //   const formData = new FormData();
+  //   if (this.state.imageFile) {
+  //     formData.append('image', this.state.imageFile);
+  //   }
+  //   // send ajax request, when we get json back, we save item (state) to the database
+  //   itemImageToAWS(formData)
+  //     .then(({ data }) => {
+  //       this.setState({ image_url: data['imageUrl'] });
+  //     });
+  // }
 
-  // ----------------------------------------------------------------------------------
   clear(field, id){
     return e => {
       this.setState({[field] : null})
@@ -193,12 +212,10 @@ class CollectionCreateForm extends React.Component{
 
   updateDD([type, value]) {
     return e => {
-      debugger;
       this.removeActiveDD(type);
       let data = this.state.data;
       data[type] = value;
       this.setState(Object.assign({}, this.state, {[type]: value}));
-      debugger;
     }
   }
 
@@ -214,7 +231,6 @@ class CollectionCreateForm extends React.Component{
     ) : null;
 
 
-    debugger;
     return(
       <div className="collection-creation-container">
         <p>CollectionCreateForm</p>
@@ -229,10 +245,10 @@ class CollectionCreateForm extends React.Component{
         <button onClick={this.props.receivePickShoes}>Shoes</button>
         <button onClick={this.clear('shoe_id', this.state.shoe_id)}>Clear Shoes</button>
         <div>
-          <form onSubmit={this.handleUpload}>
+          <form onSubmit={this.handleTotalUpload}>
             <input type='file' onChange={this.handleImageInput}></input>
               {imgTag}
-            <input type='submit'></input>
+            {/* <input type='submit'></input> */}
           </form>
         </div>
         <div>

@@ -19,7 +19,6 @@ const msp = (state, ownProps) => {
   }else if(item.category === 'shoes'){
     memberCollections = filterCollectionsByItem(item, 'shoe_id', collections);
   }
-  debugger;
   return({
     item,
     memberCollections,

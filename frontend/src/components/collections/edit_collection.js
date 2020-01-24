@@ -151,13 +151,11 @@ class EditCollectionForm extends React.Component{
 
   updateDD([type, value]) {
     return e => {
-      debugger;
       this.removeActiveDD(type);
       // this.state.data[type] = value;
       let data = this.state.data;
       data[type] = value;
       this.setState(Object.assign({}, this.state, {[type] : value}));
-      debugger;
     }
   }
 

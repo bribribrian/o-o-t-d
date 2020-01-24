@@ -27,7 +27,6 @@ class ItemShow extends React.Component{
         </li>
       );
     })
-    debugger;
     return(
       <div className='item-show-container'>
         <p>{item.label}</p>
