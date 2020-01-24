@@ -23,7 +23,6 @@ router.get("/test", (req, res) => res.json({ msg: "This is the items route" }));
 // });
 
 router.get('/', (req, res) => {
-  // console.log(req);
   Item.find().
     then(items => {
       return res.json(items);
@@ -32,7 +31,6 @@ router.get('/', (req, res) => {
 });
 
 router.get('/:id', (req, res) => {
-  // console.log(req);
   Item.findById(req.params.id).
     then(item => {
       return res.json(item);
@@ -89,7 +87,6 @@ router.patch('/:id', (req, res) => {
 
 
 router.delete('/:id', (req, res) => {
-  // console.log(req);
   Item.findByIdAndDelete(req.params.id)
     .then((result) => {
       res.json(result);

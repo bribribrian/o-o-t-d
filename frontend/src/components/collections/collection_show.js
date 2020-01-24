@@ -56,7 +56,7 @@ class CollectionShow extends React.Component{
     return(
       <div>
         <Link to={editPath}><p>Edit Collection</p></Link>
-        <p>{this.props.collection.label}</p>
+        <p>{this.props.collection ? this.props.collection.label : ""}</p>
         <ul>
           {collectionItems}
           {/* <Link to="/collections"><button onClick={this.handleSubmit}>Delete</button></Link> */}

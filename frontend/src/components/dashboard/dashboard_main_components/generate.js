@@ -71,7 +71,6 @@ class Generate extends React.Component{
       let data = this.state.data;
       data[type] = value;
       this.dispatchChangeFilter(type, value);
-      // debugger;
       this.setState(Object.assign({}, this.state, data))
     }
   }

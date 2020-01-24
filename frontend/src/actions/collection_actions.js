@@ -74,11 +74,9 @@ export const updateCollection = (collection, id) => dispatch => {
 export const deleteCollection = (collectionId) => dispatch => (
     APIUtil.deleteCollection(collectionId) 
         .then((collection) => {
-            debugger;
             dispatch(removeCollection(collection))  
         }) 
-        // .catch((error) => {
-        //     debugger;
-        //     dispatch(receiveCollectionError(error.response.data))
-        // })
+        .catch((error) => {
+            dispatch(receiveCollectionError(error.response.data))
+        })
 );

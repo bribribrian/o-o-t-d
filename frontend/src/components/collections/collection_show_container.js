@@ -30,10 +30,12 @@ const msp = (state, ownProps) => {
   // we need to fetch each of these items in order to be able
   // to display the corresponding images
   let itemsIds = [];
-  itemsIds.push(collection.hat_id);
-  itemsIds.push(collection.top_id);
-  itemsIds.push(collection.bottom_id);
-  itemsIds.push(collection.shoe_id);
+  if (collection) {
+    itemsIds.push(collection.hat_id);
+    itemsIds.push(collection.top_id);
+    itemsIds.push(collection.bottom_id);
+    itemsIds.push(collection.shoe_id);
+  }
 
   return({
     collection,

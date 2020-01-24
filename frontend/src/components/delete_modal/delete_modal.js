@@ -12,16 +12,14 @@ class DeleteModal extends React.Component{
   handleClick(e){
     console.log(this.props);
     e.preventDefault();
-    debugger;
-
     const { deleteCollection, closeWarning, collection } = this.props;
     // const { id, img } = e.currentTarget.dataset;
 
-    deleteCollection(collection._id);
-        // .then(res => {
-        //     window.location.hash = `#/collections`
-        // });
-    this.redirect();
+    deleteCollection(collection._id)
+        .then(res => {
+            window.location.hash = `#/collections`
+        });
+    // this.redirect();
     closeWarning();
   }
 

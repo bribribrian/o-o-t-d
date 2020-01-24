@@ -6,7 +6,6 @@ import { closeWarning } from '../../actions/delete_modal_actions';
 import { deleteCollection } from '../../actions/collection_actions';
 
 const msp = (state, ownProps) => {
-    debugger;
     console.log(ownProps);
     let path = ownProps.match.url;
     let collectionId = ownProps.match.params.collection_id;
