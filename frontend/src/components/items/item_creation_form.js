@@ -19,7 +19,7 @@ class ItemCreation extends React.Component{
     };
 
     this.errors = [];
-    this.renderedErrors = <p></p>;
+    // this.renderedErrors = <p></p>;
 
     this.handleTotalSubmit = this.handleTotalSubmit.bind(this);
     // this.handleUpload = this.handleUpload.bind(this);
@@ -61,23 +61,15 @@ class ItemCreation extends React.Component{
     }
   }
 
-  // handleUpload(e){
-  //   e.preventDefault();
-  //   const formData = new FormData();
-  //   if(this.state.imageFile){
-  //     formData.append('image', this.state.imageFile);
-  //   }
-  //   // send ajax request, when we get json back, we save item (state) to the databas
-  //   itemImageToAWS(formData)
-  //     .then(({ data }) => {
-  //       this.setState({ image_url: data['imageUrl']});
-  //   });
-  // }
+  componentDidUpdate(prevProps, prevState){
+    if(this.errors.length > 0){
+      this.errors = [];
+    }
+  }
 
   handleSubmit(e) {
     e.preventDefault();
-    if(this.validateInput.length === 0){
-      this.renderedErrors = <p></p>;
+    if(this.validateInput() === 0){
       this.errors = [];
       const formData = {
         label: this.state.label,
@@ -91,7 +83,7 @@ class ItemCreation extends React.Component{
           window.location.hash = `#/items`
         });
     }else{
-      // this.renderedErrors = <ItemsErrors errors={this.errors}/>
+      this.forceUpdate();
     }
   }
 
@@ -191,7 +183,8 @@ class ItemCreation extends React.Component{
             </div>
             <input type='submit' value="Submit"></input>
           </form>
-          {this.renderedErrors}
+          {/* {this.renderedErrors} */}
+          <ItemsErrors errors={this.errors}/>
         </div>
 
       </div>

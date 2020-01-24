@@ -12,7 +12,7 @@ const msp = (state, ownProps) => {
   let collection = state.entities.collections[collectionId];
 
   // if (typeof collection === 'undefined') {
-  //   debugger;
+
   //   return (
   //     <Redirect to="/collections"></Redirect>
   //   )

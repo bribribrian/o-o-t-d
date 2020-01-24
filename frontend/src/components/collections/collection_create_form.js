@@ -30,8 +30,7 @@ class CollectionCreateForm extends React.Component{
         occasion: false,
         temperature: false,
         precipitation: false
-      },
-      // errors: []
+      }
     };
     this.errors = [];
     this.renderedErrors = <p></p>;
@@ -59,7 +58,6 @@ class CollectionCreateForm extends React.Component{
 
   componentDidUpdate(prevProps, prevState){
     if(this.errors.length > 0){
-      // this.setState({errors: []});
       this.errors = [];
     }
 
@@ -100,7 +98,6 @@ class CollectionCreateForm extends React.Component{
     }else{
       this.forceUpdate();
     }
-    // might need to find way to trigger rerender manually
   }
 
   validateInput(){
@@ -133,6 +130,14 @@ class CollectionCreateForm extends React.Component{
   }
 
   pickItem(type, id, imgUrl) {
+    if(this.state[`${type}_id`]){
+      for(let i = 0; i < this.previewImages.length; i++){
+        let curImage = this.previewImages[i];
+        if(curImage.key === this.state[`${type}_id`]){
+          this.previewImages.splice(i, 1);
+        }
+      }
+    }
     this.setState({[type + "_id"]: id});
     this.previewImages.push(
       <li key={id}>
@@ -187,7 +192,6 @@ class CollectionCreateForm extends React.Component{
   setActiveDD(type) {
     return e => {
       e.preventDefault();
-      // this.state.activeDD[type] = !this.state.activeDD[type];
       let activeDD = this.state.activeDD;
       activeDD[type] = !this.state.activeDD[type];
       this.setState(Object.assign({}, this.state, {activeDD: activeDD}));
@@ -196,7 +200,6 @@ class CollectionCreateForm extends React.Component{
 
   removeActiveDD(type) {
     return e => {
-      // this.state.activeDD[type] = false;
       let activeDD = this.state.activeDD;
       activeDD[type] = false;
       this.setState(Object.assign({}, this.state, {activeDD: activeDD}));
@@ -210,7 +213,6 @@ class CollectionCreateForm extends React.Component{
   updateDD([type, value]) {
     return e => {
       this.removeActiveDD(type);
-      // this.state.data[type] = value;
       let data = this.state.data;
       data[type] = value;
       this.setState(Object.assign({}, this.state, {[type]: value}));
@@ -228,12 +230,6 @@ class CollectionCreateForm extends React.Component{
       </>
     ) : null;
 
-    // let renderedErrors = <CollectionErrors errors={this.errors}/>;
-    // let renderedErrors = <ul>
-    //   {this.state.errors.map((error) => {
-    //     return <li key={error.length}><p>{error}</p></li>
-    //   })}
-    // </ul>
 
     return(
       <div className="collection-creation-container">
@@ -296,7 +292,6 @@ class CollectionCreateForm extends React.Component{
         </div>
         <button onClick={this.handleSubmit}>Submit</button>
         <CollectionErrors errors={this.errors}/>
-        {/* {renderedErrors} */}
 
       </div>
 

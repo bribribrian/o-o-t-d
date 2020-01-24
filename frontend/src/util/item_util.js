@@ -19,3 +19,16 @@ export const updateItem = (item) => {
 export const deleteItem = (itemId) => {
     return axios.delete(`/api/items/${itemId}`);
 };
+
+
+export const filterCollectionsByItem = (item, itemCategory, collections) => {
+    let collectionsArr = Object.values(collections);
+    let res = [];
+    for(let i = 0; i < collectionsArr.length; i++){
+        let coll = collectionsArr[i];
+        if(coll[itemCategory] === item._id){
+            res.push(coll);
+        }
+    }
+    return res;
+}
