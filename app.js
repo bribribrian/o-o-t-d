@@ -6,7 +6,8 @@ const users = require("./routes/api/users");
 const items = require("./routes/api/items");
 const collections = require("./routes/api/collections");
 const User = require('./models/User');
-const fileRoutes = require("./routes/api/file-upload")
+const fileRoutes = require("./routes/api/file-upload");
+const favicon = require('serve-favicon');
 
 const db = require('./config/keys').mongoURI;
 mongoose
@@ -39,6 +40,7 @@ if (process.env.NODE_ENV === 'production') {
 
 
 // app.use('/api/collections', collections);
+// app.use(favicon(path.join(__dirname, 'frontend','src','style','shirt-icon-png-27.jpg')));
 app.use("/api/upload/", fileRoutes);
 app.use("/api/items", items);
 app.use("/api/users", users);
