@@ -1,7 +1,7 @@
 # README
 
 O-O-T-D
-Outfit of the Day
+### Outfit of the Day
 =
 [Live Site](https://mysticamp.herokuapp.com/)
 
@@ -20,7 +20,7 @@ Technologies Implemented:
    - CSS3
    - AWS
 
-<img src="https://ootd-dev.s3.amazonaws.com/o-o-t-d-login.png">
+<img src="https://ootd-dev.s3.amazonaws.com/o-o-t-d-login2.png">
 
 Features
 =
@@ -37,8 +37,7 @@ Features
 - ### Generate
     - User can view collections based on filters
 
-<img src="https://ootd-dev.s3.amazonaws.com/https://ootd-dev.s3.amazonaws.com/o-o-t-d-generate.png">
+<img src="https://ootd-dev.s3.amazonaws.com/o-o-t-d-generate.png">
 
 ## Team Members
-David Campuzano, Peter Kim, Brian Klein, Will Marino
 [David Campuzano](https://github.com/dcampuzano101), [Peter Kim](https://github.com/PedroKim), [Brian Klein](https://github.com/bribribrian), [Will Marino](https://github.com/willmarino)
