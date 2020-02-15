@@ -1,8 +1,8 @@
 # README
 
-O-O-T-D
+## O-O-T-D
 ### Outfit of the Day
-=
+
 [Live Site](https://mysticamp.herokuapp.com/)
 
 Thank you for visiting O-O-T-D, a MERN stack style generator. O-O-T-D is a outfit generator that produces and catalogs possible outfits for the user to choose from which are assembled based on clothing items withing the users own personal wardrobe. 
