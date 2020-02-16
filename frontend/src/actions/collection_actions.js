@@ -53,7 +53,10 @@ export const fetchCollections = (userId) => dispatch => (
 
 export const fetchCollectionsWithFilters = (userId, body) => dispatch => (
     APIUtil.fetchCollectionsWithFilters(userId, body)
-        .then(collections => dispatch(receiveFilteredCollections(collections)))
+        .then(collections => {
+
+            dispatch(receiveFilteredCollections(collections))
+        })
         .catch(error => dispatch(receiveCollectionError(error.response.data)))
 );
 

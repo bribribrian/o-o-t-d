@@ -6,9 +6,9 @@ import {
 } from '../actions/generate_filter_actions';
 
 const defState = {
-  occasion: 'casual',
+  occasion: 'all',
   temperature: 'all',
-  precipitation: 'sunny'
+  precipitation: 'all'
 }
 
 const GenerateFiltersReducer = (state=defState, action) => {

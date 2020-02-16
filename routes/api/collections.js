@@ -6,9 +6,36 @@ const passport = require('passport');
 const jwt = require('jsonwebtoken');
 const Collection = require('../../models/Collection');
 
+// allCollectyions
+
+// [occasion, temp, precipitation].forEach((filter) => {
+//   if(filter !== 'all'){
+//     filter by filter
+//   }
+// })
+
+// filtered collections
+
 router.get('/', (req, res) => {
-  if (req.query.occasion) {
-    Collection.find(req.query)
+  // all default values from frontend = 'all'
+
+  let filters = [req.query.occasion, req.query.temperature, req.query.precipitation];
+  let filterKeys = ['occasion', 'temperature', 'precipitation'];
+  let filtersObj = {user_id: req.query.user_id};
+  for(let i = 0; i < filters.length; i++){
+    let f = filters[i];
+    let key = filterKeys[i];
+    if(f !== 'all'){
+      req.query.occasion
+      req.query.precipitation
+      filtersObj[key] = f;
+    }
+  }
+
+
+// 
+  if (req.query.occasion || req.query.temperature || req.query.precipitation) {
+    Collection.find(filtersObj)
       .then(collections => {
         return res.json(collections);
       })
