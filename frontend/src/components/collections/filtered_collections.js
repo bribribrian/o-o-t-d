@@ -6,11 +6,25 @@ class FilteredCollections extends React.Component{
   constructor(props){
     super(props);
 
+    this.state = {
+      message : null
+    }
+    // this.message = null;
+
+  }
+
+  componentDidUpdate(prevProps){
+    if(Object.keys(this.props.filteredCollections).length === 0){
+      // this.message = 'No Collections Found';
+      if(prevProps.filteredCollections !== this.props.filteredCollections){
+        this.setState({message : 'Get outta here'});
+      }
+    }
   }
 
   render(){
     if(Object.keys(this.props.filteredCollections).length === 0){
-      return <p>loading</p>;
+      return <p>{this.state.message}</p>;
     }
 
     const { filteredCollections } = this.props;

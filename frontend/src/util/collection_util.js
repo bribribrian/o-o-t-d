@@ -6,7 +6,11 @@ export const fetchCollections = (userId) => {
 
 export const fetchCollectionsWithFilters = (userId, bodyFilters) => {
     const { occasion, temperature, precipitation } = bodyFilters;
+    // if (occasion === 'all') {
+    //     return axios.get(`/api/collections?user_id=${userId}&temperature=${temperature}&precipitation=${precipitation}`);
+    // } else {
     return axios.get(`/api/collections?user_id=${userId}&occasion=${occasion}&temperature=${temperature}&precipitation=${precipitation}`);
+    // };
 };
 
 export const fetchCollection = (collectionId) => {

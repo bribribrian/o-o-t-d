@@ -96,7 +96,7 @@ class Generate extends React.Component{
           <div className="generate-filters-container">
             <Dropdown label="occasion" 
               value={this.state.data.occasion} 
-              list={["casual", "formal", "semi-formal"]}
+              list={["all","casual", "formal", "semi-formal"]}
               getActiveDD={this.getActiveDD} 
               setActiveDD={this.setActiveDD} 
               updateDD={this.updateDD}
@@ -114,7 +114,7 @@ class Generate extends React.Component{
             />
             <Dropdown label="precipitation"
               value={this.state.data.precipitation}
-              list={["sunny", "rainy", "snowy"]}
+              list={["all", "sunny", "rainy", "snowy"]}
               getActiveDD={this.getActiveDD}
               setActiveDD={this.setActiveDD}
               updateDD={this.updateDD}
