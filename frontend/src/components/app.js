@@ -13,7 +13,7 @@ const App = (props) => (
   <div>
     <ProtectedRoute path="/" component={DashboardContainer} loggedIn={props.state().session.isAuthenticated}/>
     <AuthRoute path="/splash" component={SplashContainer} loggedIn={props.state().session.isAuthenticated}/>
-
+    <AuthRoute path="/login" component={SplashContainer} loggedIn={props.state().session.isAuthenticated}/>
     {/* <Route exact path="/item-creation" component={SimpleItemFormContainer}/> */}
     {/* <Route exact path="/collection-creation" component={CollectionCreateFormContainer} /> */}
   </div>
