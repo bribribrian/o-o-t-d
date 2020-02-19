@@ -7,7 +7,7 @@ class CollectionPreview extends React.Component{
 
   render(){
     return(
-      <ul>
+      <ul className="col-preview-images-ul">
         {this.props.previewImages}
       </ul>
     );

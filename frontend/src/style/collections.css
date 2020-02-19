@@ -20,3 +20,64 @@
 .collection-hover-info p {
   font-size: 24px;
 }
+
+
+.col-creation-image-label {
+  display: flex;
+  border: 1px solid black;
+  cursor: pointer;
+  width: fit-content;
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+.col-creation-image-label:hover {
+  background-color: #ffc552;
+  font-weight: bold;
+}
+
+.col-creation-image-button{
+  display: none;
+}
+.empty-col-image {
+  display: flex;
+  height: 300px;
+  width: 300px;
+  border: 2px solid black;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.chosen-col-image {
+  display: flex;
+  height: 300px;
+  width: 300px;
+  border: 2px solid black;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.col-preview-images-ul {
+  display: flex;
+}
+
+.col-preview-image-li {
+  height: 75px;
+}
+
+.col-create-form-submit {
+  box-sizing: border-box;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  font-family: 'Raleway', sans-serif;
+  font-size: 24px;
+  border: 1px solid black;
+  cursor: pointer;
+}
+
+.col-create-form-submit:hover {
+  background-color: #ffc552;
+  font-weight: bold;
+}

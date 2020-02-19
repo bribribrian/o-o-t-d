@@ -141,7 +141,7 @@ class CollectionCreateForm extends React.Component{
     this.setState({[type + "_id"]: id});
     this.previewImages.push(
       <li key={id}>
-        <img src={imgUrl} alt='description goes here'></img>
+        <img className="col-preview-image-li" src={imgUrl} alt='description goes here'></img>
       </li>
     )
   }
@@ -226,9 +226,9 @@ class CollectionCreateForm extends React.Component{
   render(){
     const imgTag = this.state.image_url ? (
       <>
-        <img src={this.state.image_url} alt='description goes here' />
+        <img className="chosen-col-image" src={this.state.image_url} alt='description goes here' />
       </>
-    ) : null;
+    ) : <div className="empty-col-image">No Preview Image</div>;
 
 
     return(
@@ -246,8 +246,11 @@ class CollectionCreateForm extends React.Component{
         <button onClick={this.clear('shoe_id', this.state.shoe_id)}>Clear Shoes</button>
         <div>
           <form onSubmit={this.handleTotalUpload}>
-            <input type='file' onChange={this.handleImageInput}></input>
-              {imgTag}
+            <label className="col-creation-image-label">
+              Select Collection Image
+              <input className="col-creation-image-button" type='file' onChange={this.handleImageInput}></input>
+            </label>
+            {imgTag}
             {/* <input type='submit'></input> */}
           </form>
         </div>
@@ -290,7 +293,7 @@ class CollectionCreateForm extends React.Component{
             />
           </div>
         </div>
-        <button onClick={this.handleSubmit}>Submit</button>
+        <button className="col-create-form-submit" onClick={this.handleSubmit}>Submit</button>
         <CollectionErrors errors={this.errors}/>
 
       </div>

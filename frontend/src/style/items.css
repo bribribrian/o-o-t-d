@@ -11,3 +11,39 @@
 .item-hover-info p {
   font-size: 20px;
 }
+
+
+.item-creation-image-label {
+  display: flex;
+  border: 1px solid black;
+  cursor: pointer;
+  width: fit-content;
+  margin-bottom: 5px;
+}
+.item-creation-image-label:hover {
+  background-color: #ffc552;
+  font-weight: bold;
+}
+
+.item-creation-image-button{
+  display: none;
+}
+.empty-item-image {
+  display: flex;
+  height: 300px;
+  width: 300px;
+  border: 2px solid black;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.chosen-item-image {
+  display: flex;
+  height: 300px;
+  width: 300px;
+  border: 2px solid black;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+}

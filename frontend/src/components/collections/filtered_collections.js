@@ -17,7 +17,7 @@ class FilteredCollections extends React.Component{
     if(Object.keys(this.props.filteredCollections).length === 0){
       // this.message = 'No Collections Found';
       if(prevProps.filteredCollections !== this.props.filteredCollections){
-        this.setState({message : 'Get outta here'});
+        this.setState({message : 'No Results'});
       }
     }
   }
