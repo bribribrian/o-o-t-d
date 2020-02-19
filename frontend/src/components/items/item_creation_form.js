@@ -153,14 +153,17 @@ class ItemCreation extends React.Component{
   render() {
     const imgTag = this.state.image_url ? (
       <>
-        <img src={this.state.image_url} alt='description goes here'/>
+        <img className="chosen-item-image" src={this.state.image_url} alt='description goes here'/>
       </>
-    ) : null;
+    ) : <div className="empty-item-image">No Preview Image</div>;
     
     return(
       <div className="item-creation-container">
         <form onSubmit={this.handleTotalSubmit}>
-          <input type='file' onChange={this.handleImageInput}></input>
+          <label className="item-creation-image-label">
+            Select Image
+            <input className="item-creation-image-button" type='file' onChange={this.handleImageInput}></input>
+          </label>
           {imgTag}
           {/* <input type='submit' value="Upload"></input> */}
         </form>
