@@ -37,7 +37,7 @@ Features
 - ### Generate
     - User can view collections based on filters
 
-<img src="https://ootd-dev.s3.amazonaws.com/o-o-t-d-generate.png">
+<img src='frontend/public/o-o-t-d_gen.gif'/>
 
 ## Team Members
 [David Campuzano](https://github.com/dcampuzano101), [Peter Kim](https://github.com/PedroKim), [Brian Klein](https://github.com/bribribrian), [Will Marino](https://github.com/willmarino)

@@ -140,8 +140,9 @@ class CollectionCreateForm extends React.Component{
     }
     this.setState({[type + "_id"]: id});
     this.previewImages.push(
-      <li key={id}>
+      <li className="col-preview-image-li-container" key={id}>
         <img className="col-preview-image-li" src={imgUrl} alt='description goes here'></img>
+        <button className="col-preview-image-li-button" onClick={this.clear(`${type}_id`, id)}>Clear Item</button>
       </li>
     )
   }
@@ -233,17 +234,19 @@ class CollectionCreateForm extends React.Component{
 
     return(
       <div className="collection-creation-container">
-        <p>CollectionCreateForm</p>
+        <p className="col-add-items-title">Add Items</p>
+        <div className="col-pick-items-container">
+          <ModalContainer pickItem={this.pickItem} />
+          <button className="col-pick-item-button-left" onClick={this.props.receivePickHat}>Hat</button>
+          {/* <button onClick={this.clear('hat_id', this.state.hat_id)}>Clear Hat</button> */}
+          <button className="col-pick-item-button" onClick={this.props.receivePickTop}>Top</button>
+          {/* <button onClick={this.clear('top_id', this.state.top_id)}>Clear Top</button> */}
+          <button className="col-pick-item-button" onClick={this.props.receivePickBottom}>Bottom</button>
+          {/* <button onClick={this.clear('bottom_id', this.state.bottom_id)}>Clear Bottom</button> */}
+          <button className="col-pick-item-button-right" onClick={this.props.receivePickShoes}>Shoes</button>
+          {/* <button onClick={this.clear('shoe_id', this.state.shoe_id)}>Clear Shoes</button> */}
+        </div>
         <CollectionPreview previewImages={this.previewImages}/>
-        <ModalContainer pickItem={this.pickItem} />
-        <button onClick={this.props.receivePickHat}>Hat</button>
-        <button onClick={this.clear('hat_id', this.state.hat_id)}>Clear Hat</button>
-        <button onClick={this.props.receivePickTop}>Top</button>
-        <button onClick={this.clear('top_id', this.state.top_id)}>Clear Top</button>
-        <button onClick={this.props.receivePickBottom}>Bottom</button>
-        <button onClick={this.clear('bottom_id', this.state.bottom_id)}>Clear Bottom</button>
-        <button onClick={this.props.receivePickShoes}>Shoes</button>
-        <button onClick={this.clear('shoe_id', this.state.shoe_id)}>Clear Shoes</button>
         <div>
           <form onSubmit={this.handleTotalUpload}>
             <label className="col-creation-image-label">
