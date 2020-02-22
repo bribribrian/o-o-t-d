@@ -20,6 +20,7 @@ import './style/navbar.css';
 import './style/generate.css';
 import './style/items.css';
 import './style/collections.css';
+import './style/collections_show.css';
 import './style/list.css';
 import './style/dropdown.css';
 import './style/modal.css';

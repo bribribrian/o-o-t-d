@@ -68,10 +68,20 @@ class EditCollectionForm extends React.Component{
   }
 
   pickItem(type, id, imgUrl) {
+    // for (let i = 0; i < this.previewImages.length; i++){
+    //   debugger;
+    //   if (this.previewImages[i].category === type) {
+    //     debugger;
+    //     this.previewImages = this.previewImages.splice(i, 1);
+    //   }
+    // };
     this.setState({[type + "_id"]: id});
+    this.previewImages = [];
+    this.fillPreviewImages();
     this.previewImages.push(
-      <li key={id}>
-        <img src={imgUrl}></img>
+      <li className="col-preview-image-li-container" key={id}>
+        <img className="col-preview-image-li" src={imgUrl} alt='description goes here'></img>
+        <button className="col-preview-image-li-button" onClick={this.clear(`${type}_id`, id)}>Clear Item</button>
       </li>
     )
   }
@@ -181,8 +191,9 @@ class EditCollectionForm extends React.Component{
       let article = articles[i];
       if(article){
         this.previewImages.push(
-          <li key={article._id}>
-            <img src={article.image_url} ></img>
+          <li className="col-preview-image-li-container" key={article._id}>
+            <img className="col-preview-image-li" src={article.image_url} ></img>
+            <button className="col-preview-image-li-button" onClick={this.clear(article.category + "_id", article._id)}>Clear Item</button>
           </li>
         )
       }
@@ -192,27 +203,32 @@ class EditCollectionForm extends React.Component{
   render(){
     const imgTag = this.state.image_url ? (
       <>
-        <img src={this.state.image_url} />
+        <img className="chosen-col-image" src={this.state.image_url} />
       </>
     ) : null;
     return(
       <div className="collection-creation-container">
-        <p>CollectionEditForm</p>
-        <CollectionPreview previewImages={this.previewImages}/>
+        <p className="col-add-items-title">Edit Collection</p>
+        <div className="col-pick-items-container">
         <ModalContainer pickItem={this.pickItem} />
-        <button onClick={this.props.receivePickHat}>Hat</button>
-        <button onClick={this.clear('hat_id', this.state.hat_id)}>Clear Hat</button>
-        <button onClick={this.props.receivePickTop}>Top</button>
-        <button onClick={this.clear('top_id', this.state.top_id)}>Clear Top</button>
-        <button onClick={this.props.receivePickBottom}>Bottom</button>
-        <button onClick={this.clear('bottom_id', this.state.bottom_id)}>Clear Bottom</button>
-        <button onClick={this.props.receivePickShoes}>Shoes</button>
-        <button onClick={this.clear('shoe_id', this.state.shoe_id)}>Clear Shoes</button>
+          <button className="col-pick-item-button-left" onClick={this.props.receivePickHat}>Hat</button>
+          {/* <button onClick={this.clear('hat_id', this.state.hat_id)}>Clear Hat</button> */}
+          <button className="col-pick-item-button" onClick={this.props.receivePickTop}>Top</button>
+          {/* <button onClick={this.clear('top_id', this.state.top_id)}>Clear Top</button> */}
+          <button className="col-pick-item-button" onClick={this.props.receivePickBottom}>Bottom</button>
+          {/* <button onClick={this.clear('bottom_id', this.state.bottom_id)}>Clear Bottom</button> */}
+          <button className="col-pick-item-button-right" onClick={this.props.receivePickShoes}>Shoes</button>
+          {/* <button onClick={this.clear('shoe_id', this.state.shoe_id)}>Clear Shoes</button> */}
+        </div>
+        <CollectionPreview previewImages={this.previewImages}/>
         <div>
           <form onSubmit={this.handleUpload}>
-            <input type='file' onChange={this.handleImageInput}></input>
+            <label className="col-creation-image-label">
+                Select Collection Image
+              <input className="col-creation-image-button" type='file' type='file' onChange={this.handleImageInput}></input>
+              </label>
               {imgTag}
-            <input type='submit'></input>
+            {/* <input type='submit'></input> */}
           </form>
         </div>
         <div>
@@ -254,7 +270,7 @@ class EditCollectionForm extends React.Component{
             />
           </div>
         </div>
-        <button onClick={this.handleSubmit}>Submit</button>
+        <button className="col-create-form-submit" onClick={this.handleSubmit}>Submit</button>
       </div>
 
     );

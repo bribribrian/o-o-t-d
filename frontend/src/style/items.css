@@ -19,6 +19,7 @@
   cursor: pointer;
   width: fit-content;
   margin-bottom: 5px;
+  padding: 2px;
 }
 .item-creation-image-label:hover {
   background-color: #ffc552;
@@ -46,4 +47,16 @@
   align-items: center;
   justify-content: center;
   margin-bottom: 10px;
+}
+
+.item-delete-button {
+  border: 2px solid black;
+  color: black;
+  font-weight: bold;
+  position: relative;
+  top: -135px;
+  right: 5px;
+  padding-bottom: 1px;
+  padding-left: 2px;
+  padding-right: 2px;
 }

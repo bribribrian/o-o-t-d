@@ -29,12 +29,14 @@ class ItemShow extends React.Component{
     })
     return(
       <div className='item-show-container'>
-        <p>{item.label}</p>
-        <img src={item.image_url}></img>
-        <p>This item is a part of these collections</p>
-        <ul>
-          {memberCollectionsArr}
-        </ul>
+        <p className="show-col-title" >{item.label}</p>
+        <img className="show-col-li-image" src={item.image_url}></img>
+        <p className="show-item-col-belong">This item is a part of these collections</p>
+        <div className="collections-container list-container">
+          <ul className="collections list">
+            {memberCollectionsArr}
+          </ul>
+        </div>
       </div>
     )
   }

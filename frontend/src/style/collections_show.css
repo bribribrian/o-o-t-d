@@ -1,0 +1,77 @@
+.show-col-title {
+    font-family: 'Unica One', cursive;
+    text-decoration: none;
+    font-size: 40px;
+}
+
+.show-col-buttons-container {
+    display: flex;
+    margin-bottom: 10px;
+}
+.show-edit-col-button {
+  font-size: 16px;
+  padding-left: 3px;
+  padding-right: 3px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  margin-right: 5px;
+  display: flex;
+  border: 1px solid black;
+  cursor: pointer;
+  width: fit-content;
+}
+.show-edit-col-button:hover {
+    background-color: #ffc552;
+    font-weight: bold;
+}
+
+.show-delete-col-button {
+    font-size: 16px;
+    padding-left: 3px;
+    padding-right: 3px;
+    margin-right: 5px;
+    display: flex;
+    border: 1px solid black;
+    cursor: pointer;
+    width: fit-content;
+}
+.show-delete-col-button:hover {
+    background-color: red;
+    font-weight: bold;
+}
+
+.show-col-li-container {
+    margin-right: 5px;
+}
+
+.show-col-items-ul{
+    display: flex;
+}
+
+.show-col-li-label {
+
+}
+
+.show-col-li-image {
+    height: 300px;
+    border: 2px solid black;
+    margin-bottom: 15px;
+
+}
+
+
+
+/* -------item show ------- */
+
+/* .show-item-col-belong {
+
+} */
+
+/* .item-show-col-container {
+
+} */
+
+/* #show-items-col-belong-img {
+    display: flex;
+    height: 200px;
+} */

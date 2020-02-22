@@ -43,10 +43,10 @@ class CollectionShow extends React.Component{
     })
     collectionItems = collectionItems.map((item) => {
       let showPath = `/items/${item._id}`;
-      return <li key={item._id}>
+      return <li className="show-col-li-container" key={item._id}>
         <Link to={showPath}>
-          <p>{item.label}</p>
-          <img src={item.image_url} alt='description goes here'></img>
+          <p className="show-col-li-label" >{item.label}</p>
+          <img className="show-col-li-image" src={item.image_url} alt='description goes here'></img>
         </Link>
       </li>
     })
@@ -55,12 +55,14 @@ class CollectionShow extends React.Component{
 
     return(
       <div>
-        <Link to={editPath}><p>Edit Collection</p></Link>
-        <p>{this.props.collection ? this.props.collection.label : ""}</p>
-        <ul>
+        <p className="show-col-title">{this.props.collection ? this.props.collection.label : ""}</p>
+        <div className="show-col-buttons-container">
+          <Link to={editPath}><p className="show-edit-col-button">Edit Collection</p></Link>
+          <button className="show-delete-col-button" onClick={this.handleSubmit}>Delete Collection</button>
+        </div>
+        <ul className="show-col-items-ul">
           {collectionItems}
           {/* <Link to="/collections"><button onClick={this.handleSubmit}>Delete</button></Link> */}
-          <button onClick={this.handleSubmit}>Delete</button>
         </ul>
         <DeleteModal/>
       </div>

@@ -78,8 +78,7 @@
 
 .col-creation-image-label {
   font-size: 16px;
-  padding-left: 3px;
-  padding-right: 3px;
+  padding: 2px;
   display: flex;
   border: 1px solid black;
   cursor: pointer;

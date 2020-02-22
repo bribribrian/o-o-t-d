@@ -89,7 +89,7 @@ class ItemsList extends React.Component {
               <div className="item-img-wrapper list-item-img-wrapper" style={{ backgroundImage: 'url(' + item.image_url + ')' }}></div>
               <div className="item-hover-info list-item-hover-info">
                 <p>{item.label}</p>
-                <Link to="/items"><button id={item._id} onClick={this.handleSubmit}>Delete</button></Link>
+                <Link to="/items"><button className="item-delete-button" id={item._id} onClick={this.handleSubmit}>X</button></Link>
               </div>
             </div>
             </Link>
