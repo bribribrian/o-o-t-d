@@ -57,6 +57,14 @@ class EditCollectionForm extends React.Component{
 
   componentDidMount(){
     this.props.fetchItems();
+    this.props.fetchCollection(this.props.collectionId);
+  }
+
+  componentDidUpdate(prevProps){
+    if (prevProps.items !== this.props.items) {
+      this.previewImages = [];
+      this.fillPreviewImages();
+    }
   }
 
   handleSubmit(e){
@@ -68,23 +76,16 @@ class EditCollectionForm extends React.Component{
   }
 
   pickItem(type, id, imgUrl) {
-    // for (let i = 0; i < this.previewImages.length; i++){
-    //   debugger;
-    //   if (this.previewImages[i].category === type) {
-    //     debugger;
-    //     this.previewImages = this.previewImages.splice(i, 1);
-    //   }
-    // };
-    this.setState({[type + "_id"]: id});
-    this.previewImages = [];
-    this.fillPreviewImages();
     this.previewImages.push(
       <li className="col-preview-image-li-container" key={id}>
         <img className="col-preview-image-li" src={imgUrl} alt='description goes here'></img>
         <button className="col-preview-image-li-button" onClick={this.clear(`${type}_id`, id)}>Clear Item</button>
       </li>
     )
-  }
+    let old_id = this.state[type + "_id"];
+    this.deletePreviewImage(old_id);
+    this.setState({[type + "_id"]: id})
+  };
 
   // ----------------------------------------------------------------------------------
 
@@ -120,6 +121,7 @@ class EditCollectionForm extends React.Component{
   clear(field, id){
     return e => {
       this.setState({[field] : null})
+      // debugger;
       for(let i = 0; i < this.previewImages.length; i++){
         let curImage = this.previewImages[i];
         if(curImage.key === id){
@@ -177,30 +179,44 @@ class EditCollectionForm extends React.Component{
     let bottom = this.props.items[this.state.bottom_id];
     let shoe = this.props.items[this.state.shoe_id];
     let articles = [hat, top, bottom, shoe];
-    // articles.forEach((article) => {
-    //   if(article){
-    //     this.previewImages.push(
-    //       <li key={article.id}>
-    //         <img src={article.image_url} ></img>
-    //       </li>
-    //     )
-    //   }
-    // })
-
+   
     for(let i = 0; i < articles.length; i++){
       let article = articles[i];
+      let category;
       if(article){
+        if (article.category === "shoes") {
+          category = "shoe";
+        } else {
+          category = article.category;
+      };
         this.previewImages.push(
           <li className="col-preview-image-li-container" key={article._id}>
             <img className="col-preview-image-li" src={article.image_url} ></img>
-            <button className="col-preview-image-li-button" onClick={this.clear(article.category + "_id", article._id)}>Clear Item</button>
+            <button className="col-preview-image-li-button" onClick={this.clear(category + "_id", article._id)}>Clear Item</button>
           </li>
         )
       }
     }
   }
+
+  deletePreviewImage(id) {
+    for (let i = 0; i < this.previewImages.length; i++) {
+      if (this.previewImages[i].key === id) {
+        this.previewImages.splice(i,1);
+      }
+    }
+  };
+
+
+
   
   render(){
+    // debugger;
+    if (!this.props.collection || !this.props.items) {
+      return <p></p>
+    }
+    // debugger;
+
     const imgTag = this.state.image_url ? (
       <>
         <img className="chosen-col-image" src={this.state.image_url} />

@@ -3,7 +3,7 @@ import { withRouter } from "react-router";
 
 import EditCollection from './edit_collection';
 
-import { updateCollection } from '../../actions/collection_actions';
+import { updateCollection, fetchCollection } from '../../actions/collection_actions';
 
 import { fetchItems } from '../../actions/item_actions';
 
@@ -29,6 +29,7 @@ const msp = (state, ownProps) => {
 
 const mdp = dispatch => ({
   updateCollection: (collection, id) => dispatch(updateCollection(collection, id)),
+  fetchCollection: (collectionId) => dispatch(fetchCollection(collectionId)),
   fetchItems: () => dispatch(fetchItems()),
   receivePickNone: () => dispatch(receivePickNone()),
   receivePickTop: () => dispatch(receivePickTop()),

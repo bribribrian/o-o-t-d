@@ -53,7 +53,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // *** still need to make logout/login actions
     if(decodedUser.exp < currentTime) {
       store.dispatch(logout());
-      window.location.href = '/login';
+      // window.location.href = '/#';
+      window.location.hash = `#/splash`;
     }
   }
   else{
