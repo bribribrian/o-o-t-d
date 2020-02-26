@@ -24,12 +24,12 @@ input {
   font-size: 24px;
 }
 
-input[type="submit"], input[type="file"] {
+input[type="submit"] {
   border: 1px solid black;
   cursor: pointer;
 }
 
-input[type="submit"]:hover, input[type="file"]:hover {
+input[type="submit"]:hover {
   background-color: #ffc552;
   font-weight: bold;
 }
