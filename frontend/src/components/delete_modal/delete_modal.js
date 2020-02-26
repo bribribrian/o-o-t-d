@@ -6,6 +6,7 @@ class DeleteModal extends React.Component{
     super(props);
     console.log(props);
     this.handleClick = this.handleClick.bind(this);
+    this.closeModal = this.closeModal.bind(this);
     this.redirect = this.redirect.bind(this);
   }
 
@@ -21,6 +22,13 @@ class DeleteModal extends React.Component{
         });
     // this.redirect();
     closeWarning();
+  }
+
+  closeModal(e) {
+    // debugger;
+    if (e.currentTarget === e.target){
+      this.props.closeWarning();
+    }
   }
 
   redirect(){
@@ -53,17 +61,19 @@ class DeleteModal extends React.Component{
     //     </li>
     //   );
     // });
-    if (this.props.deleteModalSlice === 'closed') {
-        return null
-    } 
+    if (this.props.deleteModalSlice === 'closed') return null;
+
     return(
-      <div className="delete-collection-modal-wrapper" onClick={this.props.receivePickNone}>
+      <div className="delete-collection-modal-wrapper" onClick={this.closeModal}>
         <div className="modal-inner">
           <div className="items-container modal-container list-container">
             <div className="delete-collection-list-header">
               <h2>Are you sure you want to delete the collection?</h2>
             </div>
-            <button onClick={this.handleClick}>Delete Collection</button>
+            <div className="btn-delete-wrapper">
+              <input className="btn-confirm" type="submit" value="Delete" onClick={this.handleClick} />
+              <input className="btn-cancel" type="submit" value="Cancel" onClick={this.props.closeWarning} />
+            </div>
           </div>
         </div>
       </div>

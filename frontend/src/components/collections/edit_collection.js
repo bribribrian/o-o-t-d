@@ -79,7 +79,8 @@ class EditCollectionForm extends React.Component{
     this.previewImages.push(
       <li className="col-preview-image-li-container" key={id}>
         <img className="col-preview-image-li" src={imgUrl} alt='description goes here'></img>
-        <button className="col-preview-image-li-button" onClick={this.clear(`${type}_id`, id)}>Clear Item</button>
+        <input className="col-preview-image-li-button" type="submit" value="Clear Item" onClick={this.clear(`${type}_id`, id)} />
+        {/* <button className="col-preview-image-li-button" onClick={this.clear(`${type}_id`, id)}>Clear Item</button> */}
       </li>
     )
     let old_id = this.state[type + "_id"];
@@ -180,21 +181,23 @@ class EditCollectionForm extends React.Component{
     let shoe = this.props.items[this.state.shoe_id];
     let articles = [hat, top, bottom, shoe];
    
-    for(let i = 0; i < articles.length; i++){
+    for (let i = 0; i < articles.length; i++) {
       let article = articles[i];
       let category;
-      if(article){
+      if (article) {
         if (article.category === "shoes") {
           category = "shoe";
         } else {
           category = article.category;
-      };
+        }
+
         this.previewImages.push(
           <li className="col-preview-image-li-container" key={article._id}>
             <img className="col-preview-image-li" src={article.image_url} ></img>
-            <button className="col-preview-image-li-button" onClick={this.clear(category + "_id", article._id)}>Clear Item</button>
+            <input className="col-preview-image-li-button" type="submit" value={`Clear ${article.category}`} onClick={this.clear(category + "_id", article._id)} />
           </li>
-        )
+        );
+
       }
     }
   }
@@ -224,33 +227,39 @@ class EditCollectionForm extends React.Component{
     ) : null;
     return(
       <div className="collection-creation-container">
-        <p className="col-add-items-title">Edit Collection</p>
-        <div className="col-pick-items-container">
-        <ModalContainer pickItem={this.pickItem} />
-          <button className="col-pick-item-button-left" onClick={this.props.receivePickHat}>Hat</button>
-          {/* <button onClick={this.clear('hat_id', this.state.hat_id)}>Clear Hat</button> */}
-          <button className="col-pick-item-button" onClick={this.props.receivePickTop}>Top</button>
-          {/* <button onClick={this.clear('top_id', this.state.top_id)}>Clear Top</button> */}
-          <button className="col-pick-item-button" onClick={this.props.receivePickBottom}>Bottom</button>
-          {/* <button onClick={this.clear('bottom_id', this.state.bottom_id)}>Clear Bottom</button> */}
-          <button className="col-pick-item-button-right" onClick={this.props.receivePickShoes}>Shoes</button>
-          {/* <button onClick={this.clear('shoe_id', this.state.shoe_id)}>Clear Shoes</button> */}
-        </div>
-        <CollectionPreview previewImages={this.previewImages}/>
-        <div>
-          <form onSubmit={this.handleUpload}>
-            <label className="col-creation-image-label">
-                Select Collection Image
-              <input className="col-creation-image-button" type='file' type='file' onChange={this.handleImageInput}></input>
-              </label>
-              {imgTag}
-            {/* <input type='submit'></input> */}
-          </form>
+        <div className="collection-creation-header">
+          <h2>Edit Collection</h2>
         </div>
         <div>
           <p>Label</p>
           <input type='text' value={this.state.label} onChange={this.update('label')}></input>
         </div>
+        <div>
+          <form onSubmit={this.handleUpload}>
+            <label className="col-creation-image-label">
+              Select Collection Image
+              <input className="col-creation-image-button" type='file' type='file' onChange={this.handleImageInput}></input>
+            </label>
+            {imgTag}
+            {/* <input type='submit'></input> */}
+          </form>
+        </div>
+        <p className="col-add-items-title">Add/Edit Items</p>
+        <div className="col-pick-items-container">
+          <ModalContainer pickItem={this.pickItem} />
+          <input className="col-pick-item-button" type="submit" value="Hat" onClick={this.props.receivePickHat} />
+          <input className="col-pick-item-button" type="submit" value="Top" onClick={this.props.receivePickTop} />
+          <input className="col-pick-item-button" type="submit" value="Bottom" onClick={this.props.receivePickBottom} />
+          <input className="col-pick-item-button" type="submit" value="Shoes" onClick={this.props.receivePickShoes} />
+
+          {/* <button onClick={this.clear('hat_id', this.state.hat_id)}>Clear Hat</button> */}
+          {/* <button onClick={this.clear('top_id', this.state.top_id)}>Clear Top</button> */}
+          {/* <button onClick={this.clear('bottom_id', this.state.bottom_id)}>Clear Bottom</button> */}
+          {/* <button onClick={this.clear('shoe_id', this.state.shoe_id)}>Clear Shoes</button> */}
+        </div>
+        <CollectionPreview previewImages={this.previewImages}/>
+        
+        
         <div className="dd-container">
           <div className="dd-bm">
             <Dropdown label="occasion"
@@ -286,7 +295,9 @@ class EditCollectionForm extends React.Component{
             />
           </div>
         </div>
-        <button className="col-create-form-submit" onClick={this.handleSubmit}>Submit</button>
+        <div className="btn-create-form-wrapper">
+          <input type="submit" value="Submit" onClick={this.handleSubmit} />
+        </div>
       </div>
 
     );

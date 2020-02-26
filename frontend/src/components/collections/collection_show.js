@@ -9,10 +9,11 @@ class CollectionShow extends React.Component{
   }
 
 
-  handleSubmit(){
+  handleSubmit(e){
     // const collectionId = this.props.collection._id
     // this.props.deleteCollection(collectionId);
-    this.props.openWarning()
+    e.preventDefault();
+    this.props.openWarning();
   }
 
   componentDidMount(){
@@ -46,7 +47,13 @@ class CollectionShow extends React.Component{
       return <li className="show-col-li-container" key={item._id}>
         <Link to={showPath}>
           <p className="show-col-li-label" >{item.label}</p>
-          <img className="show-col-li-image" src={item.image_url} alt='description goes here'></img>
+          <div className="show-col-li-image-container">
+            <div className="show-col-li-image-inner">
+              <img className="show-col-li-image" 
+                src={item.image_url} 
+                alt='description goes here'/>
+            </div>
+          </div>
         </Link>
       </li>
     })
@@ -55,10 +62,13 @@ class CollectionShow extends React.Component{
 
     return(
       <div>
-        <p className="show-col-title">{this.props.collection ? this.props.collection.label : ""}</p>
+        <div className="show-col-header">
+          <h2>{this.props.collection ? this.props.collection.label : ""}</h2>
+        </div>
         <div className="show-col-buttons-container">
           <Link to={editPath}><p className="show-edit-col-button">Edit Collection</p></Link>
-          <button className="show-delete-col-button" onClick={this.handleSubmit}>Delete Collection</button>
+          <a className="show-delete-col-button" onClick={this.handleSubmit}><p>Delete Collection</p></a>
+          {/* <button className="show-delete-col-button" onClick={this.handleSubmit}>Delete Collection</button> */}
         </div>
         <ul className="show-col-items-ul">
           {collectionItems}

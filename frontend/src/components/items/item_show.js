@@ -18,7 +18,8 @@ class ItemShow extends React.Component{
         <li key={c._id}>
           <Link to={showPath}>
             <div className="collection-container list-item-container">
-              <div className="collection-img-wrapper list-item-img-wrapper" style={{ backgroundImage: 'url(' + c.image_url + ')' }}></div>
+              <div className="collection-img-wrapper list-item-img-wrapper" 
+                style={{ backgroundImage: 'url(' + c.image_url + ')' }}></div>
               <div className="collection-hover-info list-item-hover-info">
                   <p>{c.label}</p>
               </div>
@@ -29,8 +30,14 @@ class ItemShow extends React.Component{
     })
     return(
       <div className='item-show-container'>
-        <p className="show-col-title" >{item.label}</p>
-        <img className="show-col-li-image" src={item.image_url}></img>
+        <div className="show-col-header">
+          <h2>{item.label}</h2>
+        </div>
+        <div className="show-col-li-image-container">
+          <div className="show-col-li-image-inner">
+            <img className="show-col-li-image" src={item.image_url}></img>
+          </div>
+        </div>
         <p className="show-item-col-belong">This item is a part of these collections</p>
         <div className="collections-container list-container">
           <ul className="collections list">

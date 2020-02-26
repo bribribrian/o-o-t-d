@@ -1,62 +1,67 @@
-.show-col-title {
-    font-family: 'Unica One', cursive;
-    text-decoration: none;
-    font-size: 40px;
+.show-col-header {
+  margin-bottom: 20px;
+}
+.show-col-header h2{
+  margin-right: 40px;
+  font-size: 40px;
+  font-family: 'Unica One', cursive;
+  text-decoration: underline;
+  text-transform: uppercase;
 }
 
 .show-col-buttons-container {
     display: flex;
     margin-bottom: 10px;
 }
-.show-edit-col-button {
-  font-size: 16px;
-  padding-left: 3px;
-  padding-right: 3px;
-  padding-top: 2px;
-  padding-bottom: 2px;
-  margin-right: 5px;
-  display: flex;
+
+.show-col-buttons-container a {
+  display: block;
+  padding: 8px;
+  /* margin: 8px auto; */
+  margin-right: 10px;
+  margin-bottom: 10px;
+  font-size: 15px;
   border: 1px solid black;
   cursor: pointer;
-  width: fit-content;
 }
-.show-edit-col-button:hover {
-    background-color: #ffc552;
-    font-weight: bold;
+.show-col-buttons-container a:hover {
+  background-color: #ffc552;
+  font-weight: bold;
 }
 
-.show-delete-col-button {
-    font-size: 16px;
-    padding-left: 3px;
-    padding-right: 3px;
-    margin-right: 5px;
-    display: flex;
-    border: 1px solid black;
-    cursor: pointer;
-    width: fit-content;
-}
-.show-delete-col-button:hover {
-    background-color: red;
-    font-weight: bold;
+.show-col-buttons-container a.show-delete-col-button:hover {
+  background-color: #ff5959;
 }
 
 .show-col-li-container {
-    margin-right: 5px;
+  margin-right: 20px;
+  margin-bottom: 20px;
 }
 
 .show-col-items-ul{
-    display: flex;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .show-col-li-label {
 
 }
 
-.show-col-li-image {
-    height: 300px;
-    border: 2px solid black;
-    margin-bottom: 15px;
+.show-col-li-image-container {
+  margin-bottom: 20px;
+}
 
+.show-col-li-image-inner {
+  display: flex;
+  justify-content: center;
+  width: 362px;
+  height: 362px;
+  border: 2px solid black;
+  box-sizing: border-box;
+}
+
+.show-col-li-image {
+  height:100%;
 }
 
 

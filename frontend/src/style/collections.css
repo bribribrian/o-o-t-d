@@ -5,6 +5,14 @@
   height: 366px;
 }
 
+.collection-creation-header h2{
+  margin-bottom: 30px;
+  font-size: 40px;
+  font-family: 'Unica One', cursive;
+  text-decoration: underline;
+  text-transform: uppercase;
+}
+
 .collection-container .collection-img-wrapper {
   width: 362px;
   height: 362px;
@@ -30,61 +38,21 @@
   margin-bottom: 10px;
 } 
 
-.col-pick-item-button-left {
-  font-size: 16px;
-  padding-left: 3px;
-  padding-right: 3px;
-  margin-right: 5px;
-  display: flex;
-  border: 1px solid black;
-  cursor: pointer;
-  width: fit-content;
-}
-.col-pick-item-button-left:hover {
-  background-color: #ffc552;
-  font-weight: bold;
-}
-
 .col-pick-item-button {
-  font-size: 16px;
-  padding-left: 3px;
-  padding-right: 3px;
-  margin-left: 5px;
-  margin-right: 5px;
-  display: flex;
-  border: 1px solid black;
-  cursor: pointer;
-  width: fit-content;
-}
-.col-pick-item-button:hover {
-  background-color: #ffc552;
-  font-weight: bold;
-}
-
-.col-pick-item-button-right {
-  padding-left: 3px;
-  padding-right: 3px;
-  font-size: 16px;
-  margin-left: 5px;
-  display: flex;
-  border: 1px solid black;
-  cursor: pointer;
-  width: fit-content;
-}
-.col-pick-item-button-right:hover {
-  background-color: #ffc552;
-  font-weight: bold;
+  width: 80px;
+  padding: 8px;
+  margin-right: 15px;
+  font-size: 15px;
 }
 
 .col-creation-image-label {
-  font-size: 16px;
-  padding: 2px;
-  display: flex;
+  display: inline-block;
+  padding: 8px;
+  margin-top: 20px;
+  margin-bottom: 15px;
+  font-size: 15px;
   border: 1px solid black;
   cursor: pointer;
-  width: fit-content;
-  margin-top: 10px;
-  margin-bottom: 5px;
 }
 .col-creation-image-label:hover {
   background-color: #ffc552;
@@ -106,8 +74,8 @@
 
 .chosen-col-image {
   display: flex;
-  height: 300px;
-  width: 300px;
+  height: 375px;
+  width: 375px;
   border: 2px solid black;
   align-items: center;
   justify-content: center;
@@ -115,35 +83,44 @@
 }
 
 .col-preview-images-ul {
-  display: flex;
+  /* display: flex; */
 }
 
 .col-preview-image-li-container {
   display: flex;
-  flex-direction: column;
   align-items: center;
-
+  justify-content: center;
+  position: relative;
+  height: 300px;
+  width: 300px;
+  margin-bottom: 10px;
+  border: 2px solid black;
 }
 
 .col-preview-image-li {
-  height: 75px;
+  height: 100%;
 }
 
-.col-preview-image-li-button {
+input[type="submit"].col-preview-image-li-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 5px;
   font-size: 12px;
-  padding-left: 2px;
-  padding-right: 2px;
-  display: flex;
-  border: 1px solid black;
-  cursor: pointer;
-  width: fit-content;
+  border-top: 0;
+  border-right: 0;
+  background-color: #fcf9ee;
 }
 
-.col-preview-image-li-button:hover {
-  background-color: red;
-  font-weight: bold;
+input[type="submit"].col-preview-image-li-button:hover {
+  background-color: #ff5959;
 }
 
+.btn-create-form-wrapper input[type="submit"] {
+  width: 110px;
+  padding: 8px;
+  font-size: 16px;
+}
 
 .col-create-form-submit {
   padding-left: 3px;

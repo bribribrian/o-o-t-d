@@ -58,8 +58,41 @@
   font-size: 16px;
 }
 
+.delete-collection-modal-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.delete-collection-modal-wrapper .modal-inner {
+  width: auto;
+  height: auto;
+  padding: 20px;
+}
+
 .delete-collection-list-header {
   display: flex;
   align-items: center;
   margin-bottom: 20px;
+}
+
+.btn-delete-wrapper input[type="submit"] {
+  width: 110px;
+  margin-right: 10px;
+  padding: 8px;
+  font-size: 15px;
+}
+
+.btn-delete-wrapper input[type="submit"].btn-confirm:hover {
+  background-color: #ff5959;
+}
+
+.btn-delete-wrapper input[type="submit"].btn-cancel:hover {
+  background-color: #8ee78e;
 }

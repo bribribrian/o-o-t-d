@@ -142,7 +142,8 @@ class CollectionCreateForm extends React.Component{
     this.previewImages.push(
       <li className="col-preview-image-li-container" key={id}>
         <img className="col-preview-image-li" src={imgUrl} alt='description goes here'></img>
-        <button className="col-preview-image-li-button" onClick={this.clear(`${type}_id`, id)}>Clear Item</button>
+        <input className="col-preview-image-li-button" type="submit" value="Clear Item" onClick={this.clear(`${type}_id`, id)} />
+        {/* <button className="col-preview-image-li-button" onClick={this.clear(`${type}_id`, id)}>Clear Item</button> */}
       </li>
     )
   }
@@ -234,19 +235,13 @@ class CollectionCreateForm extends React.Component{
 
     return(
       <div className="collection-creation-container">
-        <p className="col-add-items-title">Add Items</p>
-        <div className="col-pick-items-container">
-          <ModalContainer pickItem={this.pickItem} />
-          <button className="col-pick-item-button-left" onClick={this.props.receivePickHat}>Hat</button>
-          {/* <button onClick={this.clear('hat_id', this.state.hat_id)}>Clear Hat</button> */}
-          <button className="col-pick-item-button" onClick={this.props.receivePickTop}>Top</button>
-          {/* <button onClick={this.clear('top_id', this.state.top_id)}>Clear Top</button> */}
-          <button className="col-pick-item-button" onClick={this.props.receivePickBottom}>Bottom</button>
-          {/* <button onClick={this.clear('bottom_id', this.state.bottom_id)}>Clear Bottom</button> */}
-          <button className="col-pick-item-button-right" onClick={this.props.receivePickShoes}>Shoes</button>
-          {/* <button onClick={this.clear('shoe_id', this.state.shoe_id)}>Clear Shoes</button> */}
+        <div className="collection-creation-header">
+          <h2>Create New Collection</h2>
         </div>
-        <CollectionPreview previewImages={this.previewImages}/>
+        <div>
+          <p>Label</p>
+          <input type='text' value={this.state.label} onChange={this.update('label')}></input>
+        </div>
         <div>
           <form onSubmit={this.handleTotalUpload}>
             <label className="col-creation-image-label">
@@ -257,10 +252,19 @@ class CollectionCreateForm extends React.Component{
             {/* <input type='submit'></input> */}
           </form>
         </div>
-        <div>
-          <p>Label</p>
-          <input type='text' value={this.state.label} onChange={this.update('label')}></input>
+        <p className="col-add-items-title">Add Items</p>
+        <div className="col-pick-items-container">
+          <ModalContainer pickItem={this.pickItem} />
+          <input className="col-pick-item-button" type="submit" value="Hat" onClick={this.props.receivePickHat} />
+          <input className="col-pick-item-button" type="submit" value="Top" onClick={this.props.receivePickTop} />
+          <input className="col-pick-item-button" type="submit" value="Bottom" onClick={this.props.receivePickBottom} />
+          <input className="col-pick-item-button" type="submit" value="Shoes" onClick={this.props.receivePickShoes} />
+          {/* <button onClick={this.clear('hat_id', this.state.hat_id)}>Clear Hat</button> */}
+          {/* <button onClick={this.clear('top_id', this.state.top_id)}>Clear Top</button> */}
+          {/* <button onClick={this.clear('bottom_id', this.state.bottom_id)}>Clear Bottom</button> */}
+          {/* <button onClick={this.clear('shoe_id', this.state.shoe_id)}>Clear Shoes</button> */}
         </div>
+        <CollectionPreview previewImages={this.previewImages} />
         <div className="dd-container">
           <div className="dd-bm">
             <Dropdown label="occasion"
@@ -296,7 +300,9 @@ class CollectionCreateForm extends React.Component{
             />
           </div>
         </div>
-        <button className="col-create-form-submit" onClick={this.handleSubmit}>Submit</button>
+        <div className="btn-create-form-wrapper">
+          <input type="submit" value="Submit" onClick={this.handleSubmit} />
+        </div>
         <CollectionErrors errors={this.errors}/>
 
       </div>
